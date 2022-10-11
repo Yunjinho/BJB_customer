@@ -26,6 +26,6 @@ public class CartDTO {
 	private String cust_name;
 	private String item_name;
 	private int item_price;
-	private String item_imgname;
+	private int totalprice;
 	
 }
