@@ -9,6 +9,7 @@ import com.multi.dto.CartDTO;
 import com.multi.frame.MyMapper;
 
 @Repository
+@Mapper
 public interface CartMapper extends MyMapper<Integer, CartDTO>{
 	public List<CartDTO> viewCart(int custid) throws Exception;
 }
