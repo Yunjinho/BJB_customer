@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.Order_DetailMapper">
+	
+ 	<select id="select" parameterType="Integer" resultType="Order_DetailDTO">
+		SELECT * FROM Order_Detail WHERE detailid = #{detailid}
+	</select>
+	<select id="selectAll" resultType="Order_DetailDTO">
+		SELECT * FROM Order_Detail
+	</select>
+	
+ 	<insert id="insert" parameterType="Order_DetailDTO">
+		INSERT INTO order_detail VALUES (NULL,#{orderid},#{itemid},#{cnt},#{price},#{color},#{size})
+	</insert>
+	<update id="update" parameterType="Order_DetailDTO">
+		UPDATE order_detail SET orderid=#{orderid},itemid=#{itemid},cnt=#{cnt},price=#{price},color=#{color},size=#{size} WHERE detailid=#{detailid}
+	</update> 
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM order_detail WHERE detailid=#{detailid}
+	</delete>
+	<select id="ViewOrder_Detail" parameterType="Integer" resultType="Order_DetailDTO">
+			SELECT od.detailid AS detailid, cu.name AS cust_name , i.name AS item_name, od.cnt AS cnt, od.price AS price, od.size AS size, od.color AS color
+    		FROM order_detail od
+			INNER JOIN purchase p ON p.orderid=od.orderid
+			INNER JOIN item2 i ON i.itemid=od.itemid
+			INNER JOIN cust cu ON cu.custid=p.custid
+			WHERE p.orderid = #{orderid}
+	</select>
+</mapper>
