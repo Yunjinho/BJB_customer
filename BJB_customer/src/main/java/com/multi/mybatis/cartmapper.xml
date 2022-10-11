@@ -5,8 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	
 	<select id="select" parameterType="Integer" resultType="CartDTO">
-		SELECT * FROM cart 
-		WHERE cartid = #{cartid}
+		SELECT cartid FROM cart WHERE cartid = #{cartid}
 	</select>
 	
 	<select id="selectAll" resultType="cartDTO">
