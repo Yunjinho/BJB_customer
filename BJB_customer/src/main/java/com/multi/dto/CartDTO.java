@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class CartDTO {
 	//카드 테이블 컬럼명
-	private int carid;
+	private int cartid;
 	private int custid;
 	private int itemid;
 	private int cnt;
