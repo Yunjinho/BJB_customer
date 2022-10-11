@@ -35,6 +35,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<select id="itemall" parameterType="Integer" resultType="ItemDTO">
 		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
+	<select id="item2all" parameterType="Integer" resultType="ItemDTO">
 		INNER JOIN cate cat ON i.cateid = cat.cateid
 		INNER JOIN seller s ON i.sellerid = s.sellerid
 		INNER JOIN product_option po ON i.itemid = po.itemid
