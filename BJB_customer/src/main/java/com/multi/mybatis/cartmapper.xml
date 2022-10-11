@@ -5,24 +5,38 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	
 	<select id="select" parameterType="Integer" resultType="CartDTO">
-		SELECT ca.carid,ca.custid,it.name as item_name,it.price as item_price,it.imgname as item_imgname,ca.cnt,ca.date FROM cart ca INNER JOIN item it ON ca.itemid=it.id  WHERE ca.carid=#{id}
+		SELECT * FROM cart 
+		WHERE cartid = #{cartid}
 	</select>
-	<select id="selectAll" resultType="CartDTO">
-	</select>
-	<insert id="insert" parameterType="CartDTO">
-		<!-- INSERT INTO cart VALUES (NULL,#{cust_id},#{item_id},#{cnt},NOW()) -->
-	</insert>
-	<update id="update" parameterType="CartDTO">
-		<!-- UPDATE cart SET item_id=#{item_id},cnt=#{cnt} WHERE id=#{id} -->
-	</update>
-	<delete id="delete" parameterType="Integer">
-		DELETE FROM cart WHERE id=#{id}
-	</delete>	
 	
-	<select id="cartall" parameterType="String" resultType="CartDTO">
-	<!-- 	SELECT ca.id, ca.cust_id, cu.name AS cust_name, i.id as item_id ,i.imgname as item_imgname,i.name AS item_name, i.price as item_price, ca.cnt, ca.rdate FROM cart ca 
-		INNER JOIN item i ON ca.item_id = i.id 
-		INNER JOIN cust cu ON ca.cust_id = cu.id 
-		WHERE ca.cust_id = #{cust_id} -->
+	<select id="selectAll" resultType="cartDTO">
+		SELECT * FROM cart
 	</select>
+	 
+	<insert id="insert" parameterType="cartDTO">
+		INSERT INTO cart(custid, itemid, cnt, date) VALUES (#{custid},#{itemid},#{cnt},NOW())
+	</insert>
+	
+	
+	<update id="update" parameterType="cartDTO">
+		UPDATE cart SET custid=#{custid}, itemid=#{itemid}, cnt=#{cnt}, date=NOW()
+		WHERE cartid=#{cartid}
+	</update> 
+	
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM cart WHERE cartid=#{cartid}
+	</delete> 
+
+	
+	<select id="viewCart" parameterType="Integer" resultType="CartDTO">
+		SELECT ca.cartid, ca.custid, ca.itemid, ca.cnt, ca.date, cu.name AS cust_name, it.name AS item2_name, it.price, p.totalprice 
+		FROM cart ca
+		INNER JOIN cust cu ON ca.custid = cu.custid
+		INNER JOIN item2 it ON ca.itemid = it.itemid
+		INNER JOIN order_detail od ON it.itemid = od.itemid
+		INNER JOIN purchase p ON od.orderid = p.orderid
+		WHERE ca.custid = #{custid}
+	</select>  
+	
 </mapper>

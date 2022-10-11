@@ -5,42 +5,44 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.multi.dto.CartDTO;
+import com.multi.dto.CateDTO;
 import com.multi.frame.MyService;
-import com.multi.mapper.CartMapper;
+import com.multi.mapper.CateMapper;
+
 
 @Service
-public class CartService implements MyService<Integer, CartDTO>{
-	@Autowired
-	CartMapper mapper;
+public class CateService implements MyService<Integer, CateDTO> {
 	
+	@Autowired
+	CateMapper mapper;
+	
+
 	@Override
-	public void register(CartDTO v) throws Exception {
+	public void register(CateDTO v) throws Exception {
 		mapper.insert(v);
+		
 	}
 
 	@Override
 	public void remove(Integer k) throws Exception {
 		mapper.delete(k);
+		
 	}
 
 	@Override
-	public void modify(CartDTO v) throws Exception {
+	public void modify(CateDTO v) throws Exception {
 		mapper.update(v);
+		
 	}
 
 	@Override
-	public CartDTO get(Integer k) throws Exception {
+	public CateDTO get(Integer k) throws Exception {
 		return mapper.select(k);
 	}
 
 	@Override
-	public List<CartDTO> get() throws Exception {
+	public List<CateDTO> get() throws Exception {
 		return mapper.selectAll();
-	}
-	
-	public List<CartDTO> viewCart(int custid) throws Exception {
-		return mapper.viewCart(custid);
 	}
 
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.Item2Mapper">
+	
+   	<select id="select" parameterType="Integer" resultType="Item2DTO">
+		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock, s.sellerid FROM item2 i
+		INNER JOIN cate cat ON i.cateid = cat.cateid
+		INNER JOIN seller s ON i.sellerid = s.sellerid
+		INNER JOIN product_option po ON i.itemid = po.itemid
+		INNER JOIN order_detail od ON i.itemid  = od.itemid
+		WHERE i.itemid = #{itemid}
+		AND po.color = od.color
+	</select>
+	
+	<select id="viewItem2All" resultType="Item2DTO">
+	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item2 i
+	INNER JOIN cate cat ON i.cateid = cat.cateid
+	INNER JOIN seller s ON i.sellerid = s.sellerid
+	INNER JOIN product_option po ON i.itemid = po.itemid
+	</select>
+
+ 	<insert id="insert" parameterType="Item2DTO">
+		INSERT INTO item2 VALUES (NULL, #{cateid}, #{sellerid}, #{name}, #{price});
+	</insert>
+	
+	<update id="update" parameterType="Item2DTO">
+		UPDATE item2 SET price = #{price} WHERE itemid = #{itemid};
+	</update> 
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM item2 WHERE itemid = #{itemid}
+	</delete>
+	
+	<select id="item2all" parameterType="Integer" resultType="Item2DTO">
+		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item2 i
+		INNER JOIN cate cat ON i.cateid = cat.cateid
+		INNER JOIN seller s ON i.sellerid = s.sellerid
+		INNER JOIN product_option po ON i.itemid = po.itemid
+		WHERE i.itemid = #{itemid}
+	</select> 
+	
+</mapper>

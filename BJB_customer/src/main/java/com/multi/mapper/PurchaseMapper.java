@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.multi.dto.CartDTO;
+import com.multi.dto.PurchaseDTO;
 import com.multi.frame.MyMapper;
 
 @Repository
-public interface CartMapper extends MyMapper<Integer, CartDTO>{
-	public List<CartDTO> viewCart(int custid) throws Exception;
+@Mapper
+public interface PurchaseMapper extends MyMapper<Integer,PurchaseDTO>{
+	public List<PurchaseDTO> viewPurchase(int custid) throws Exception;
+	
 }
