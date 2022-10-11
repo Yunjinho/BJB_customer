@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	
 	<select id="select" parameterType="Integer" resultType="CartDTO">
-		SELECT cartid FROM cart WHERE cartid = #{cartid}
+		SELECT * FROM cart WHERE cartid = #{cartid}
 	</select>
 	
 	<select id="selectAll" resultType="cartDTO">
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT ca.cartid, ca.custid, ca.itemid, ca.cnt, ca.date, cu.name AS cust_name, it.name AS item2_name, it.price, p.totalprice 
 		FROM cart ca
 		INNER JOIN cust cu ON ca.custid = cu.custid
-		INNER JOIN item2 it ON ca.itemid = it.itemid
+		INNER JOIN item it ON ca.itemid = it.itemid
 		INNER JOIN order_detail od ON it.itemid = od.itemid
 		INNER JOIN purchase p ON od.orderid = p.orderid
 		WHERE ca.custid = #{custid}
