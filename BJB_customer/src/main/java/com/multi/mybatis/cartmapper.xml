@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CartMapper">
+	
+	<select id="select" parameterType="Integer" resultType="CartDTO">
+		SELECT * FROM cart 
+		WHERE cartid = #{cartid}
+	</select>
+	
+	<select id="selectAll" resultType="cartDTO">
+		SELECT * FROM cart
+	</select>
+	 
+	<insert id="insert" parameterType="cartDTO">
+		INSERT INTO cart(custid, itemid, cnt, date) VALUES (#{custid},#{itemid},#{cnt},NOW())
+	</insert>
+	
+	
+	<update id="update" parameterType="cartDTO">
+		UPDATE cart SET custid=#{custid}, itemid=#{itemid}, cnt=#{cnt}, date=NOW()
+		WHERE cartid=#{cartid}
+	</update> 
+	
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM cart WHERE cartid=#{cartid}
+	</delete> 
+
+	
+	<select id="viewCart" parameterType="Integer" resultType="CartDTO">
+		SELECT ca.cartid, ca.custid, ca.itemid, ca.cnt, ca.date, cu.name AS cust_name, it.name AS item2_name, it.price, p.totalprice 
+		FROM cart ca
+		INNER JOIN cust cu ON ca.custid = cu.custid
+		INNER JOIN item2 it ON ca.itemid = it.itemid
+		INNER JOIN order_detail od ON it.itemid = od.itemid
+		INNER JOIN purchase p ON od.orderid = p.orderid
+		WHERE ca.custid = #{custid}
+	</select>  
+	
+</mapper>

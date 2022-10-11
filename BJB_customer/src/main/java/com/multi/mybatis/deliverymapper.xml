@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.DeliveryMapper">
+	
+	<select id="select" parameterType="Integer" resultType="DeliveryDTO">
+		SELECT * FROM delivery WHERE delid=#{delid}
+	</select>
+	<select id="selectAll" parameterType="DeliveryDTO" resultType="DeliveryDTO">
+		select * from delivery
+	</select>
+ 	<insert id="insert" parameterType="DeliveryDTO">
+		INSERT INTO delivery VALUES (NULL,#{orderid},#{delstate})
+	</insert>
+	<update id="update" parameterType="DeliveryDTO">
+		UPDATE delivery SET delstate=#{delstate} WHERE delid=#{delid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM delivery WHERE delid=#{delid}
+	</delete>
+	<select id="viewDelivery" parameterType="Integer" resultType="DeliveryDTO">
+		SELECT * FROM delivery
+		WHERE orderid=#{orderid}
+	</select>		 
+</mapper>
