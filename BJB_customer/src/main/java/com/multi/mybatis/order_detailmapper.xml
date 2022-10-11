@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			SELECT od.detailid AS detailid, cu.name AS cust_name , i.name AS item_name, od.cnt AS cnt, od.price AS price, od.size AS size, od.color AS color
     		FROM order_detail od
 			INNER JOIN purchase p ON p.orderid=od.orderid
-			INNER JOIN item2 i ON i.itemid=od.itemid
+			INNER JOIN item i ON i.itemid=od.itemid
 			INNER JOIN cust cu ON cu.custid=p.custid
 			WHERE p.orderid = #{orderid}
 	</select>

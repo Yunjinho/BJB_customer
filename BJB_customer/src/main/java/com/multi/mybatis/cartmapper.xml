@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="viewCart" parameterType="Integer" resultType="CartDTO">
-		SELECT ca.cartid, ca.custid, ca.itemid, ca.cnt, ca.date, cu.name AS cust_name, it.name AS item2_name, it.price, p.totalprice 
+		SELECT ca.cartid, ca.custid, ca.itemid, ca.cnt, ca.date, cu.name AS cust_name, it.name AS item_name, it.price, p.totalprice 
 		FROM cart ca
 		INNER JOIN cust cu ON ca.custid = cu.custid
 		INNER JOIN item it ON ca.itemid = it.itemid

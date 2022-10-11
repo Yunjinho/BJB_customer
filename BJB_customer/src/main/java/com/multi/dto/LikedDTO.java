@@ -17,7 +17,7 @@ public class LikedDTO {
 	private int custid;
 	private int itemid;
 	
-	private String item2_name;
-	private int item2_price;
+	private String item_name;
+	private int item_price;
 	
 }
