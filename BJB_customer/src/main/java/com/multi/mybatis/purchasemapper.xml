@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		inner join cust c on c.custid=pc.custid
 		inner join (
 		select i.name , od.orderid from order_detail od
-		inner join item2 i on i.itemid=od.itemid
+		inner join item i on i.itemid=od.itemid
 		) prod on prod.orderid=pc.orderid
 		where pc.custid=#{custid}
 	</select>	 
