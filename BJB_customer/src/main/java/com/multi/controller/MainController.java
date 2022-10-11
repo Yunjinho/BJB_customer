@@ -10,12 +10,4 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
-	@RequestMapping("/home")
-	public String home() {
-		return "home";
-	}
-	@RequestMapping("/viewoption")
-	public String viewoption() {
-		return "viewoption";
-	}
 }
