@@ -28,5 +28,9 @@ public class MainController {
 	public String cart() {
 		return "cart";
 	}
+	@RequestMapping("/product")
+	public String product() {
+		return "product";
+	}
 	
 }
