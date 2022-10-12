@@ -62,13 +62,27 @@
         <li><a href="/mypage"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <li><a href="/mypage"><span class="glyphicon glyphicon-inbox"></span> Register</a></li>
         <li><a href="/mypage"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 
+<div class="container-fluid text-center">    
+  <div class="row content">
+    
+    <!-- Main Left Start --------------------------------------------------- -->
+    <div class="col-sm-2  sidenav" th:insert = "${left} ? ${left} : mainleft">
+    </div>
+    <!-- Main Left End --------------------------------------------------- -->
+        
+    <!-- Main Center Start --------------------------------------------------- -->
+    <div class="col-sm-8 text-left" th:insert = "${center} ? ${center} : maincenter"> 
+    </div>
+    <!-- Main Center End --------------------------------------------------- -->    
+  </div>
+</div>
 
 
 <footer class="container-fluid text-center">

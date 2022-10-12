@@ -14,15 +14,13 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
-	@RequestMapping("/cart")
-	public String cart(Model model,String id) {
-		try {
-			model.addAttribute("center", "cart");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	@RequestMapping("/mypage")
+	public String mypage(Model model) {
+		model.addAttribute("center", "mypage");
 		return "main";
 	}
+	
+
 
 }
