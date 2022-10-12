@@ -19,5 +19,9 @@ public class MainController {
 	public String contact() {
 		return "contact";
 	}
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return "mypage";
+	}
 	
 }
