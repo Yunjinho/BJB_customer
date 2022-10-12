@@ -60,7 +60,7 @@
       
         <li><a href="/mypage"><span class="glyphicon glyphicon-bullhorn"></span> Notice</a></li>
 
-        <li th:if = "${session.logincust == null}"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li th:if = "${session.logincust == null}"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <li th:if = "${session.logincust == null}"><a href="#"><span class="glyphicon glyphicon-inbox"></span> Register</a></li>
         <li th:if = "${session.logincust != null}"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <li th:if = "${session.logincust != null}"><a href="/mypage"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
