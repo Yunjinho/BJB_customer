@@ -55,9 +55,9 @@ public class MainController {
 	@RequestMapping("/mypage")
 	public String mypage(Model model) {
 		model.addAttribute("center", "mypage");
+		model.addAttribute("left", "mypage_left");
 		return "main";
 	}
-	
 
 
 }
