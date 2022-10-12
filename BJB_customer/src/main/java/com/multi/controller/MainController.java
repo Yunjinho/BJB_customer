@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.dto.CustDTO;
 import com.multi.service.CustService;
 
 
@@ -38,13 +37,5 @@ public class MainController {
 //		return "mypage";
 //	}
 	
-	@RequestMapping("/cart")
-	public String cart() {
-		return "cart";
-	}
-	@RequestMapping("/product")
-	public String product() {
-		return "product";
-	}
-	
+
 }
