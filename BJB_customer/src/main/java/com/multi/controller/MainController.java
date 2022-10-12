@@ -20,4 +20,9 @@ public class MainController {
 		return "contact";
 	}
 	
+	@RequestMapping("/cart")
+	public String cart() {
+		return "cart";
+	}
+	
 }
