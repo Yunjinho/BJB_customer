@@ -14,7 +14,6 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
-	
 	@RequestMapping("/cart")
 	public String cart(Model model,String id) {
 		try {
