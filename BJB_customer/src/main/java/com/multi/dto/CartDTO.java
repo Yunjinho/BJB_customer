@@ -23,9 +23,9 @@ public class CartDTO {
 	
 	
 	// 조인할 때 필요한 컬럼명
-	private String cust_name;
-	private String item_name;
-	private int item_price;
+	private String image1;
+	private int price;
 	private int totalprice;
+	private String name;
 	
 }
