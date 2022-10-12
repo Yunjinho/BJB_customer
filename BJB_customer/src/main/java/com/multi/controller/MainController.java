@@ -24,4 +24,9 @@ public class MainController {
 		return "mypage";
 	}
 	
+	@RequestMapping("/cart")
+	public String cart() {
+		return "cart";
+	}
+	
 }
