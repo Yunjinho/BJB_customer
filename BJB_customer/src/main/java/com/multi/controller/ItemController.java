@@ -10,4 +10,9 @@ public class ItemController {
 	public String main() {
 		return dir+"/item";
 	}
+	
+	@RequestMapping("/item_detail")
+	public String item_detail() {
+		return dir+"/item_detail";
+	}
 }
