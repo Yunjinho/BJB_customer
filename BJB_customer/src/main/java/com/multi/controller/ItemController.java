@@ -88,4 +88,18 @@ public class ItemController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/itemdetail")
+	public String itemdetail(Model model, int itemid) {
+		ItemDTO item = null;
+		try {
+			item = itemservice.get(itemid);
+			model.addAttribute("itemdetail", item);
+			model.addAttribute("center", dir + "itemdetail");
+			System.out.println(itemid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
 }

@@ -4,17 +4,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.ItemMapper">
 	
-   	<select id="select" parameterType="Integer" resultType="ItemDTO">
+	
+	<select id="select" parameterType="Integer" resultType="ItemDTO">
+		SELECT itemid, name, price, image1, image2, image3 FROM item
+		WHERE itemid=#{itemid}
+	</select>
+	
+  <!--  	<select id="select" parameterType="Integer" resultType="ItemDTO">
 		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
 		INNER JOIN cate cat ON i.cateid = cat.cateid
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		INNER JOIN order_detail od ON i.itemid  = od.itemid
 		WHERE i.itemid = #{itemid}
 		AND po.color = od.color
-	</select>
+	</select> -->
 	
 	<select id="selectItemAll" parameterType="Integer" resultType="ItemDTO">
-		SELECT name, price, image1 FROM item
+		SELECT itemid, name, price, image1 FROM item
 		WHERE cateid=#{cateid}
 	</select>
 	
