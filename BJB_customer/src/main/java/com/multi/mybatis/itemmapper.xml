@@ -5,9 +5,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ItemMapper">
 	
    	<select id="select" parameterType="Integer" resultType="ItemDTO">
-		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock, s.sellerid FROM item i
+		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
 		INNER JOIN cate cat ON i.cateid = cat.cateid
-		INNER JOIN seller s ON i.sellerid = s.sellerid
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		INNER JOIN order_detail od ON i.itemid  = od.itemid
 		WHERE i.itemid = #{itemid}
@@ -15,18 +14,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="viewItemAll" resultType="ItemDTO">
-	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
+	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3 FROM item i
 	INNER JOIN cate cat ON i.cateid = cat.cateid
-	INNER JOIN seller s ON i.sellerid = s.sellerid
-	INNER JOIN product_option po ON i.itemid = po.itemid
+	ORDER BY i.itemid
 	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
-		INSERT INTO item VALUES (NULL, #{cateid}, #{sellerid}, #{name}, #{price});
+		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3});
 	</insert>
 	
 	<update id="update" parameterType="ItemDTO">
-		UPDATE item SET price = #{price} WHERE itemid = #{itemid};
+		UPDATE item SET name = #{name}, price = #{price}, image1 = #{image1}, image2 = #{image2}, image3 = #{image3} 
+		WHERE itemid = #{itemid};
 	</update> 
 	
 	<delete id="delete" parameterType="Integer">
@@ -36,7 +35,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="itemall" parameterType="Integer" resultType="ItemDTO">
 		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
 		INNER JOIN cate cat ON i.cateid = cat.cateid
-		INNER JOIN seller s ON i.sellerid = s.sellerid
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		WHERE i.itemid = #{itemid}
 	</select> 
