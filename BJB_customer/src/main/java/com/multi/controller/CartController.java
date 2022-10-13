@@ -22,7 +22,7 @@ public class CartController {
 		//아이디 가지고 장바구니 리스트 넘기기
 		List<CartDTO> list=null;
 		try {
-			list=service.viewCart(125);
+			list=service.viewCart("dbswlsgh1238");
 			model.addAttribute("obj", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

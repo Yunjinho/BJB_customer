@@ -26,29 +26,31 @@ public class ItemController {
 
 
 	@RequestMapping("/outer")
-	public String jacket(Model model) {
+	public String jacket(Model model,int cateid) {
 		List<CateDTO> list = null; // 자켓 페이지 카테고리용
 		List<ItemDTO> item = null; // 자켓 페이지용
 		try {
 			list = cate_service.viewCateTopid(10);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"outer");
-			item = itemservice.selectItemAll(11);
+			item = itemservice.selectItemAll(cateid);
 			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return "index";
 	}
 	
 	@RequestMapping("/top")
-	public String top(Model model) {
-		List<CateDTO> list = null;
+	public String top(Model model,int cateid) {
+		List<CateDTO> list = null; // 상의 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 상의 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(20);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"top");
+			item = itemservice.selectItemAll(cateid);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,12 +58,15 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/bottom")
-	public String bottom(Model model) {
-		List<CateDTO> list = null;
+	public String bottom(Model model,int cateid) {
+		List<CateDTO> list = null; // 하의 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 하의 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(30);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"bottom");
+			item = itemservice.selectItemAll(cateid);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,12 +74,15 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/acc")
-	public String acc(Model model) {
-		List<CateDTO> list = null;
+	public String acc(Model model,int cateid) {
+		List<CateDTO> list = null; // 악세사리 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 악세사리 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(40);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"acc");
+			item = itemservice.selectItemAll(cateid);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
