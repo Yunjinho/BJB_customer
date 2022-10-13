@@ -27,13 +27,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="viewLikedCustid" parameterType="Integer" resultType="LikedDTO">
-		SELECT l.custid, i.name AS item_name, i.price AS item_price FROM liked l
+		SELECT i.image1,l.custid, i.name AS name, i.price AS price FROM liked l
 		INNER JOIN item i ON l.itemid = i.itemid
 		WHERE l.custid = #{custid}
 	</select>
 	
 	<select id="viewLikedItemid" parameterType="Integer" resultType="LikedDTO">
-		SELECT l.itemid, l.custid, i.name AS item_name, i.price AS item_price FROM liked l
+		SELECT i.image1, l.itemid, l.custid, i.name AS name, i.price AS price FROM liked l
 		INNER JOIN item i ON l.itemid = i.itemid
 		WHERE l.itemid = #{itemid}
 	</select>

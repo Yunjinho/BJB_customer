@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CateDTO;
 import com.multi.service.CateService;
+import com.multi.dto.ItemDTO;
+import com.multi.service.ItemService;
 
 @Controller
 public class ItemController {
@@ -16,18 +18,22 @@ public class ItemController {
 	@Autowired
 	CateService cate_service;
 	
+	@Autowired
+	ItemService service;
+	
 	String dir = "item/";
 	
 	@RequestMapping("/outer")
-	public String outer(Model model) {
-		List<CateDTO> list = null;
+	public String jacket(Model model) {
+		List<ItemDTO> list = null;
 		try {
-			list = cate_service.viewCateTopid(10);
-			model.addAttribute("catelist", list);
+			list = service.selectItemAll(11);
+			model.addAttribute("obj", list);
 			model.addAttribute("center", dir+"outer");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return "index";
 	}
 	
@@ -69,6 +75,4 @@ public class ItemController {
 		}
 		return "index";
 	}
-	
-
 }

@@ -16,7 +16,7 @@ class InsertLiked {
 	
 	@Test
 	void contextLoads() {
-		LikedDTO like = new LikedDTO(0, 123, 1000, null, 0);
+		LikedDTO like = new LikedDTO(0, 123, 1000, null, 0,"");
 		try {
 			service.register(like);
 		} catch (Exception e) {
