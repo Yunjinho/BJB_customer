@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+<title>LOGIN</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/contact.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
+<style>
+   #login_title{
+      color: black;
+   }
+
+</style>
+
+<script>
+$(document).ready(function(){
+	$('#login_btn').click(function(){
+		 $('#login_form').attr(
+			{
+				'action':'/loginimpl',
+				'method':'post'
+			}		 
+		 );	
+		$('#login_form').submit();
+	});
+});
+</script>
+</head>
+
+
+
+<div class="super_container">
+   <div class="container">
+         <div class="row">
+            <div class="col">
+               <div class="home_container">
+                  <div class="home_content">
+                     <div id="login_title" class="home_title" >Login</div>
+                     <div class="breadcrumbs">
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   
+   <!-- Contact Form -->
+<div class="container" style="margin:auto; text-align:center;">
+<div class="col-sm-15"> 
+  <form id= "login_form" style="display:inline-block;">
+  
+    <div class="form-group">
+      <label for=" id">ID:</label>
+      <input type="number" class="form-control" id="id" placeholder="Enter id" name="id">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <button class="btn btn-default" id="login_btn">LOGIN</button> 
+    <button class="btn btn-default" id="register_btn">REGISTER</button> 
+  </form>
+
+  </div>
+  </div>
+
+
+</div>

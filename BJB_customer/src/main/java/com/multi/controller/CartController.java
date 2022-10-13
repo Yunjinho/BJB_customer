@@ -11,12 +11,12 @@ import com.multi.dto.CartDTO;
 import com.multi.service.CartService;
 
 @Controller
-@RequestMapping("/cart")
 public class CartController {
 	@Autowired
 	CartService service;
 	
-	@RequestMapping("")
+	
+	@RequestMapping("/cart")
 	public String main(Model model) {
 		
 		//아이디 가지고 장바구니 리스트 넘기기
@@ -39,6 +39,7 @@ public class CartController {
 		cart.setCart_totalprice(sum);
 		model.addAttribute("obj2", cart);
 		
-		return "cart";
+		model.addAttribute("center", "cart");
+		return "index";
 	}
 }
