@@ -21,7 +21,23 @@
 	#mypage_info{
 		background: white;
 	}
+	#mypage_label{
+		margin-bottom: 0;
+		font-size: 20px;
+	}
+	#mypage_div{
+		display: inline-block;
+		text-align: center;
+		
+	}
+	
+	
 </style>
+
+<script>
+
+
+</script>
 </head>
 
 
@@ -34,7 +50,7 @@
 	<!-- Home -->
 
 	
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="/images/mypage.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -52,33 +68,72 @@
 			</div>
 		</div>
 	
-
-	
 	
 	<!-- Contact Form -->
 
 	<div id="mypage_info" class="contact">
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="review_form_container">
-						<!-- <div class="review_form_title">get in touch</div> -->
-						<div class="review_form_content">
-							<form action="#" id="review_form" class="review_form">
-								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-									<input type="text" class="review_form_input" placeholder="Name" required="required">
-									<input type="email" class="review_form_input" placeholder="E-mail" required="required">
-									<input type="text" class="review_form_input" placeholder="Subject">
-								</div>
-								<textarea class="review_form_text" name="review_form_text" placeholder="Message"></textarea>
-								<button type="submit" class="review_form_button">send message</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="col-sm-8">
+			<form class="form-horizontal" action="/action_page.php">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="email">ID:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="id" th:value="${custdetail.custid}" readonly="readonly">
+			    </div>
+			  </div>
+			  <!-- <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Password:</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+			    </div>
+			  </div> -->
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Name:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="name" th:value="${custdetail.name}" readonly="readonly">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Gender:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="gender" th:value="${custdetail.gender}" readonly="readonly">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Birth:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="pwd" th:value="${custdetail.birth}" readonly="readonly">
+			    </div>
+			  </div>
+			  <!-- <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Address:</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+			    </div>
+			  </div> -->
+			  <!-- <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">P.H:</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+			    </div>
+			  </div> -->
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Email:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="email" th:value="${custdetail.email}" readonly="readonly">
+			    </div>
+			  </div>
+			  <!-- <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">Submit</button>
+			    </div>
+			  </div> -->
+			  <button type="submit" class="review_form_button">회원정보 수정</button>
+			</form>
+		</div>
 		</div>
 	</div>
+	
 
 	<!-- Contact Text -->
 
@@ -95,25 +150,16 @@
 							<ul>
 								<li>
 									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
-									<div class="contact_info_text">Rosia Road, no67, Gibraltar UK</div>
+									<div class="contact_info_text">428, Seolleung-ro, Gangnam-gu, Seoul, Korea</div>
 								</li>
 								<li>
 									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
-									<div class="contact_info_text">office@yourbusiness.com</div>
+									<div class="contact_info_text">bjb@multicampus.com</div>
 								</li>
 								<li>
 									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
-									<div class="contact_info_text">+45 7703 29293 34</div>
+									<div class="contact_info_text">+82 2612 0000</div>
 								</li>
-							</ul>
-						</div>
-						<div class="contact_info_social">
-							<ul>
-								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -157,67 +203,4 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="newsletter_content">
-			<div class="newsletter_image" style="background-image:url(images/newsletter.jpg)"></div>
-			<div class="container">
-				<div class="row newsletter_row">
-					<div class="col">
-						<div class="section_title_container text-center">
-							<div class="section_subtitle">only the best</div>
-							<div class="section_title">subscribe for a 20% discount</div>
-						</div>
-					</div>
-				</div>
-				<div class="row newsletter_container">
-					<div class="col-lg-10 offset-lg-1">
-						<div class="newsletter_form_container">
-							<form action="#">
-								<input type="email" class="newsletter_input" required="required" placeholder="E-mail here">
-								<button type="submit" class="newsletter_button">subscribe</button>
-							</form>
-						</div>
-						<div class="newsletter_text">Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestib ulum ultrices nulla. Aliquam egestas tempor leo.</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="footer_logo"><a href="/">BJB</a></div>
-					<nav class="footer_nav">
-						<ul>
-							<li><a href="/categories">Outer</a></li>
-							<li><a href="/categories">Top</a></li>
-							<li><a href="/categories">Bottom</a></li>
-							<li><a href="/categories">Acc</a></li>
-							<li><a href="/contact">contact</a></li>
-							
-						</ul>
-					</nav>
-					<div class="footer_social">
-						<ul>
-							<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-				</div>
-			</div>
-		</div>
-	</footer>
 </div>
