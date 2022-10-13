@@ -70,7 +70,7 @@ public class MainController {
          e.printStackTrace();
       }
 
-      return "index";
+      return "redirect:/";
    }
 }
 
