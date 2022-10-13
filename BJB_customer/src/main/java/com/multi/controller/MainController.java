@@ -40,11 +40,11 @@ public class MainController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage(Model model) {
+	public String mypage(Model model, int id) {
 		CustDTO cust = null;
 		try {
 			cust = custservice.get(123);
-			model.addAttribute("custdetail", cust);
+			model.addAttribute("mypage", cust);
 			model.addAttribute("center", "mypage");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,12 +52,33 @@ public class MainController {
 		return "index";
 	}
 	
+//	@RequestMapping("/custdetail")
+//	public String custdetail(Model model, int id) {
+//		CustDTO cust = null;
+//		try {
+//			cust = custservice.get(id);
+//			model.addAttribute("custdetail", cust);
+//			model.addAttribute("center", "custdetail");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "index";
+//	}
+	
    @RequestMapping("/login")
    public String login(Model model) { 
 	   model.addAttribute("center","login");
       return "index";
    }
- 
+   @RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "index";
+	}
    
    @RequestMapping("/loginimpl")
    public String loginimpl(int id, String pwd, Model model, HttpSession session) {   
@@ -69,7 +90,6 @@ public class MainController {
          } else {
             if(pwd.equals(cust.getPwd())) {
                session.setAttribute("logincust", cust);
-       
             } else {
                model.addAttribute("center", "loginfail");
             }
