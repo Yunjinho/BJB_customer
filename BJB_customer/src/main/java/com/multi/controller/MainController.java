@@ -61,7 +61,7 @@ public class MainController {
          } else {
             if(pwd.equals(cust.getPwd())) {
                session.setAttribute("logincust", cust);
-               model.addAttribute("center", "index");
+       
             } else {
                model.addAttribute("center", "loginfail");
             }
@@ -70,7 +70,7 @@ public class MainController {
          e.printStackTrace();
       }
 
-      return "redirect:/";
+      return "index";
    }
 }
 
