@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CartMapper">
 	
 	<select id="select" parameterType="Integer" resultType="CartDTO">
-		SELECT * FROM cart WHERE cartid = #{cartid}
+		SELECT * FROM cart WHERE custid = #{custid}
 	</select>
 	
 	<select id="selectAll" resultType="cartDTO">
@@ -29,10 +29,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	
 	<select id="viewCart" parameterType="Integer" resultType="CartDTO">
-		SELECT c.cartid, c.custid, i.image1 , i.name , i.price, c.cnt , c.date FROM item i
+		SELECT c.cartid, c.custid, i.image1 , i.name , i.price, c.cnt , c.date , (i.price * c.cnt) AS prod_totalprice FROM item i
 		INNER JOIN cart c ON i.itemid=c.itemid
 		INNER JOIN cust cu ON cu.custid = c.custid
 		WHERE cu.custid = #{custid}
-	</select>  
+	</select>
 	
 </mapper>

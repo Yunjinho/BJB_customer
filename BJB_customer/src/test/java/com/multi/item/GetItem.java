@@ -18,7 +18,7 @@ class GetItem {
 	void contextLoads() {
 		ItemDTO item = null;
 		try {
-			item = service.get(1000);
+			item = service.get(1056);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
