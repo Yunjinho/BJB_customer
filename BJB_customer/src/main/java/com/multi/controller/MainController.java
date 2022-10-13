@@ -78,6 +78,28 @@ public class MainController {
 
       return "index";
    }
+   @RequestMapping("/register")
+   public String register(Model model) { 
+      model.addAttribute("center", "register");
+      return "index";
+   }
+   
+	@RequestMapping("/registerimpl")
+	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+		
+		try {
+			custservice.register(cust); 
+			model.addAttribute("center","registerok");
+			model.addAttribute("rid",cust); 
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("center","registerfail");
+			model.addAttribute("fid",cust.getCustid()); 
+		}
+		
+		return "index";
+	}
+
 }
 
 
