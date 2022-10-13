@@ -25,15 +25,14 @@ public class ItemController {
 	
 	@RequestMapping("/outer")
 	public String jacket(Model model) {
-		List<ItemDTO> list = null;
+		List<CateDTO> list = null;
 		try {
-			list = service.selectItemAll(11);
-			model.addAttribute("obj", list);
+			list = cate_service.viewCateTopid(10);
+			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"outer");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "index";
 	}
 	
