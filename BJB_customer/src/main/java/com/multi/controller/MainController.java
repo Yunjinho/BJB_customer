@@ -28,15 +28,12 @@ public class MainController {
 	public String contact() {
 		return "contact";
 	}
+	
 	@RequestMapping("/mypage")
 	public String mypage(Model model) {
 		model.addAttribute("center", "mypage");
 		return "index";
 	}
-//	@RequestMapping("/mypage")
-//	public String mypage() {
-//		return "mypage";
-//	}
 	
 	@RequestMapping("/cart")
 	public String cart() {
