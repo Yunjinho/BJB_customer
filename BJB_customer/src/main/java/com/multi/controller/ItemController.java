@@ -15,26 +15,26 @@ public class ItemController {
 		return "index";
 	}
 	
-//	@RequestMapping("/outer")
-//	public String outer() {
-//		return dir + "outer";
-//	}
-	
 	@RequestMapping("/top")
-	public String top() {
-		return dir + "top";
+	public String top(Model model) {
+		model.addAttribute("center", dir+"top");
+		return "index";
 	}
 	
 	@RequestMapping("/bottom")
-	public String bottom() {
-		return dir + "bottom";
+	public String bottom(Model model) {
+		model.addAttribute("center", dir+"bottom");
+		return "index";
 	}
 	
 	@RequestMapping("/acc")
-	public String acc() {
-		return dir + "acc";
+	public String acc(Model model) {
+		model.addAttribute("center", dir+"acc");
+		return "index";
 	}
 	
+	
+
 	
 
 }
