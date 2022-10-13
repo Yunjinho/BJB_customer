@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="viewCateTopid" parameterType="Integer" resultType="CateDTO">
-	SELECT name FROM cate
+	SELECT name,cateid FROM cate
 	WHERE topid = #{topid}
 	</select>
 	

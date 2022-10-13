@@ -44,7 +44,9 @@ $("#test").click(function(){
 							<div class="sidebar_title">Outer</div>
 							<div class="sidebar_section_content">
 								<ul>
-									<li th:each = "c : ${catelist}"><a th:text = "${c.name}"></a></li>
+									<li th:each = "c : ${catelist}">
+										<a th:href="@{/outer(id=${c.cateid})}" th:text = "${c.name}"></a>
+									</li>
 								</ul>
 							</div>
 						</div>
