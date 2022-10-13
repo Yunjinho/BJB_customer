@@ -44,11 +44,14 @@ public class ItemController {
 	
 	@RequestMapping("/top")
 	public String top(Model model) {
-		List<CateDTO> list = null;
+		List<CateDTO> list = null; // 상의 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 상의 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(20);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"top");
+			item = itemservice.selectItemAll(21);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,11 +60,14 @@ public class ItemController {
 	
 	@RequestMapping("/bottom")
 	public String bottom(Model model) {
-		List<CateDTO> list = null;
+		List<CateDTO> list = null; // 하의 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 하의 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(30);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"bottom");
+			item = itemservice.selectItemAll(31);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,11 +76,14 @@ public class ItemController {
 	
 	@RequestMapping("/acc")
 	public String acc(Model model) {
-		List<CateDTO> list = null;
+		List<CateDTO> list = null; // 악세사리 페이지 하위카테고리 리스트
+		List<ItemDTO> item = null; // 악세사리 페이지 아이템 리스트
 		try {
 			list = cate_service.viewCateTopid(40);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"acc");
+			item = itemservice.selectItemAll(41);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
