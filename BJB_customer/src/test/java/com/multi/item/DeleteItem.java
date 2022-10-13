@@ -15,7 +15,7 @@ class DeleteItem {
 	@Test
 	void contextLoads() {
 		try {
-			service.remove(1008);
+			service.remove(1057);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

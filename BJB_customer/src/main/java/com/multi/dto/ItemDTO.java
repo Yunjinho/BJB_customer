@@ -15,9 +15,11 @@ public class ItemDTO {
 	
 	private int itemid;
 	private int cateid;
-	private int sellerid;
 	private String name;
 	private int price;
+	private String image1;
+	private String image2;
+	private String image3;
 	
 	private String cate_name;
 	private String po_color;
