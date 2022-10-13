@@ -70,21 +70,21 @@
 					</a>
 
 					<!-- login -->
-					<a href="/login">
+					<a href="/login" th:if = "${session.logincust == null}">
 						<div class="avatar">
 							<img src="/images/man_icon.png" alt="">
 						</div>
 					</a>
-					
-					<!-- Mypage test -->
+					<!-- login -->
 					<a href="/mypage">
-						<div class="star">
-							<img src="/images/star.svg" alt="">
-							<div class="star_num_container">
-								<div class="star_num_inner">
-									<div class="star_num">0</div>
-								</div>
-							</div>
+						<div class="avatar">
+							<img src="/images/man_icon22.png" alt="">
+						</div>
+					</a>
+					
+					<a href="/logout" th:if = "${session.logincust != null}">
+						<div class="avatar">
+							<img src="/images/logout_icon.png" alt="">
 						</div>
 					</a>
 				</div>

@@ -50,6 +50,19 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model model) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get("dbswlsgh1238");
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custdetail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
    @RequestMapping("/login")
    public String login(Model model) { 
 	   model.addAttribute("center","login");
@@ -78,6 +91,7 @@ public class MainController {
 
       return "index";
    }
+
    @RequestMapping("/register")
    public String register(Model model) { 
       model.addAttribute("center", "register");
