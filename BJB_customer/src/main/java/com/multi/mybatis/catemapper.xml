@@ -8,6 +8,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM cate WHERE cateid=#{cateid}
 	</select>
 	
+	<select id="viewCateTopid" parameterType="Integer" resultType="CateDTO">
+	SELECT name FROM cate
+	WHERE topid = #{topid}
+	</select>
+	
 	<select id="selectAll" resultType="CateDTO">
 		SELECT * FROM cate
 	</select>
