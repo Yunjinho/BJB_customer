@@ -37,7 +37,7 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 
 	@Override
 	public List<ItemDTO> get() throws Exception {
-		return mapper.viewItem2All();
+		return mapper.viewItemAll();
 	}
 	
 }
