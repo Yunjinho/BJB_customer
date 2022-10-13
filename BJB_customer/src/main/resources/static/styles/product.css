@@ -274,6 +274,7 @@ section
 	width: 142px;
 	height: 46px;
 	background: #937c6f;
+	border: 0;
 	text-align: center;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -799,6 +800,8 @@ section
 	margin-right: 0;
 }
 
+
+
 /*********************************
 6.3 Product Content
 *********************************/
@@ -1033,6 +1036,13 @@ section
 .cart_button
 {
 	margin-top: 55px;
+}
+
+.product_description_image > img
+{
+	display: block;
+	width: 600px;
+	height: 400px;
 }
 
 /*********************************
