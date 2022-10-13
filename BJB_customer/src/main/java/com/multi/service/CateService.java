@@ -44,5 +44,9 @@ public class CateService implements MyService<Integer, CateDTO> {
 	public List<CateDTO> get() throws Exception {
 		return mapper.selectAll();
 	}
+	
+	public List<CateDTO> viewCateTopid(int topid) throws Exception {
+		return mapper.viewCateTopid(topid);
+	}
 
 }
