@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.CustMapper">
 	
-	<select id="select" parameterType="Integer" resultType="custDTO">
+	<select id="select" parameterType="String" resultType="custDTO">
 		SELECT cu.custid, cu.tierid, cu.pwd, cu.name, cu.gender, cu.addr, cu.phone, cu.email, cu.rdate, cu.acc_amount, cu.birth, ti.tier AS tier_tier
 		FROM cust cu
 		INNER JOIN tier ti ON cu.tierid = ti.tierid
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	
-	<delete id="delete" parameterType="Integer">
+	<delete id="delete" parameterType="String">
 		DELETE FROM cust WHERE custid=#{custid}
 	</delete>  
 	

@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class PurchaseDTO {
 	private int orderid;
-	private int custid;
+	private String custid;
 	private String addr;
 	private String pay;
 	private int totalprice;

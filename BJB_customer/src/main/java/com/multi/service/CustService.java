@@ -10,7 +10,7 @@ import com.multi.frame.MyService;
 import com.multi.mapper.CustMapper;
 
 @Service
-public class CustService implements MyService<Integer, CustDTO>{
+public class CustService implements MyService<String, CustDTO>{
 	
 	@Autowired
 	CustMapper mapper;
@@ -21,7 +21,7 @@ public class CustService implements MyService<Integer, CustDTO>{
 	}
 
 	@Override
-	public void remove(Integer k) throws Exception {
+	public void remove(String k) throws Exception {
 		mapper.delete(k);
 		
 	}
@@ -33,7 +33,7 @@ public class CustService implements MyService<Integer, CustDTO>{
 	}
 
 	@Override
-	public CustDTO get(Integer k) throws Exception {
+	public CustDTO get(String k) throws Exception {
 		return mapper.select(k);
 	}
 
