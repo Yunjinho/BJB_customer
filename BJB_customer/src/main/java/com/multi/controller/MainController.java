@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.service.CustService;
-
-
 import com.multi.dto.CustDTO;
 import com.multi.service.CustService;
 
@@ -22,7 +20,8 @@ import com.multi.service.CustService;
 public class MainController {
 
 	@Autowired
-	CustService custservice; 
+	CustService custservice;
+	
 	
 
 	@RequestMapping("/")
@@ -44,10 +43,35 @@ public class MainController {
 		model.addAttribute("center", "mypage");
 		return "index";
 	}
-//	@RequestMapping("/mypage")
-//	public String mypage() {
-//		return "mypage";
-//	}
 	
+   @RequestMapping("/login")
+   public String login(Model model) { 
+	   model.addAttribute("center","login");
+      return "index";
+   }
+ 
+   
+   @RequestMapping("/loginimpl")
+   public String loginimpl(int id, String pwd, Model model, HttpSession session) {   
+      CustDTO cust = null;
+      try {
+         cust = custservice.get(id);
+         if(cust == null) {
+            model.addAttribute("center", "loginfail");
+         } else {
+            if(pwd.equals(cust.getPwd())) {
+               session.setAttribute("logincust", cust);
+               model.addAttribute("center", "index");
+            } else {
+               model.addAttribute("center", "loginfail");
+            }
+         }
+      } catch (Exception e) {      
+         e.printStackTrace();
+      }
 
+      return "index";
+   }
 }
+
+
