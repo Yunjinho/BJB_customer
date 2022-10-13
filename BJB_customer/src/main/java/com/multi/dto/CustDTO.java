@@ -2,6 +2,8 @@ package com.multi.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +22,14 @@ public class CustDTO {
 	private String name;
 	
 	private String gender;
+	private int postno;
 	private String addr;
 	private String phone;
 	private String email;
 	private Date rdate;
 	private int acc_amount;
-	private String birth;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date birth;
 	
 	private String tier_tier;
 }

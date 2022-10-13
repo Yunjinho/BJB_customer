@@ -49,12 +49,34 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model model) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get("dbswlsgh1238");
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custdetail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
    @RequestMapping("/login")
    public String login(Model model) { 
 	   model.addAttribute("center","login");
       return "index";
    }
  
+   @RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "index";
+	}
    
    @RequestMapping("/loginimpl")
    public String loginimpl(String id, String pwd, Model model, HttpSession session) {   
@@ -77,6 +99,29 @@ public class MainController {
 
       return "index";
    }
+
+   @RequestMapping("/register")
+   public String register(Model model) { 
+      model.addAttribute("center", "register");
+      return "index";
+   }
+   
+	@RequestMapping("/registerimpl")
+	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+		
+		try {
+			custservice.register(cust); 
+			model.addAttribute("center","registerok");
+			model.addAttribute("rid",cust); 
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("center","registerfail");
+			model.addAttribute("fid",cust.getCustid()); 
+		}
+		
+		return "index";
+	}
+
 }
 
 
