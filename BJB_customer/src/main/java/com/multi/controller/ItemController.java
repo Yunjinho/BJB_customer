@@ -19,20 +19,26 @@ public class ItemController {
 	CateService cate_service;
 	
 	@Autowired
-	ItemService service;
+	ItemService itemservice;
 	
 	String dir = "item/";
 	
+
+
 	@RequestMapping("/outer")
 	public String jacket(Model model) {
-		List<CateDTO> list = null;
+		List<CateDTO> list = null; // 자켓 페이지 카테고리용
+		List<ItemDTO> item = null; // 자켓 페이지용
 		try {
 			list = cate_service.viewCateTopid(10);
 			model.addAttribute("catelist", list);
 			model.addAttribute("center", dir+"outer");
+			item = itemservice.selectItemAll(11);
+			model.addAttribute("obj", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return "index";
 	}
 	
