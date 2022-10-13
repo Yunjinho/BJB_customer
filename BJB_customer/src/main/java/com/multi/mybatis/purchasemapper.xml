@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM purchase WHERE orderid=#{orderid}
 	</delete>
-	<select id="viewPurchase" parameterType="Integer" resultType="PurchaseDTO">
+	<select id="viewPurchase" parameterType="String" resultType="PurchaseDTO">
 		select  distinct(pc.orderid) , pc.custid , pc.addr , pc.pay , pc.totalprice , pc.receiver , pc.receiver_phone , pc.totalcnt , pc.order_date , d.delstate , c.phone as cust_phone, prod.name as item_name from purchase pc
 		inner join delivery d on d.orderid=pc.orderid
 		inner join cust c on c.custid=pc.custid

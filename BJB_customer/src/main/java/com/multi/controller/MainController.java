@@ -38,9 +38,17 @@ public class MainController {
 	public String contact() {
 		return "contact";
 	}
+	
 	@RequestMapping("/mypage")
 	public String mypage(Model model) {
-		model.addAttribute("center", "mypage");
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(123);
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "mypage");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "index";
 	}
 	

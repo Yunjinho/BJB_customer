@@ -39,7 +39,7 @@ public class CartService implements MyService<Integer, CartDTO>{
 		return mapper.selectAll();
 	}
 	
-	public List<CartDTO> viewCart(int custid) throws Exception {
+	public List<CartDTO> viewCart(String custid) throws Exception {
 		return mapper.viewCart(custid);
 	}
 

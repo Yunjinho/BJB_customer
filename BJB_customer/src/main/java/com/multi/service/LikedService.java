@@ -40,7 +40,7 @@ public class LikedService implements MyService<Integer, LikedDTO>{
 		return mapper.selectAll();
 	}
 	
-	public List<LikedDTO> viewLikedCustid(int custid) throws Exception {
+	public List<LikedDTO> viewLikedCustid(String custid) throws Exception {
 		return mapper.viewLikedCustid(custid);
 	}
 	

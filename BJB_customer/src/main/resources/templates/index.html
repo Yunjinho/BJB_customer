@@ -30,10 +30,10 @@
 			<div class="logo"><a href="/">BJB</a></div>
 			<nav class="main_nav">
 				<ul>
-					<li><a href="/outer">Outer</a></li>
-					<li><a href="/top">Top</a></li>
-					<li><a href="/bottom">Bottom</a></li>
-					<li><a href="/acc">Acc</a></li>
+					<li><a th:href="@{/outer(cateid=11)}">Outer</a></li>
+					<li><a th:href="@{/top(cateid=21)}">Top</a></li>
+					<li><a th:href="@{/bottom(cateid=31)}">Bottom</a></li>
+					<li><a th:href="@{/acc(cateid=41)}">Acc</a></li>
 					<li><a href="/contact">Contact</a></li>
 				</ul>
 			</nav>
@@ -73,6 +73,18 @@
 					<a href="/login">
 						<div class="avatar">
 							<img src="/images/man_icon.png" alt="">
+						</div>
+					</a>
+					
+					<!-- Mypage test -->
+					<a href="/mypage">
+						<div class="star">
+							<img src="/images/star.svg" alt="">
+							<div class="star_num_container">
+								<div class="star_num_inner">
+									<div class="star_num">0</div>
+								</div>
+							</div>
 						</div>
 					</a>
 				</div>
@@ -119,11 +131,11 @@
                <nav class="footer_nav">
                   <ul>
                      <li><a href="/">home</a></li>
-                     <li><a href="categories">Outer</a></li>
-                     <li><a href="categories">Top</a></li>
-                     <li><a href="categories">Bottom</a></li>
-                     <li><a href="categories">Acc</a></li>
-                     <li><a href="contact">contact</a></li>
+                     <li name="outer"><a href="categories">Outer</a></li>
+                     <li name="top"><a href="categories">Top</a></li>
+                     <li name="botttom"><a href="categories">Bottom</a></li>
+                     <li name="acc"><a href="categories">Acc</a></li>
+                     <li name="contact"><a href="contact">contact</a></li>
                   </ul>
                </nav>
                <div class="footer_social">

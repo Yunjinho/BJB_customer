@@ -15,7 +15,7 @@ class UpdateLiked {
 	
 	@Test
 	void contextLoads() {
-		LikedDTO liked = new LikedDTO(100, 123, 1001, null, 0);
+		LikedDTO liked = new LikedDTO(100, 123, 1001, null, 0,"");
 		try {
 			service.modify(liked);
 		} catch (Exception e) {

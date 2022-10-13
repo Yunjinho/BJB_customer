@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class CustDTO {
-	private int custid;
+	private String custid;
 	private int tierid;
 	private String pwd;
 	private String name;
