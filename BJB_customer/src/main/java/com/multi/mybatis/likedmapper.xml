@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM liked WHERE likedid=#{likedid}
 	</delete>
 	
-	<select id="viewLikedCustid" parameterType="Integer" resultType="LikedDTO">
+	<select id="viewLikedCustid" parameterType="String" resultType="LikedDTO">
 		SELECT i.image1,l.custid, i.name AS name, i.price AS price FROM liked l
 		INNER JOIN item i ON l.itemid = i.itemid
 		WHERE l.custid = #{custid}

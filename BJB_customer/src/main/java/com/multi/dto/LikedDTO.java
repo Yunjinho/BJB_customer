@@ -14,7 +14,7 @@ import lombok.ToString;
 public class LikedDTO {
 	
 	private int likedid;
-	private int custid;
+	private String custid;
 	private int itemid;
 	
 	private String name;
