@@ -69,6 +69,15 @@ public class MainController {
       return "index";
    }
  
+   @RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "index";
+	}
    
    @RequestMapping("/loginimpl")
    public String loginimpl(String id, String pwd, Model model, HttpSession session) {   
