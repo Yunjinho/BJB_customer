@@ -13,7 +13,7 @@ class DeletePurchase {
 	PurchaseService service;
 	@Test
 	void contextLoads() {
-		PurchaseDTO purchase=new PurchaseDTO(14, 123, "서울특별시", "카드", 100000, "홍길동", "123", 3, null, null, null, null);
+		PurchaseDTO purchase=new PurchaseDTO(14, "dbswlsgh1238", "서울특별시", "카드", 100000, "홍길동", "123", 3, null, null, null, null);
 		try {
 			service.remove(purchase.getOrderid());
 		} catch (Exception e) {

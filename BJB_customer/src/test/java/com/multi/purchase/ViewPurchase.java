@@ -18,7 +18,7 @@ class ViewPurchase {
 	void contextLoads() {
 		List<PurchaseDTO> list=null;
 		try {
-			list = service.viewPurchase(125);
+			list = service.viewPurchase("dbswlsgh1238");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

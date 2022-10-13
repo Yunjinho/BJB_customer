@@ -21,7 +21,7 @@ import com.multi.service.LikedService;
 		List<LikedDTO> list = null;
 		
 		try {
-			list = service.viewLikedCustid(123);
+			list = service.viewLikedCustid("dbswlsgh1238");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
