@@ -14,11 +14,12 @@ public class ItemController {
 		model.addAttribute("center", dir+"outer");
 		return "index";
 	}
+	
 //	@RequestMapping("/outer")
 //	public String outer() {
 //		return dir + "outer";
 //	}
-//	
+	
 	@RequestMapping("/top")
 	public String top() {
 		return dir + "top";
