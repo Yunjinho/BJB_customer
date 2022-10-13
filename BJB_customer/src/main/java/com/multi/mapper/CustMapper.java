@@ -8,6 +8,6 @@ import com.multi.frame.MyMapper;
 
 @Repository
 @Mapper
-public interface CustMapper extends MyMapper<Integer, CustDTO>{
+public interface CustMapper extends MyMapper<String, CustDTO>{
 
 }
