@@ -19,7 +19,7 @@ class ViewCart {
 	void contextLoads() {
 		List<CartDTO> list = null;
 		try {
-			list = service.viewCart(125);
+			list = service.viewCart("dbswlsgh1238");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

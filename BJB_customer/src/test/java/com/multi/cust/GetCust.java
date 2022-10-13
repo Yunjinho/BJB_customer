@@ -17,7 +17,7 @@ class GetCust {
 	void contextLoads() {
 		CustDTO cust = null;
 		try {
-			cust = service.get(125);
+			cust = service.get("dbswlsgh1238");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
