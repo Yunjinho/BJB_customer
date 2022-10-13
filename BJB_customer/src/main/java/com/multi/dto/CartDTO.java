@@ -29,5 +29,6 @@ public class CartDTO {
 	private String name;
 	private int cart_totalprice;
 	
+	private int cartcnt;
 	
 }

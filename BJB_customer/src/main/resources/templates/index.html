@@ -17,7 +17,29 @@
 <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
+<script>
 
+function getlikecnt(){
+	$.ajax({
+		url:'/likedcnt',
+		success:function(data){
+			$('#liked_cnt').text(data);
+		}
+	})
+}; 
+function getcartcnt(){
+	$.ajax({
+		url:'/cartcnt',
+		success:function(data){
+			$('#cart_cnt').text(data);
+		}
+	})
+};
+$(document).ready(function(){
+	getlikecnt();
+	getcartcnt();
+});
+</script>
 </head>
 <body>
 
@@ -51,7 +73,7 @@
 							<img src="/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
-									<div class="cart_num">1</div>
+									<div class="cart_num" id="cart_cnt"></div>
 								</div>
 							</div>
 						</div>
@@ -63,7 +85,7 @@
 
 							<div class="star_num_container">
 								<div class="star_num_inner">
-									<div class="star_num">0</div>
+									<div class="star_num" id="liked_cnt"></div>
 								</div>
 							</div>
 						</div>
@@ -163,5 +185,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/js/custom.js"></script>
+
+
+
 </body>
 </html>
