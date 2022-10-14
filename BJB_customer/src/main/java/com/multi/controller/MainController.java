@@ -138,6 +138,8 @@ public class MainController {
    @RequestMapping("/search")
    public String searchItem(Model model, String txt) {
 	   List<ItemDTO> list = null;
+	   System.out.println(txt);
+	   model.addAttribute("obj", list);
 	   try {
 		list = item_mapper.searchItem(txt);
 		model.addAttribute("obj", list);
@@ -147,7 +149,6 @@ public class MainController {
 	   model.addAttribute("center", "search");
 	   return "index";
    }
-  
 
    @RequestMapping("/register")
    public String register(Model model) { 

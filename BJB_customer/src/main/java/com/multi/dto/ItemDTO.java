@@ -1,5 +1,7 @@
 package com.multi.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ public class ItemDTO {
 	private String image1;
 	private String image2;
 	private String image3;
+	private Date rdate;
 	
 	private String cate_name;
 	private String po_color;

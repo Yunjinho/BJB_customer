@@ -14,5 +14,6 @@ public interface LikedMapper extends MyMapper<Integer, LikedDTO>{
 
 	public List<LikedDTO> viewLikedCustid(String custid) throws Exception;
 	public List<LikedDTO> viewLikedItemid(int itemid) throws Exception;
+	public void deleteall() throws Exception;
 	
 }
