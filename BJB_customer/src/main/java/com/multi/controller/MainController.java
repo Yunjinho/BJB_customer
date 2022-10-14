@@ -2,6 +2,7 @@ package com.multi.controller;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,7 +36,19 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
+<<<<<<< HEAD
 	public String main() {
+=======
+	public String main(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_mapper.newItemall();
+			model.addAttribute("obj", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+>>>>>>> branch 'master' of https://github.com/Yunjinho/BJB_customer.git
 		return "index";
 	}
 	
@@ -142,16 +155,17 @@ public class MainController {
    @RequestMapping("/search")
    public String searchItem(Model model, String txt) {
 	   List<ItemDTO> list = null;
+	   System.out.println(txt);
 	   model.addAttribute("obj", list);
 	   try {
 		list = item_mapper.searchItem(txt);
+		model.addAttribute("obj", list);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
 	   model.addAttribute("center", "search");
 	   return "index";
    }
-  
 
    @RequestMapping("/register")
    public String register(Model model) { 
