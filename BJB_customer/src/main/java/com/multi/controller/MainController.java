@@ -138,9 +138,9 @@ public class MainController {
    @RequestMapping("/search")
    public String searchItem(Model model, String txt) {
 	   List<ItemDTO> list = null;
-	   model.addAttribute("obj", list);
 	   try {
 		list = item_mapper.searchItem(txt);
+		model.addAttribute("obj", list);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
