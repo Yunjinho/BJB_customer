@@ -1,7 +1,5 @@
 package com.multi.controller;
 
-
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
-
-
 
 @Controller
 public class MainController {
@@ -20,7 +17,8 @@ public class MainController {
 	@Autowired
 	CustService custservice;
 	
-	
+	@Autowired
+	AJAXMapper mapper;
 
 	@RequestMapping("/")
 	public String main() {
@@ -33,8 +31,9 @@ public class MainController {
 	}
 
 	@RequestMapping("/contact")
-	public String contact() {
-		return "contact";
+	public String contact(Model model) {
+		model.addAttribute("center","contact");
+		return "index";
 	}
 	
 	@RequestMapping("/mypage")
@@ -50,12 +49,34 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model model) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get("dbswlsgh1238");
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custdetail");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
    @RequestMapping("/login")
    public String login(Model model) { 
 	   model.addAttribute("center","login");
       return "index";
    }
  
+   @RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "index";
+	}
    
    @RequestMapping("/loginimpl")
    public String loginimpl(String id, String pwd, Model model, HttpSession session) {   
@@ -78,6 +99,29 @@ public class MainController {
 
       return "index";
    }
+
+   @RequestMapping("/register")
+   public String register(Model model) { 
+      model.addAttribute("center", "register");
+      return "index";
+   }
+   
+	@RequestMapping("/registerimpl")
+	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+		
+		try {
+			custservice.register(cust); 
+			model.addAttribute("center","registerok");
+			model.addAttribute("rid",cust); 
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("center","registerfail");
+			model.addAttribute("fid",cust.getCustid()); 
+		}
+		
+		return "index";
+	}
+
 }
 
 

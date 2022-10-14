@@ -34,5 +34,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust cu ON cu.custid = c.custid
 		WHERE cu.custid = #{custid}
 	</select>
+
 	
 </mapper>

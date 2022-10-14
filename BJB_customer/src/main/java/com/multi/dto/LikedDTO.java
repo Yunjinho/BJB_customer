@@ -21,4 +21,5 @@ public class LikedDTO {
 	private int price;
 	private String image1;
 	
+	private int likedcnt;
 }
