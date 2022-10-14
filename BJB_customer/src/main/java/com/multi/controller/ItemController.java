@@ -92,11 +92,13 @@ public class ItemController {
 	@RequestMapping("/itemdetail")
 	public String itemdetail(Model model, int itemid) {
 		ItemDTO item = null;
+		List<CateDTO> list = null;
 		try {
 			item = itemservice.get(itemid);
+			list = cate_service.viewCateName(itemid);
+			model.addAttribute("catelist", list);
 			model.addAttribute("itemdetail", item);
 			model.addAttribute("center", dir + "itemdetail");
-			System.out.println(itemid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
