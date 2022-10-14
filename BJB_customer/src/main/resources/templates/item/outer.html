@@ -23,7 +23,7 @@ $("#test").click(function(){
 </script>
 </head>
 
-<div class="super_container">
+
 
 	<!-- Menu -->
 
@@ -105,7 +105,7 @@ $("#test").click(function(){
 
 						<!-- Product -->
 						
-						<div th:each="obj:${obj}"class="product">
+						<div th:each="obj:${obj}" class="product">
 							
 							<div class="product_image"><a th:href = "@{/itemdetail(itemid=${obj.itemid})}"><img th:src="'/images/'+${obj.image1} + '.jpg'" alt=""></a></div>
 							<div class="rating rating_4" data-rating="4">

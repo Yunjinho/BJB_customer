@@ -50,7 +50,7 @@
 						<ul th:each="obj:${obj}">
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
 								<!-- Product Image -->
-								<div class="cart_product_image"><img th:src="'/images/'+${obj.image1}"></div>
+								<div class="cart_product_image"><img th:src="'/images/'+${obj.image1}+'.jpg'" style="width:150px;"></div>
 								<!-- Product Name -->
 								<div class="cart_product_name" th:text="${obj.name}" ><a href="product.html"></a></div>
 								<div class="cart_product_info ml-auto">
@@ -59,12 +59,11 @@
 										<div class="cart_product_price" th:text="${obj.price}"></div>
 										<!-- Product Quantity -->
 										<div class="cart_product_price" th:text="${obj.cnt}"></div>
-										
 										<!-- Products Total Price -->
 										<div class="cart_product_total" th:text="${obj.prod_totalprice}"></div>
 										<!-- Product Cart Trash Button -->
 										<div class="cart_product_button">
-											<button class="cart_product_remove"><img src="images/trash.png" alt=""></button>
+											<button class="cart_product_remove" th:onclick="del([[${obj.cartid}]]);" ><img src="images/trash.png" alt=""></button>
 										</div>
 									</div>
 								</div>
@@ -76,8 +75,8 @@
 			<div class="row">
 				<div class="col">
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-						<button class="button_clear cart_button" id="clear_cart_button">clear cart</button>
-						<button class="button_update cart_button_2 ml-md-auto" id="continue_shopping_button">continue shopping</button>
+						<button class="button_clear cart_button" id="clear_cart_button"  th:onclick="alldel([[${obj2.cartid}]]);">clear cart</button>
+						<a th:href="@{/outer(cateid=11)}" ><button class="button_update cart_button_2 ml-md-auto" id="continue_shopping_button">continue shopping</button></a>
 					</div>
 				</div>
 			</div>
@@ -189,21 +188,27 @@
 <script src="/js/cart_custom.js"></script>
 
 <script>
-$("#clear_cart_button").click(function(){
-	alert("d");
-});
-
-$("#continue_shopping_button").click(function(){
-	alert("d");
-});
-
 $("#cart_total_button").click(function(){
 	alert("d");
 });
 
+function del(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deletecart?id='+id+'&cust_id='+cust_id;
+	}
+}
+
+function alldel(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deletecartall?id='+id+'&cust_id='+cust_id;
+	}
+}
 
 $(document).ready(function(){
-	
 });
 
 </script>

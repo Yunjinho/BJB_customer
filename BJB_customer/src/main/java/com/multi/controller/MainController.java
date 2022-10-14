@@ -1,5 +1,9 @@
 package com.multi.controller;
 
+
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.dto.ItemDTO;
+import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
 
@@ -18,6 +24,9 @@ public class MainController {
 	CustService custservice;
 	
 	@Autowired
+	ItemMapper item_mapper;
+	
+	@Autowired
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
@@ -25,6 +34,7 @@ public class MainController {
 
 		return "index";
 	}
+	
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -36,24 +46,11 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping("/mypage")
-	public String mypage(Model model) {
-		CustDTO cust = null;
-		try {
-			cust = custservice.get("dbswlsgh1238");
-			model.addAttribute("custdetail", cust);
-			model.addAttribute("center", "mypage");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "index";
-	}
-	
 	@RequestMapping("/custdetail")
-	public String custdetail(Model model) {
+	public String custdetail(Model model, String custid) {
 		CustDTO cust = null;
 		try {
-			cust = custservice.get("dbswlsgh1238");
+			cust = custservice.get(custid);
 			model.addAttribute("custdetail", cust);
 			model.addAttribute("center", "custdetail");
 		} catch (Exception e) {
@@ -61,6 +58,44 @@ public class MainController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/custupdate")
+	public String custupdate(Model model, String custid) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(custid);
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custupdate");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(Model model, CustDTO cust) {
+		try {
+			custservice.modify(cust);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:custdetail?custid="+cust.getCustid();
+	}
+	
+//	@RequestMapping("/custdetail")
+//	public String custdetail(Model model, String id) {
+//		CustDTO cust = null;
+//		try {
+//			cust = custservice.get(id);
+//			model.addAttribute("custdetail", cust);
+//			model.addAttribute("center", "custdetail");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "index";
+//	}
+	
+	
 	
    @RequestMapping("/login")
    public String login(Model model) { 
@@ -99,6 +134,20 @@ public class MainController {
 
       return "index";
    }
+   
+   @RequestMapping("/search")
+   public String searchItem(Model model, String txt) {
+	   List<ItemDTO> list = null;
+	   model.addAttribute("obj", list);
+	   try {
+		list = item_mapper.searchItem(txt);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   model.addAttribute("center", "search");
+	   return "index";
+   }
+  
 
    @RequestMapping("/register")
    public String register(Model model) { 

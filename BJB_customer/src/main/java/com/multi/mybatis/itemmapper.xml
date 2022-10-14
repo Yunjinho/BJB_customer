@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE cateid=#{cateid}
 	</select>
 	
+	<select id="searchItem" resultType="ItemDTO" parameterType="string">
+    	SELECT * FROM item WHERE name LIKE CONCAT('%',#{txt},'%')
+    </select>
+	
 	<select id="viewItemAll" resultType="ItemDTO">
 	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3 FROM item i
 	INNER JOIN cate cat ON i.cateid = cat.cateid

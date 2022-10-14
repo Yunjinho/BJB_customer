@@ -15,9 +15,10 @@ class UpdateCust {
 	
 	@Test
 	void contextLoads() {
-		CustDTO cust = new CustDTO("dbswlsgh1238", 1, "pwd08", "박명수", "남", "경기도", "00000000002", "pk@gmail.com", null, 100000, "701212", "BRONZE");
+
+		CustDTO cust = new CustDTO("wh1357", 1, "ddd", "sss", "여", 12, "경기도", "010-999-999", "sss@gmail.com", null, 10000, , "BRONZE");
+
 		try {
-			service.modify(cust);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

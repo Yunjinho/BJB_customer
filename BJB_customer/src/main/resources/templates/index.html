@@ -16,6 +16,7 @@
 <link href="/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
+
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script>
 
@@ -36,6 +37,16 @@ function getcartcnt(){
 	})
 };
 $(document).ready(function(){
+	
+	$('#search_btn').click(function(){
+		alert("");
+		$('#search_form').attr({
+			method:'get',
+			action:'/search'
+		});
+		$('$search_form').submit();
+	});
+	
 	getlikecnt();
 	getcartcnt();
 });
@@ -61,14 +72,14 @@ $(document).ready(function(){
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form action="#">
+					<form id="search_form" action="#">
 						<input type="search" class="search_input" required="required">
 						<button type="submit" id="search_button" class="search_button"><img src="/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a th:if = "${session.logincust != null}" th:href="@{/cart(custid=${session.logincust.custid})}">
 						<div class="cart">
 							<img src="/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
@@ -79,7 +90,7 @@ $(document).ready(function(){
 						</div>
 					</a>
 					<!-- Star -->
-					<a href="/liked">
+					<a th:if = "${session.logincust != null}" th:href="@{/liked(custid=${session.logincust.custid})}">
 						<div class="star">
 							<img src="images/heart_icon.png" alt="">
 
@@ -97,13 +108,13 @@ $(document).ready(function(){
 							<img src="/images/man_icon.png" alt="">
 						</div>
 					</a>
-					<!-- login -->
-					<a href="/mypage">
+					<!-- custdetail -->
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
 						<div class="avatar">
 							<img src="/images/man_icon22.png" alt="">
 						</div>
 					</a>
-					
+					<!-- logout -->
 					<a href="/logout" th:if = "${session.logincust != null}">
 						<div class="avatar">
 							<img src="/images/logout_icon.png" alt="">
@@ -122,9 +133,9 @@ $(document).ready(function(){
       <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
       <div class="logo menu_mm"><a href="/">BJB</a></div>
       <div class="search">
-         <form action="#">
-            <input type="search" class="search_input menu_mm" required="required">
-            <button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
+         <form id="search_form">
+            <input type="text" class="search_input menu_mm" required="required">
+            <button id="search_btn" class="search_button menu_mm" type="button"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
          </form>
       </div>
       <nav class="menu_nav">
@@ -178,6 +189,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
    </footer>
 </div>
 
+<script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/styles/bootstrap4/popper.js"></script>
 <script src="/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
@@ -185,7 +197,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/js/custom.js"></script>
-
 
 
 </body>
