@@ -16,7 +16,6 @@ class UpdateCust {
 	@Test
 	void contextLoads() {
 
-		CustDTO cust = new CustDTO("wh1357", 1, "ddd", "sss", "여", 12, "경기도", "010-999-999", "sss@gmail.com", null, 10000, , "BRONZE");
 
 		try {
 		} catch (Exception e) {
