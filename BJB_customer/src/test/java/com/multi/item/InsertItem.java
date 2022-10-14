@@ -16,7 +16,7 @@ class InsertItem {
 	
 	@Test
 	void contextLoads() {
-		ItemDTO item = new ItemDTO(0, 11, "유넥", 18000, "a.jpg", "b.jpg", "c.jpg", null, null, null, 0);
+		ItemDTO item = new ItemDTO(0, 11, "유넥", 18000, "a.jpg", "b.jpg", "c.jpg", null, null, null, null, 0);
 		try {
 			service.register(item);
 		} catch (Exception e) {
