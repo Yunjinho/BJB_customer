@@ -33,6 +33,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	INNER JOIN cate cat ON i.cateid = cat.cateid
 	ORDER BY i.itemid
 	</select>
+	
+	<select id="newItemall" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 3;
+	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
 		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3}, NOW());

@@ -2,6 +2,7 @@ package com.multi.controller;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,14 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-	public String main() {
+	public String main(Model model) {
+		List<ItemDTO> list = null;
+		try {
+			list = item_mapper.newItemall();
+			model.addAttribute("obj", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "index";
 	}
