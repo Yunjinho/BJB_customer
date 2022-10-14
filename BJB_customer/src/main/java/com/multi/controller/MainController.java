@@ -16,12 +16,17 @@ import com.multi.dto.ItemDTO;
 import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
+import com.multi.service.ItemService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	CustService custservice;
+	
+	@Autowired
+	ItemService itemservice;
+	
 	
 	@Autowired
 	ItemMapper item_mapper;
@@ -31,7 +36,6 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String main() {
-
 		return "index";
 	}
 	

@@ -43,5 +43,4 @@ public class ItemService implements MyService<Integer, ItemDTO>{
 	public List<ItemDTO> selectItemAll(int cateid) throws Exception {
 		return mapper.selectItemAll(cateid);
 	}
-	
 }
