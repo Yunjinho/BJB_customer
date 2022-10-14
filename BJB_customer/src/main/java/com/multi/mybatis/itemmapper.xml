@@ -19,17 +19,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="viewItemAll" resultType="ItemDTO">
-	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3 FROM item i
+	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3, i.rdate FROM item i
 	INNER JOIN cate cat ON i.cateid = cat.cateid
 	ORDER BY i.itemid
 	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
-		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3});
+		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3}, NOW());
 	</insert>
 	
 	<update id="update" parameterType="ItemDTO">
-		UPDATE item SET name = #{name}, price = #{price}, image1 = #{image1}, image2 = #{image2}, image3 = #{image3} 
+		UPDATE item SET name = #{name}, price = #{price}, image1 = #{image1}, image2 = #{image2}, image3 = #{image3}, rdate=NOW()
 		WHERE itemid = #{itemid};
 	</update> 
 	
