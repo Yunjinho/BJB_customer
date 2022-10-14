@@ -42,5 +42,8 @@ public class CartService implements MyService<Integer, CartDTO>{
 	public List<CartDTO> viewCart(String custid) throws Exception {
 		return mapper.viewCart(custid);
 	}
-
+	
+	public void deleteall() throws Exception{
+		mapper.deleteall();
+	}
 }
