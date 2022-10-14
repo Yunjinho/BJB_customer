@@ -39,7 +39,7 @@ function getcartcnt(){
 $(document).ready(function(){
 	
 	$('#search_btn').click(function(){
-		alert("");
+		
 		$('#search_form').attr({
 			method:'get',
 			action:'/search'
@@ -55,9 +55,7 @@ $(document).ready(function(){
 <body>
 
 <div class="super_container">
-   
    <!-- Header -->
-   
 	<header class="header">
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="/">BJB</a></div>
@@ -93,7 +91,6 @@ $(document).ready(function(){
 					<a th:if = "${session.logincust != null}" th:href="@{/liked(custid=${session.logincust.custid})}">
 						<div class="star">
 							<img src="images/heart_icon.png" alt="">
-
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num" id="liked_cnt"></div>
@@ -135,7 +132,7 @@ $(document).ready(function(){
       <div class="search">
          <form id="search_form">
             <input type="text" class="search_input menu_mm" required="required">
-            <button id="search_btn" class="search_button menu_mm" type="button"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
+            <button class="search_button menu_mm" type="button"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
          </form>
       </div>
       <nav class="menu_nav">
