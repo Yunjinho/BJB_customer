@@ -12,4 +12,5 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface CartMapper extends MyMapper<Integer, CartDTO>{
 	public List<CartDTO> viewCart(String custid) throws Exception;
+	public void deleteall() throws Exception;
 }

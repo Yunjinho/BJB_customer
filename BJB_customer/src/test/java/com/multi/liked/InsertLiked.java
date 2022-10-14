@@ -16,9 +16,7 @@ class InsertLiked {
 	
 	@Test
 	void contextLoads() {
-		LikedDTO like = new LikedDTO(0, "dbswlsgh1238", 1000, null, 0,"");
 		try {
-			service.register(like);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

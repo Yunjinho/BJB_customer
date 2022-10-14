@@ -16,11 +16,11 @@ public class LikedController {
 	LikedService service;
 	
 	@RequestMapping("/liked")
-	public String main(Model model) {
+	public String main(Model model,String custid) {
 		//아이디 가지고 장바구니 리스트 넘기기
 		List<LikedDTO> list=null;
 		try {
-			list=service.viewLikedCustid("dbswlsgh1238");
+			list=service.viewLikedCustid(custid);
 			model.addAttribute("obj", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

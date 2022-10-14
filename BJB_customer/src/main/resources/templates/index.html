@@ -68,7 +68,7 @@ $(document).ready(function(){
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a th:if = "${session.logincust != null}" th:href="@{/cart(custid=${session.logincust.custid})}">
 						<div class="cart">
 							<img src="/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
@@ -79,7 +79,7 @@ $(document).ready(function(){
 						</div>
 					</a>
 					<!-- Star -->
-					<a href="/liked">
+					<a th:if = "${session.logincust != null}" th:href="@{/liked(custid=${session.logincust.custid})}">
 						<div class="star">
 							<img src="images/heart_icon.png" alt="">
 
