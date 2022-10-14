@@ -1,7 +1,5 @@
 package com.multi.controller;
 
-
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
-
-
 
 @Controller
 public class MainController {
@@ -20,7 +17,8 @@ public class MainController {
 	@Autowired
 	CustService custservice;
 	
-	
+	@Autowired
+	AJAXMapper mapper;
 
 	@RequestMapping("/")
 	public String main() {
@@ -33,28 +31,16 @@ public class MainController {
 	}
 
 	@RequestMapping("/contact")
-	public String contact() {
-		return "contact";
-	}
-	
-	@RequestMapping("/mypage")
-	public String mypage(Model model) {
-		CustDTO cust = null;
-		try {
-			cust = custservice.get("dbswlsgh1238");
-			model.addAttribute("custdetail", cust);
-			model.addAttribute("center", "mypage");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String contact(Model model) {
+		model.addAttribute("center","contact");
 		return "index";
 	}
 	
 	@RequestMapping("/custdetail")
-	public String custdetail(Model model) {
+	public String custdetail(Model model, String custid) {
 		CustDTO cust = null;
 		try {
-			cust = custservice.get("dbswlsgh1238");
+			cust = custservice.get(custid);
 			model.addAttribute("custdetail", cust);
 			model.addAttribute("center", "custdetail");
 		} catch (Exception e) {
@@ -63,12 +49,59 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/custupdate")
+	public String custupdate(Model model, String custid) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(custid);
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custupdate");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(Model model, CustDTO cust) {
+		try {
+			custservice.modify(cust);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:custdetail?custid="+cust.getCustid();
+	}
+	
+//	@RequestMapping("/custdetail")
+//	public String custdetail(Model model, String id) {
+//		CustDTO cust = null;
+//		try {
+//			cust = custservice.get(id);
+//			model.addAttribute("custdetail", cust);
+//			model.addAttribute("center", "custdetail");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "index";
+//	}
+	
+	
+	
    @RequestMapping("/login")
    public String login(Model model) { 
 	   model.addAttribute("center","login");
       return "index";
    }
  
+   @RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		return "index";
+	}
    
    @RequestMapping("/loginimpl")
    public String loginimpl(String id, String pwd, Model model, HttpSession session) {   
