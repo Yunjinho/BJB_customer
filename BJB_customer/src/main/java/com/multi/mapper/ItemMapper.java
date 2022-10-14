@@ -15,11 +15,5 @@ public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public List<ItemDTO> viewItemAll() throws Exception;
 	public List<ItemDTO> selectItemAll(int cateid) throws Exception;
 	public List<ItemDTO> searchItem(String txt) throws Exception;
-<<<<<<< HEAD
-	public List<ItemDTO> getNew3() throws Exception;
-=======
 	public List<ItemDTO> newItemall() throws Exception;
-	
->>>>>>> branch 'master' of https://github.com/Yunjinho/BJB_customer.git
-	
 }

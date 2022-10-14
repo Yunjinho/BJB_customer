@@ -36,9 +36,7 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-<<<<<<< HEAD
-	public String main() {
-=======
+
 	public String main(Model model) {
 		List<ItemDTO> list = null;
 		try {
@@ -48,7 +46,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 
->>>>>>> branch 'master' of https://github.com/Yunjinho/BJB_customer.git
+
 		return "index";
 	}
 	
