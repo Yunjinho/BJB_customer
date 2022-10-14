@@ -1,28 +1,35 @@
-package com.multi.cust;
+package com.multi.cate;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.CustDTO;
-import com.multi.service.CustService;
+import com.multi.dto.CateDTO;
+import com.multi.service.CateService;
+
 
 @SpringBootTest
-class UpdateCust {
-
+	class ViewCateName {
+	
 	@Autowired
-	CustService service;
+	CateService service;
 	
 	@Test
 	void contextLoads() {
-
-
+		
+		List<CateDTO> list = null;
+		
 		try {
+			list = service.viewCateName(1011);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("UPDATE OK");
+		
+		for(CateDTO c:list) {
+			System.out.println(c);
+		}
 	}
 
 }

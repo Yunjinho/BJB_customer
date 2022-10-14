@@ -13,6 +13,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	WHERE topid = #{topid}
 	</select>
 	
+	<select id="viewCateName" parameterType="Integer" resultType="CateDTO">
+	SELECT name, cateid FROM cate
+	WHERE topid = (SELECT cat.topid FROM cate cat
+	INNER JOIN item i ON cat.cateid = i.cateid
+	WHERE itemid = #{itemid})
+	</select>
+	
 	<select id="selectAll" resultType="CateDTO">
 		SELECT * FROM cate
 	</select>

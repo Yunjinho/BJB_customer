@@ -136,6 +136,12 @@ $(document).ready(function(){
 			    </div>
 			  </div>
 			 <div class="form-group">
+			    <label class="control-label col-sm-2" for="postno" required="required">Post No.:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="postno" th:value="${custdetail.postno}" placeholder="Enter Post No."  required="required" name="postno">
+			    </div>
+			  </div>
+			 <div class="form-group">
 			    <label class="control-label col-sm-2" for="addr" required="required">Address:</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="addr" th:value="${custdetail.addr}" placeholder="Enter Address"  required="required" name="addr">
@@ -151,6 +157,18 @@ $(document).ready(function(){
 			    <label class="control-label col-sm-2" for="eamil" required="required">Email:</label>
 			    <div class="col-sm-10">
 			      <input type="email" class="form-control" id="email" th:value="${custdetail.email}" required="required" name="email">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="acc_amount" required="required">Accumulated Amount:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="acc_amount" th:value="${custdetail.acc_amount}" required="required" name="acc_amount">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="rdate" required="required">Register Date:</label>
+			    <div class="col-sm-10">
+			      <input type=text class="form-control" id="rdate" th:value="${custdetail.rdate}" readonly="readonly" name="rdate">
 			    </div>
 			  </div>
 			</form>

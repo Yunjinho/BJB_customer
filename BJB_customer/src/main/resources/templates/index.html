@@ -18,6 +18,9 @@
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 
 <script src="/js/jquery-3.2.1.min.js"></script>
+<style> 
+	
+</style>
 <script>
 
 function getlikecnt(){
@@ -75,7 +78,7 @@ $(document).ready(function(){
 						<button type="submit" id="search_button" class="search_button"><img src="/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
-				<div class="shopping">
+				<div class="shopping" style="padding-right: 50px">
 					<!-- Cart -->
 					<a th:if = "${session.logincust != null}" th:href="@{/cart(custid=${session.logincust.custid})}">
 						<div class="cart">
@@ -100,22 +103,29 @@ $(document).ready(function(){
 					</a>
 
 					<!-- login -->
-					<a href="/login" th:if = "${session.logincust == null}">
+					<a href="/login" th:if = "${session.logincust == null}" style="color: black; margin-top: 25px" >LOGIN</a>
+					<a href="/register" th:if = "${session.logincust == null}" style="color: black; margin-top: 25px">REGISTER</a>
+					<!-- <a href="/login" th:if = "${session.logincust == null}"> 
 						<div class="avatar">
 							<img src="/images/man_icon.png" alt="">
 						</div>
-					</a>
+					</a> -->
+					
 					<!-- custdetail -->
-					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}" th:text = "${session.logincust.custid}+님" style="color: black; margin-top: 25px">
+					</a>
+					<!-- <a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
 						<div class="avatar">
 							<img src="/images/man_icon22.png" alt="">
 						</div>
-					</a>
+					</a> -->
+					
 					<!-- logout -->
-					<a href="/logout" th:if = "${session.logincust != null}">
-						<div class="avatar">
+					<a href="/logout" th:if = "${session.logincust != null}" style="color: black; margin-top: 25px">
+					LOGOUT
+						<!-- <div class="avatar">
 							<img src="/images/logout_icon.png" alt="">
-						</div>
+						</div> -->
 					</a>
 				</div>
 			</div>
