@@ -36,24 +36,11 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping("/mypage")
-	public String mypage(Model model) {
-		CustDTO cust = null;
-		try {
-			cust = custservice.get("dbswlsgh1238");
-			model.addAttribute("custdetail", cust);
-			model.addAttribute("center", "mypage");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "index";
-	}
-	
 	@RequestMapping("/custdetail")
-	public String custdetail(Model model) {
+	public String custdetail(Model model, String custid) {
 		CustDTO cust = null;
 		try {
-			cust = custservice.get("dbswlsgh1238");
+			cust = custservice.get(custid);
 			model.addAttribute("custdetail", cust);
 			model.addAttribute("center", "custdetail");
 		} catch (Exception e) {
@@ -61,6 +48,44 @@ public class MainController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/custupdate")
+	public String custupdate(Model model, String custid) {
+		CustDTO cust = null;
+		try {
+			cust = custservice.get(custid);
+			model.addAttribute("custdetail", cust);
+			model.addAttribute("center", "custupdate");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	@RequestMapping("/custupdateimpl")
+	public String custupdateimpl(Model model, CustDTO cust) {
+		try {
+			custservice.modify(cust);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:custdetail?custid="+cust.getCustid();
+	}
+	
+//	@RequestMapping("/custdetail")
+//	public String custdetail(Model model, String id) {
+//		CustDTO cust = null;
+//		try {
+//			cust = custservice.get(id);
+//			model.addAttribute("custdetail", cust);
+//			model.addAttribute("center", "custdetail");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "index";
+//	}
+	
+	
 	
    @RequestMapping("/login")
    public String login(Model model) { 

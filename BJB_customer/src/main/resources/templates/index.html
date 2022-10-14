@@ -97,13 +97,13 @@ $(document).ready(function(){
 							<img src="/images/man_icon.png" alt="">
 						</div>
 					</a>
-					<!-- login -->
-					<a href="/mypage">
+					<!-- custdetail -->
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
 						<div class="avatar">
 							<img src="/images/man_icon22.png" alt="">
 						</div>
 					</a>
-					
+					<!-- logout -->
 					<a href="/logout" th:if = "${session.logincust != null}">
 						<div class="avatar">
 							<img src="/images/logout_icon.png" alt="">
