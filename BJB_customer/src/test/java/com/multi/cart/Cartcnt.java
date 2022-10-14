@@ -1,32 +1,32 @@
 package com.multi.cart;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.CartDTO;
+import com.multi.mapper.AJAXMapper;
 import com.multi.service.CartService;
 
 @SpringBootTest
-class ViewCart {
+class Cartcnt {
 
 	@Autowired
 	CartService service;
-	
+	@Autowired
+	AJAXMapper mapper;
 	@Test
 	void contextLoads() {
-		List<CartDTO> list = null;
+		int cnt = 0;
+		int cnt2 = 0;
 		try {
-			list = service.viewCart("dbswlsgh1238");
+			cnt=mapper.getCartCnt("dbswlsgh1238");
+			cnt2=mapper.getLikedCnt("dbswlsgh1238");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(CartDTO c:list) {
-			System.out.println(c);			
-		}
+		System.out.println(cnt);
+		System.out.println(cnt2);
 	}
 
 }

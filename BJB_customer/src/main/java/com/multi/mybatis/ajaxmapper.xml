@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.AJAXMapper">
+	
+	<select id="getCartCnt"  parameterType="String" resultType="Integer">
+		SELECT count(*) FROM cart
+		WHERE custid=#{custid}
+	</select>
+	
+	<select id="getLikedCnt" parameterType="String" resultType="Integer">
+		SELECT count(*) FROM liked
+		WHERE custid=#{custid}
+	</select>
+	
+</mapper>

@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM cart WHERE cartid=#{cartid}
+	</delete>
+	
+	<delete id="deleteall">
+		DELETE FROM cart
 	</delete> 
 
 	
@@ -34,5 +38,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust cu ON cu.custid = c.custid
 		WHERE cu.custid = #{custid}
 	</select>
+
 	
 </mapper>

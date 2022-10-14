@@ -17,7 +17,40 @@
 <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script>
 
+function getlikecnt(){
+	$.ajax({
+		url:'/likedcnt',
+		success:function(data){
+			$('#liked_cnt').text(data);
+		}
+	})
+}; 
+function getcartcnt(){
+	$.ajax({
+		url:'/cartcnt',
+		success:function(data){
+			$('#cart_cnt').text(data);
+		}
+	})
+};
+$(document).ready(function(){
+	
+	$('#search_btn').click(function(){
+		alert("");
+		$('#search_form').attr({
+			method:'get',
+			action:'/search'
+		});
+		$('$search_form').submit();
+	});
+	
+	getlikecnt();
+	getcartcnt();
+});
+</script>
 </head>
 <body>
 
@@ -46,45 +79,45 @@
 				</div>
 				<div class="shopping">
 					<!-- Cart -->
-					<a href="/cart">
+					<a th:if = "${session.logincust != null}" th:href="@{/cart(custid=${session.logincust.custid})}">
 						<div class="cart">
 							<img src="/images/shopping-bag.svg" alt="">
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
-									<div class="cart_num">1</div>
+									<div class="cart_num" id="cart_cnt"></div>
 								</div>
 							</div>
 						</div>
 					</a>
 					<!-- Star -->
-					<a href="/liked">
+					<a th:if = "${session.logincust != null}" th:href="@{/liked(custid=${session.logincust.custid})}">
 						<div class="star">
 							<img src="images/heart_icon.png" alt="">
 
 							<div class="star_num_container">
 								<div class="star_num_inner">
-									<div class="star_num">0</div>
+									<div class="star_num" id="liked_cnt"></div>
 								</div>
 							</div>
 						</div>
 					</a>
 
 					<!-- login -->
-					<a href="/login">
+					<a href="/login" th:if = "${session.logincust == null}">
 						<div class="avatar">
 							<img src="/images/man_icon.png" alt="">
 						</div>
 					</a>
-					
-					<!-- Mypage test -->
-					<a href="/mypage">
-						<div class="star">
-							<img src="/images/star.svg" alt="">
-							<div class="star_num_container">
-								<div class="star_num_inner">
-									<div class="star_num">0</div>
-								</div>
-							</div>
+					<!-- custdetail -->
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
+						<div class="avatar">
+							<img src="/images/man_icon22.png" alt="">
+						</div>
+					</a>
+					<!-- logout -->
+					<a href="/logout" th:if = "${session.logincust != null}">
+						<div class="avatar">
+							<img src="/images/logout_icon.png" alt="">
 						</div>
 					</a>
 				</div>
@@ -98,7 +131,7 @@
 
    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
       <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-      <div class="logo menu_mm"><a href="#">BJB</a></div>
+      <div class="logo menu_mm"><a href="/">BJB</a></div>
       <div class="search">
          <form id="search_form">
             <input type="text" class="search_input menu_mm" required="required">
@@ -111,7 +144,7 @@
             <li class="menu_mm"><a th:href="@{/outer(cateid=21)}">Top</a></li>
             <li class="menu_mm"><a th:href="@{/outer(cateid=31)}">Bottom</a></li>
             <li class="menu_mm"><a th:href="@{/outer(cateid=41)}">Acc</a></li>
-            <li class="menu_mm"><a href="contact">contact</a></li>
+            <li class="menu_mm"><a th:href="contact">contact</a></li>
          </ul>
       </nav>
    </div>
@@ -127,14 +160,14 @@
       <div class="container">
          <div class="row">
             <div class="col text-center">
-               <div class="footer_logo"><a href="#">BJB</a></div>
+               <div class="footer_logo"><a href="/">BJB</a></div>
                <nav class="footer_nav">
                   <ul>
                      <li><a href="/">home</a></li>
-                     <li name="outer"><a href="categories">Outer</a></li>
-                     <li name="top"><a href="categories">Top</a></li>
-                     <li name="botttom"><a href="categories">Bottom</a></li>
-                     <li name="acc"><a href="categories">Acc</a></li>
+                     <li name="outer"><a th:href="@{/outer(cateid=11)}">Outer</a></li>
+                     <li name="top"><a th:href="@{/outer(cateid=21)}">Top</a></li>
+                     <li name="botttom"><a th:href="@{/outer(cateid=31)}">Bottom</a></li>
+                     <li name="acc"><a th:href="@{/outer(cateid=41)}">Acc</a></li>
                      <li name="contact"><a href="contact">contact</a></li>
                   </ul>
                </nav>
@@ -165,19 +198,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/js/custom.js"></script>
 
-<script>
-$(document).ready(function(){
-	$('#search_btn').click(function(){
-		alert("");
-		$('#search_form').attr({
-			method:'get',
-			action:'/search'
-		});
-		$('$search_form').submit();
-	});
-});
-
-</script>
 
 </body>
 </html>
