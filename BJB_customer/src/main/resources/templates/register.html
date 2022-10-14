@@ -42,11 +42,12 @@ $(document).ready(function(){
 		}
 	});
 	$('#id').keyup(function(){
-		var id = $(this).val();
+		var custid = $(this).val();
 		$.ajax({
 			url:'/checkid', //아작스로 아이디를 사용가능한지 보는 기능
-			data:{'cid':id}, //cid이름으로id데이터전달한다
+			data:{'cid':custid}, //cid이름으로id데이터전달한다
 			success:function(result){
+				
 				if(result == 't'){
 					$('#ispan').text('Available');
 				}else{
@@ -123,8 +124,8 @@ function sample6_execDaumPostcode() {
   <div class="col-sm-15"> 
   <form id= "register_form" style="display:inline-block;">
     <div class="form-group">
-      <label for=" id">ID:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter id" name="custid">
+      <label for="id">ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter id" name="custid" >
       <span id="ispan"></span>
     </div>
     <div class="form-group">
