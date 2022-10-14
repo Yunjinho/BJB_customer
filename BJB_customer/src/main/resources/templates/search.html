@@ -41,14 +41,7 @@ $("#test").click(function(){
 					<div class="sidebar_left clearfix">
 						<!-- Categories -->
 						<div class="sidebar_section">
-							<div class="sidebar_title">Outer</div>
-							<div class="sidebar_section_content">
-								<ul>
-									<li th:each = "c : ${catelist}">
-										<a th:href="@{/bottom(cateid=${c.cateid})}" th:text = "${c.name}"></a>
-									</li>
-								</ul>
-							</div>
+
 						</div>
 						<!-- Size -->
 						<div class="sidebar_section sidebar_options">
