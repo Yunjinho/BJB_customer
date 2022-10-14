@@ -1,5 +1,9 @@
 package com.multi.controller;
 
+
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.dto.ItemDTO;
+import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
 
@@ -18,6 +24,9 @@ public class MainController {
 	CustService custservice;
 	
 	@Autowired
+	ItemMapper item_mapper;
+	
+	@Autowired
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
@@ -25,6 +34,7 @@ public class MainController {
 
 		return "index";
 	}
+	
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -124,6 +134,20 @@ public class MainController {
 
       return "index";
    }
+   
+   @RequestMapping("/search")
+   public String searchItem(Model model, String txt) {
+	   List<ItemDTO> list = null;
+	   model.addAttribute("obj", list);
+	   try {
+		list = item_mapper.searchItem(txt);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   model.addAttribute("center", "search");
+	   return "index";
+   }
+  
 
    @RequestMapping("/register")
    public String register(Model model) { 

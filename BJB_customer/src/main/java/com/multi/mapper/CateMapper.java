@@ -14,5 +14,6 @@ import com.multi.frame.MyMapper;
 public interface CateMapper extends MyMapper<Integer, CateDTO> {
 	
 	public List<CateDTO> viewCateTopid(int topid) throws Exception;
+	public List<CateDTO> viewCateName(int itemid) throws Exception;
 	
 }

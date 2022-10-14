@@ -13,6 +13,7 @@ import com.multi.frame.MyMapper;
 public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public List<ItemDTO> viewItemAll() throws Exception;
 	public List<ItemDTO> selectItemAll(int cateid) throws Exception;
+	public List<ItemDTO> searchItem(String txt) throws Exception;
 	
 	
 }
