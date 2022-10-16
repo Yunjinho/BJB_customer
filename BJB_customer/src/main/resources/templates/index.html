@@ -17,7 +17,9 @@
 <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 
+
 <script src="/js/jquery-3.2.1.min.js"></script>
+
 <style> 
 	
 </style>
@@ -40,16 +42,14 @@ function getcartcnt(){
 	})
 };
 $(document).ready(function(){
-	
 	$('#search_btn').click(function(){
-		
 		$('#search_form').attr({
 			method:'get',
 			action:'/search'
 		});
-		$('$search_form').submit();
+		$('#search_form').submit();
 	});
-	
+
 	getlikecnt();
 	getcartcnt();
 });
@@ -73,9 +73,9 @@ $(document).ready(function(){
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form id="search_form" action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="/images/magnifying-glass.svg" alt=""></button>
+					<form id="search_form">
+						<input name='txt' type="text" class="search_input" required="required">
+						<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
 				<div class="shopping" style="padding-right: 50px">
@@ -140,10 +140,10 @@ $(document).ready(function(){
       <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
       <div class="logo menu_mm"><a href="/">BJB</a></div>
       <div class="search">
-         <form id="search_form">
-            <input type="text" class="search_input menu_mm" required="required">
-            <button class="search_button menu_mm" type="button"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
-         </form>
+		<form id="search_form">
+			<input name='txt' type="text" class="search_input" required="required">
+			<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
+		</form>
       </div>
       <nav class="menu_nav">
          <ul class="menu_mm">
@@ -204,7 +204,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/js/custom.js"></script>
-
 
 </body>
 </html>
