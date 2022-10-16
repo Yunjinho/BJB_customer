@@ -18,4 +18,5 @@ public interface ItemMapper extends MyMapper<Integer, ItemDTO>{
 	public ItemDTO newItem1() throws Exception;
 	public ItemDTO newItem2() throws Exception;
 	public ItemDTO newItem3() throws Exception;
+	public List<ItemDTO> randomItem() throws Exception;
 }
