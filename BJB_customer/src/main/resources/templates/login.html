@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <title>LOGIN</title>
-<meta charset="utf-8">
+<meta charset="utf-8" xmlns:th="http://www.thymeleaf.org">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,10 @@
 <link rel="stylesheet" type="text/css" href="styles/contact.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 
+<link rel="stylesheet" href="./bootstrapt/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./bootstrapt/css/bootstrap.css" />
+<script src="./bootstrapt/js/bootstrap.min.js"></script>
+
 <style>
    #login_title{
       color: black;
@@ -17,20 +21,34 @@
 
 </style>
 
-<script>
+<script >
+
+
+function modal(){
+	$('#testModal').modal();
+};
+
 $(document).ready(function(){
+
+	var status = "[[${status}]]";
+	
+	if(status=="0"){
+		modal();
+	}
+	
 	$('#login_btn').click(function(){
 		 $('#login_form').attr(
 			{
 				'action':'/loginimpl',
 				'method':'post'
 			}		 
-		 );	
+		);	
 		$('#login_form').submit();
+		
+		
 	});
+
 });
-
-
 </script>
 </head>
 
@@ -51,7 +69,25 @@ $(document).ready(function(){
             </div>
          </div>
       </div>
-   
+     <!-- 모달 -->
+     
+	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+
+					</button>
+
+				</div>
+				<div class="modal-body">ID또는비밀번호가 일치하지않습니다. 다시 시도해주세요.</div>
+				<div class="modal-footer">
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
    <!-- Contact Form -->
 <div class="container" style="margin:auto; text-align:center;">
 <div class="col-sm-15"> 

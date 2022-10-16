@@ -89,6 +89,8 @@ public class MainController {
 	
    @RequestMapping("/login")
    public String login(Model model) { 
+  	 model.addAttribute("status", "1");
+
 	   model.addAttribute("center","login");
       return "index";
    }
@@ -109,14 +111,15 @@ public class MainController {
       try {
          cust = custservice.get(id);
          if(cust == null) {
-            model.addAttribute("center", "loginfail");
+        	 model.addAttribute("status", "0");
+        	 model.addAttribute("center", "login");
          } else {
             if(pwd.equals(cust.getPwd())) {
+            	model.addAttribute("status", "1");
                session.setAttribute("logincust", cust);
-       
             } else {
-               model.addAttribute("center", "loginfail");
-            }
+            	 model.addAttribute("status", "0");
+            	 }
          }
       } catch (Exception e) {      
          e.printStackTrace();
@@ -136,7 +139,7 @@ public class MainController {
 		
 		try {
 			custservice.register(cust); 
-			model.addAttribute("center","registerok");
+			model.addAttribute("center","login");
 			model.addAttribute("rid",cust); 
 		} catch (Exception e) {
 			e.printStackTrace();
