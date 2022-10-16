@@ -49,6 +49,13 @@ $(document).ready(function(){
 		});
 		$('#search_form').submit();
 	});
+	$('#search_btn2').click(function(){
+		$('#search_form2').attr({
+			method:'get',
+			action:'/search'
+		});
+		$('#search_form2').submit();
+	});
 
 	getlikecnt();
 	getcartcnt();
@@ -74,7 +81,7 @@ $(document).ready(function(){
 			<div class="header_content ml-auto">
 				<div class="search header_search">
 					<form id="search_form">
-						<input name='txt' type="text" class="search_input" required="required">
+						<input name="txt" type="text" class="search_input" required="required">
 						<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
@@ -138,12 +145,12 @@ $(document).ready(function(){
 
    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
       <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-      <div class="logo menu_mm"><a href="/">BJB</a></div>
+      <div class="logo menu_mm"><a href="#">BJB</a></div>
       <div class="search">
-		<form id="search_form">
-			<input name='txt' type="text" class="search_input" required="required">
-			<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
-		</form>
+         <form id="search_form2">
+            <input name="txt" type="text" class="search_input menu_mm" required="required">
+            <button id="search_btn2" class="search_button menu_mm" type="button" ><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
+         </form>
       </div>
       <nav class="menu_nav">
          <ul class="menu_mm">
