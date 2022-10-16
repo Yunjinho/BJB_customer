@@ -17,6 +17,7 @@ import com.multi.dto.ItemDTO;
 import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
+import com.multi.service.ItemService;
 
 @Controller
 public class MainController {
@@ -25,20 +26,33 @@ public class MainController {
 	CustService custservice;
 	
 	@Autowired
+	ItemService itemservice;
+	
+	
+	@Autowired
 	ItemMapper item_mapper;
 	
 	@Autowired
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
+
 	public String main(Model model) {
-		List<ItemDTO> list = null;
+		ItemDTO item1 = null;
+		ItemDTO item2 = null;
+		ItemDTO item3 = null;
 		try {
-			list = item_mapper.newItemall();
-			model.addAttribute("obj", list);
+			item1 = item_mapper.newItem1();
+			model.addAttribute("obj1", item1);
+			item2 = item_mapper.newItem2();
+			model.addAttribute("obj2", item2);
+			item3 = item_mapper.newItem3();
+			model.addAttribute("obj3", item3);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 
 		return "index";
 	}

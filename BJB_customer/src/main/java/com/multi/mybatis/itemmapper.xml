@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	
 	<select id="select" parameterType="Integer" resultType="ItemDTO">
-		SELECT itemid, name, price, image1, image2, image3 FROM item
+		SELECT itemid, name, price, image1, image2, image3, rdate FROM item
 		WHERE itemid=#{itemid}
 	</select>
 	
@@ -34,8 +34,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	ORDER BY i.itemid
 	</select>
 	
-	<select id="newItemall" resultType="ItemDTO">
-		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 3;
+	<select id="newItem1" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1;
+	</select>
+	<select id="newItem2" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1, 1;
+	</select>
+	<select id="newItem3" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 2, 1;
 	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
@@ -57,5 +63,4 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		WHERE i.itemid = #{itemid}
 	</select> 
-	
 </mapper>

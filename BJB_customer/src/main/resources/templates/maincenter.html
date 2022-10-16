@@ -131,9 +131,9 @@
 
 				<!-- Product -->
 				<div class="col-lg-4 product_col">
-					<div th:each="obj:${obj}" class="product">
+					<div class="product">
 						<div class="product_image">
-							<a th:href="@{/itemdetail(itemid=${obj.itemid})}"><img th:src="'/images/'+${obj.image1} + '.jpg'" alt=""></a>
+							<a th:href="@{/itemdetail(itemid=${obj1.itemid})}"><img th:src="'/images/'+${obj1.image1} + '.jpg'" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
@@ -144,8 +144,8 @@
 						</div>
 						<div class="product_content clearfix">
 							<div class="product_info">
-								<div class="product_name" th:text="${obj.name}"></div>
-								<div class="product_price" th:text="${obj.price}"></div>
+								<div class="product_name" th:text="${obj1.name}"></div>
+								<div class="product_price" th:text="${obj1.price}"></div>
 							</div>
 							<div class="product_options">
 								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
@@ -156,9 +156,55 @@
 				</div>
 
 				<!-- Product -->
-
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<a th:href="@{/itemdetail(itemid=${obj2.itemid})}"><img th:src="'/images/'+${obj2.image1} + '.jpg'" alt=""></a>
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name" th:text="${obj2.name}"></div>
+								<div class="product_price" th:text="${obj2.price}"></div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- Product -->
-
+				<div class="col-lg-4 product_col">
+					<div class="product">
+						<div class="product_image">
+							<a th:href="@{/itemdetail(itemid=${obj3.itemid})}"><img th:src="'/images/'+${obj3.image1} + '.jpg'" alt=""></a>
+						</div>
+						<div class="rating rating_4">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<div class="product_content clearfix">
+							<div class="product_info">
+								<div class="product_name" th:text="${obj3.name}"></div>
+								<div class="product_price" th:text="${obj3.price}"></div>
+							</div>
+							<div class="product_options">
+								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
+								<div class="product_fav product_option">+</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 		</div>
