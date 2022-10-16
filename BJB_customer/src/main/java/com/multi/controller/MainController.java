@@ -56,7 +56,7 @@ public class MainController {
 			item3 = item_mapper.newItem3();
 			model.addAttribute("obj3", item3);
 			list = item_mapper.randomItem();
-			for(int i=0;i<=6;i++) {
+			for(int i=0;i<=5;i++) {
 				model.addAttribute("list"+i, list.get(i));
 				
 			}
