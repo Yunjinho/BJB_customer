@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	SELECT po.optionid, po.itemid, it.name AS item_name, po.color, po.size, po.stock FROM product_option po
 	INNER JOIN item it ON po.itemid = it.itemid
 	WHERE po.itemid=#{itemid}
- 
+	GROUP BY po.color
    </select>
    
 	

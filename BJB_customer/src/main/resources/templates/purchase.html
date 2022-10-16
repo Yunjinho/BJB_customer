@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<head>
+<title>Contact</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Wish shop project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/contact.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+
+<style>
+	#mypage_title{
+		color: black;
+	}
+	#mypage_title2{
+		color: black;
+	}
+	#mypage_info{
+		background: white;
+		padding-top: 0;
+	}
+	#mypage_label{
+		margin-bottom: 0;
+		font-size: 20px;
+	}
+	#mypage_div{
+		display: inline-block;
+		text-align: center;
+		
+	}
+	#mypage_info > form > button > a{
+		text-decoration: none;
+	}
+</style>
+
+
+
+<script>
+
+
+</script>
+</head>
+
+<body>
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<!-- Menu -->
+
+	<!-- Home -->
+
+	
+		<div class="home_background parallax-window" data-parallax="scroll" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_container">
+						<div class="home_content">
+							<div id="mypage_title" class="home_title">Order / Payment</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	<!-- Contact Form -->
+		<div class="cart_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="cart_title"><br><br>your shopping cart</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
+						<div class="cart_bar_title_name">Product</div>
+						<div class="cart_bar_title_content ml-auto">
+							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
+								<div class="cart_bar_title_price">Price</div>
+								<div class="cart_bar_title_quantity">Quantity</div>
+								<div class="cart_bar_title_total">Total</div>
+								<div class="cart_bar_title_button"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_products">
+						<ul th:each="obj:${obj}">
+							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+								<!-- Product Image -->
+								<div class="cart_product_image"><img th:src="'/images/'+${obj.image1}+'.jpg'" style="width:150px;"></div>
+								<!-- Product Name -->
+								<div class="cart_product_name" th:text="${obj.name}" ><a href="product.html"></a></div>
+								<div class="cart_product_info ml-auto">
+									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+										<!-- Product Price -->
+										<div class="cart_product_price" th:text="${obj.price}"></div>
+										<!-- Product Quantity -->
+										<div class="cart_product_price" th:text="${obj.cnt}"></div>
+										<!-- Products Total Price -->
+										<div class="cart_product_total" th:text="${obj.prod_totalprice}"></div>
+										<!-- Product Cart Trash Button -->
+										<div class="cart_product_button">
+											<button class="cart_product_remove" th:onclick="del([[${obj.cartid}]]);" ><img src="images/trash.png" alt=""></button>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="mypage_info" class="contact">
+	<div class="container">
+		<div class="col-sm-8">
+			<form class="form-horizontal">
+				<div class="form-group">
+			    	<label class="control-label col-sm-2" for="addr">Address:</label>
+			    <div class="col-sm-10">
+		      		<input type="text" class="form-control" id="addr" th:value="${custdetail.addr}" name="addr">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="receiver">Receiver:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="receiver" th:value="${custdetail.name}" name="reciever">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="receiver_phone">Phone:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="receiver_phone" th:value="${custdetail.name}" name="receiver_phone">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pay">Payment:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="pay" th:value="${custdetail.gender}" name="pay">
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="totalprice">Total Price:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="totalprice" th:value="${obj.prod_totalprice}" readonly="readonly">
+			    </div>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+
+	<!-- Contact Text -->
+
+	<div class="contact_text">
+		<div class="container">
+			<div class="row">
+
+				<!-- Contact Info -->
+				<div class="col-lg-5">
+
+					<div class="contact_info">
+						<div class="contact_title">contact info</div>
+						<div class="contact_info_content">
+							<ul>
+								<li>
+									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
+									<div class="contact_info_text">428, Seolleung-ro, Gangnam-gu, Seoul, Korea</div>
+								</li>
+								<li>
+									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
+									<div class="contact_info_text">bjb@multicampus.com</div>
+								</li>
+								<li>
+									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
+									<div class="contact_info_text">+82 2612 0000</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- FAQ -->
+				<div class="col-lg-7">
+					<div class="faq">
+						<div class="contact_title">faq</div>
+						<div class="faq_content">
+
+							<!-- Accordions -->
+							<div class="accordions">
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div>Lorem ipsum dolor sit amet, consectetur?</div></div>
+									<div class="accordion_panel">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
+									</div>
+								</div>
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center"><div>Ipsum dolor sit amet, consectetur?</div></div>
+									<div class="accordion_panel">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
+									</div>
+								</div>
+
+								<div class="accordion_container">
+									<div class="accordion d-flex flex-row align-items-center active"><div>Proin eu dui porta, pretium metus vitae?</div></div>
+									<div class="accordion_panel">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/js/cart_custom.js"></script>
+</body>

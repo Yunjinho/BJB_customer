@@ -115,18 +115,18 @@
 							<span>in stock</span>
 				</div> -->
 				
-				<!-- Product Quantity -->
-						 <div class="product_quantity_container">
-							<span>Quantity</span>
-							<div class="product_quantity clearfix">
-								<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-								<div class="quantity_buttons">
-									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-								</div>
+				<!-- Product Color -->
+				<div class="product_color_container">
+							<span>Color</span>
+							<div class="product_color clearfix">
+								<select class="form-control" id="sel1">
+									<option>Color</option>
+							        <option th:each = "pc : ${pocolorlist}" th:value = "${pc.color}" th:text = "${pc.color}">option</option>
+							      </select>
 							</div>
 						</div> 
-						
+				
+				
 				<!-- Product Size -->
 						 <div class="product_size_container">
 							<span>Size</span>
@@ -144,13 +144,23 @@
 										<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
 										<label for="radio_4">L</label>
 									</li>
-									<li>
-										<input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5">
-										<label for="radio_5">XL</label>
-									</li>
 								</ul>
 							</div> 
 							</div> 
+							
+							
+				<!-- Product Quantity -->
+						 <div class="product_quantity_container">
+							<span>Quantity</span>
+							<div class="product_quantity clearfix">
+								<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+								<div class="quantity_buttons">
+									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+								</div>
+							</div>
+						</div> 
+						
 							
 					 <div class = "btn">
 							<button class="button cart_button"><a href="/cart">Like</a></button>
