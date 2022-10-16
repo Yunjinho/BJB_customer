@@ -36,26 +36,15 @@
 	}
 </style>
 
+
+
 <script>
-$(document).ready(function(){
-	$('#custupdate_btn').click(function(){
-		var c = confirm('수정하시겠습니까?');
-		if(c == true){
-			$('#custupdate_form').attr({
-				'method':'post',
-				'action':'custupdateimpl'
-			});
-			$('#custupdate_form').submit();
-		}else{
-			return;
-		}
-	});
-});
+
 
 </script>
 </head>
 
-
+<body>
 <div class="super_container">
 	
 	<!-- Header -->
@@ -71,11 +60,7 @@ $(document).ready(function(){
 				<div class="col">
 					<div class="home_container">
 						<div class="home_content">
-							<div id="mypage_title" class="home_title">MY PAGE</div>
-							<div class="breadcrumbs">
-								<ul>
-									<li id="mypage_title2">Information</li>
-								</ul>
+							<div id="mypage_title" class="home_title">Order / Payment</div>
 							</div>
 						</div>
 					</div>
@@ -83,101 +68,99 @@ $(document).ready(function(){
 			</div>
 		</div>
 	
-
+	
 	<!-- Contact Form -->
-
-	<div id="mypage_info" class="contact">
+		<div class="cart_container">
 		<div class="container">
-			<div class="col-sm-8">
-			<form id="custupdate_form" class="form-horizontal">
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="id">ID:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="id" th:value="${custdetail.custid}" readonly="readonly" name="custid">
-			    </div>
-			  </div>
-			   <div class="form-group">
-			    <label class="control-label col-sm-2" for="tier">Grade:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="tier" th:value="${custdetail.tierid}" readonly="readonly" name="tierid">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="pwd">Password:</label>
-			    <div class="col-sm-10">
-			      <input type="password" class="form-control" id="pwd" th:value="${custdetail.pwd}" placeholder="Enter Password" required="required" name="pwd">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="pwd2">Password Check:</label>
-			    <div class="col-sm-10">
-			      <input type="password" class="form-control" id="pwd2" th:value="${custdetail.pwd}" placeholder="Check password" required="required">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="name" required="required">Name:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="name" th:value="${custdetail.name}" placeholder="Enter Name" required="required" name="name">
-			    </div>
-			  </div><br>
-			  
-			  
-			  
-			  <div class="form-group">
-				<label class="control-label col-sm-2" for="gender" required="required">Gender:</label><br>
-				&nbsp;&nbsp;&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="남">
-				&nbsp;&nbsp;&nbsp;&nbsp;Female&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="여">
-			  </div><br>
-			  
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="birth" required="required">Birth:</label>
-			    <div class="col-sm-10">
-			      <input type="date" class="form-control" id="birth" th:value="${custdetail.birth}" name="birth">
-			    </div>
-			  </div>
-			 <div class="form-group">
-			    <label class="control-label col-sm-2" for="postno" required="required">Post No.:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="postno" th:value="${custdetail.postno}" placeholder="Enter Post No."  required="required" name="postno">
-			    </div>
-			  </div>
-			 <div class="form-group">
-			    <label class="control-label col-sm-2" for="addr" required="required">Address:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="addr" th:value="${custdetail.addr}" placeholder="Enter Address"  required="required" name="addr">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="phone" required="required">P.H:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="phone" th:value="${custdetail.phone}" placeholder="Enter Phone Number"  required="required" name="phone">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="eamil" required="required">Email:</label>
-			    <div class="col-sm-10">
-			      <input type="email" class="form-control" id="email" th:value="${custdetail.email}" required="required" name="email">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="acc_amount" required="required">Accumulated Amount:</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="acc_amount" th:value="${custdetail.acc_amount}" required="required" name="acc_amount">
-			    </div>
-			  </div>
-			 <!--  <div class="form-group">
-			    <label class="control-label col-sm-2" for="rdate" required="required">Register Date:</label>
-			    <div class="col-sm-10">
-			      <input type=text class="form-control" id="rdate" th:value="${custdetail.rdate}" readonly="readonly" name="rdate">
-			    </div>
-			  </div>
-			</form> -->
-			<a href="#"><button id="custupdate_btn" class="review_form_button">수정하기</button></a>
-			
-		</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_title"><br><br>your shopping cart</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
+						<div class="cart_bar_title_name">Product</div>
+						<div class="cart_bar_title_content ml-auto">
+							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
+								<div class="cart_bar_title_price">Price</div>
+								<div class="cart_bar_title_quantity">Quantity</div>
+								<div class="cart_bar_title_total">Total</div>
+								<div class="cart_bar_title_button"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="cart_products">
+						<ul th:each="obj:${obj}">
+							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+								<!-- Product Image -->
+								<div class="cart_product_image"><img th:src="'/images/'+${obj.image1}+'.jpg'" style="width:150px;"></div>
+								<!-- Product Name -->
+								<div class="cart_product_name" th:text="${obj.name}" ><a href="product.html"></a></div>
+								<div class="cart_product_info ml-auto">
+									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+										<!-- Product Price -->
+										<div class="cart_product_price" th:text="${obj.price}"></div>
+										<!-- Product Quantity -->
+										<div class="cart_product_price" th:text="${obj.cnt}"></div>
+										<!-- Products Total Price -->
+										<div class="cart_product_total" th:text="${obj.prod_totalprice}"></div>
+										<!-- Product Cart Trash Button -->
+										<div class="cart_product_button">
+											<button class="cart_product_remove" th:onclick="del([[${obj.cartid}]]);" ><img src="images/trash.png" alt=""></button>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	
+<div id="mypage_info" class="contact">
+	<div class="container">
+		<div class="col-sm-8">
+			<form class="form-horizontal">
+				<div class="form-group">
+			    	<label class="control-label col-sm-2" for="addr">Address:</label>
+			    <div class="col-sm-10">
+		      		<input type="text" class="form-control" id="addr" th:value="${custdetail.addr}" name="addr">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="receiver">Receiver:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="receiver" th:value="${custdetail.name}" name="reciever">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="receiver_phone">Phone:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="receiver_phone" th:value="${custdetail.name}" name="receiver_phone">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pay">Payment:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="pay" th:value="${custdetail.gender}" name="pay">
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="totalprice">Total Price:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="totalprice" th:value="${obj.prod_totalprice}" readonly="readonly">
+			    </div>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
 	
 
 	<!-- Contact Text -->
@@ -248,4 +231,11 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-</div>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/js/cart_custom.js"></script>
+</body>

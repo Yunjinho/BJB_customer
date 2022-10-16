@@ -9,6 +9,7 @@
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/cart.css">
 <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+
 </head>
 <style>
 .cart_product_remove>img{
@@ -56,7 +57,7 @@
 										<div class="cart_product_price" th:text="${obj.price}"></div>
 										<!-- Product Cart Trash Button -->
 										<div class="cart_product_button">
-											<button class="cart_product_remove"> <img src="images/heart.png" alt=""></button>
+											<button class="cart_product_remove" th:onclick="del([[${obj.likedid}]]);"> <img src="images/heart.png" id="likedimg"></button>
 										</div>
 									</div>
 								</div>
@@ -68,8 +69,8 @@
 			<div class="row">
 				<div class="col">
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-						<button class="button_clear cart_button" id="clear_cart_button">clear liked</button>
-						<a th:href="@{/outer(cateid=11)}" ><button class="button_update cart_button_2 ml-md-auto" id="continue_shopping_button" >ontinue shopping</button></a>
+						<button class="button_clear cart_button" id="clear_cart_button" th:onclick="delall([[${obj2.likedid}]]);">clear liked</button>
+						<a th:href="@{/outer(cateid=11)}" ><button class="button_update cart_button_2 ml-md-auto" id="continue_shopping_button" >continue shopping</button></a>
 					</div>
 				</div>
 			</div>
@@ -165,17 +166,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script>
-
-$("#clear_cart_button").click(function(){
-	alert("d");
-});
-
-
 $("#cart_total_button").click(function(){
 	alert("d");
 });
 
+function del(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deleteliked?id='+id+'&cust_id='+cust_id;
+	}
+}
 
+function delall(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deletelikedall?id='+id+'&cust_id='+cust_id;
+	}
+}
 $(document).ready(function(){
 	
 });

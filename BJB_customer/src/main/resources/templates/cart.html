@@ -93,7 +93,7 @@
 								<div class="cart_total_price ml-auto" id="cart_total" th:text="${obj2.cart_totalprice}"></div>
 							</li>
 						</ul>
-						<button class="cart_total_button" id="cart_total_button">proceed to checkout</button>
+						<a th:href="@{/purchase(custid=${session.logincust.custid})}"><button class="cart_total_button" id="cart_total_button">proceed to checkout</button></a>
 					</div>
 				</div>
 			</div>
@@ -188,9 +188,6 @@
 <script src="/js/cart_custom.js"></script>
 
 <script>
-$("#cart_total_button").click(function(){
-	alert("d");
-});
 
 function del(id){
 	var c =confirm('삭제하시겠습니까?');

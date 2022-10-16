@@ -48,4 +48,8 @@ public class LikedService implements MyService<Integer, LikedDTO>{
 		return mapper.viewLikedItemid(itemid);
 	}
 	
+	public void deleteall() throws Exception{
+		mapper.deleteall();
+	}
+	
 }

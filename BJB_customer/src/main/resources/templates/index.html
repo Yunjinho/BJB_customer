@@ -17,7 +17,12 @@
 <link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
 
+
 <script src="/js/jquery-3.2.1.min.js"></script>
+
+<style> 
+	
+</style>
 <script>
 
 function getlikecnt(){
@@ -37,16 +42,14 @@ function getcartcnt(){
 	})
 };
 $(document).ready(function(){
-	
 	$('#search_btn').click(function(){
-		alert("");
 		$('#search_form').attr({
 			method:'get',
 			action:'/search'
 		});
-		$('$search_form').submit();
+		$('#search_form').submit();
 	});
-	
+
 	getlikecnt();
 	getcartcnt();
 });
@@ -55,9 +58,7 @@ $(document).ready(function(){
 <body>
 
 <div class="super_container">
-   
    <!-- Header -->
-   
 	<header class="header">
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="/">BJB</a></div>
@@ -72,12 +73,12 @@ $(document).ready(function(){
 			</nav>
 			<div class="header_content ml-auto">
 				<div class="search header_search">
-					<form id="search_form" action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="/images/magnifying-glass.svg" alt=""></button>
+					<form id="search_form">
+						<input name='txt' type="text" class="search_input" required="required">
+						<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
 					</form>
 				</div>
-				<div class="shopping">
+				<div class="shopping" style="padding-right: 50px">
 					<!-- Cart -->
 					<a th:if = "${session.logincust != null}" th:href="@{/cart(custid=${session.logincust.custid})}">
 						<div class="cart">
@@ -93,7 +94,6 @@ $(document).ready(function(){
 					<a th:if = "${session.logincust != null}" th:href="@{/liked(custid=${session.logincust.custid})}">
 						<div class="star">
 							<img src="images/heart_icon.png" alt="">
-
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num" id="liked_cnt"></div>
@@ -103,22 +103,29 @@ $(document).ready(function(){
 					</a>
 
 					<!-- login -->
-					<a href="/login" th:if = "${session.logincust == null}">
+					<a href="/login" th:if = "${session.logincust == null}" style="color: black; margin-top: 25px" >LOGIN</a>
+					<a href="/register" th:if = "${session.logincust == null}" style="color: black; margin-top: 25px">REGISTER</a>
+					<!-- <a href="/login" th:if = "${session.logincust == null}"> 
 						<div class="avatar">
 							<img src="/images/man_icon.png" alt="">
 						</div>
-					</a>
+					</a> -->
+					
 					<!-- custdetail -->
-					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}" th:text = "${session.logincust.custid}+님" style="color: black; margin-top: 25px">
+					</a>
+					<!-- <a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
 						<div class="avatar">
 							<img src="/images/man_icon22.png" alt="">
 						</div>
-					</a>
+					</a> -->
+					
 					<!-- logout -->
-					<a href="/logout" th:if = "${session.logincust != null}">
-						<div class="avatar">
+					<a href="/logout" th:if = "${session.logincust != null}" style="color: black; margin-top: 25px">
+					LOGOUT
+						<!-- <div class="avatar">
 							<img src="/images/logout_icon.png" alt="">
-						</div>
+						</div> -->
 					</a>
 				</div>
 			</div>
@@ -133,10 +140,10 @@ $(document).ready(function(){
       <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
       <div class="logo menu_mm"><a href="/">BJB</a></div>
       <div class="search">
-         <form id="search_form">
-            <input type="text" class="search_input menu_mm" required="required">
-            <button id="search_btn" class="search_button menu_mm" type="button"><img class="menu_mm" src="/images/magnifying-glass.svg" alt=""></button>
-         </form>
+		<form id="search_form">
+			<input name='txt' type="text" class="search_input" required="required">
+			<button id="search_btn" class="search_button" type="button"><img src="/images/magnifying-glass.svg" alt=""></button>
+		</form>
       </div>
       <nav class="menu_nav">
          <ul class="menu_mm">
@@ -197,7 +204,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="/plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="/js/custom.js"></script>
-
 
 </body>
 </html>
