@@ -34,8 +34,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	ORDER BY i.itemid
 	</select>
 	
-	<select id="newItemall" resultType="ItemDTO">
-		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 3;
+	<select id="newItem1" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1;
+	</select>
+	<select id="newItem2" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1, 1;
+	</select>
+	<select id="newItem3" resultType="ItemDTO">
+		SELECT name, price, image1 FROM item ORDER BY rdate DESC LIMIT 2, 1;
 	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
