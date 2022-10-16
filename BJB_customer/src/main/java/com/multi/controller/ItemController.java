@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.multi.dto.CateDTO;
 import com.multi.service.CateService;
 import com.multi.dto.ItemDTO;
+import com.multi.dto.Product_OptionDTO;
 import com.multi.service.ItemService;
+import com.multi.service.Product_OptionService;
 
 @Controller
 public class ItemController {
@@ -20,6 +22,9 @@ public class ItemController {
 	
 	@Autowired
 	ItemService itemservice;
+	
+	@Autowired
+	Product_OptionService poservice;
 	
 	String dir = "item/";
 	
@@ -93,15 +98,19 @@ public class ItemController {
 	public String itemdetail(Model model, int itemid) {
 		ItemDTO item = null;
 		List<CateDTO> list = null;
+		List<Product_OptionDTO> pocolorlist = null;
 		try {
 			item = itemservice.get(itemid);
 			list = cate_service.viewCateName(itemid);
 			model.addAttribute("catelist", list);
 			model.addAttribute("itemdetail", item);
 			model.addAttribute("center", dir + "itemdetail");
+			pocolorlist = poservice.viewProduct(itemid);
+			model.addAttribute("pocolorlist", pocolorlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "index";
 	}
+	
 }
