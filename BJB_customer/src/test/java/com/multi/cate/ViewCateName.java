@@ -1,33 +1,35 @@
-package com.multi.item;
+package com.multi.cate;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.ItemDTO;
-import com.multi.service.ItemService;
+import com.multi.dto.CateDTO;
+import com.multi.service.CateService;
 
 
 @SpringBootTest
-class InsertItem {
-
+	class ViewCateName {
+	
 	@Autowired
-	ItemService service;
+	CateService service;
 	
 	@Test
 	void contextLoads() {
-		ItemDTO item = new ItemDTO(0, 11, "유넥", 18000, "a.jpg", "b.jpg", "c.jpg", null, null, null, null, 0);
+		
+		List<CateDTO> list = null;
+		
 		try {
-			service.register(item);
+			list = service.viewCateName(1011);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		for(CateDTO c:list) {
+			System.out.println(c);
+		}
 	}
 
 }
-
-
-
-

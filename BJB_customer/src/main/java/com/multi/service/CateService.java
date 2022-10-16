@@ -48,5 +48,9 @@ public class CateService implements MyService<Integer, CateDTO> {
 	public List<CateDTO> viewCateTopid(int topid) throws Exception {
 		return mapper.viewCateTopid(topid);
 	}
+	
+	public List<CateDTO> viewCateName(int itemid) throws Exception {
+		return mapper.viewCateName(itemid);
+	}
 
 }

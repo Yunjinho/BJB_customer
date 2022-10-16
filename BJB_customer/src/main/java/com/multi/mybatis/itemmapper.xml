@@ -4,32 +4,56 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.ItemMapper">
 	
-   	<select id="select" parameterType="Integer" resultType="ItemDTO">
+	
+	<select id="select" parameterType="Integer" resultType="ItemDTO">
+		SELECT itemid, name, price, image1, image2, image3, rdate FROM item
+		WHERE itemid=#{itemid}
+	</select>
+	
+  <!--  	<select id="select" parameterType="Integer" resultType="ItemDTO">
 		SELECT i.itemid, i.cateid AS top_cate, cat.name AS cate_name, i.name, i.price, po.color AS po_color, po.size AS po_size, po.stock AS po_stock FROM item i
 		INNER JOIN cate cat ON i.cateid = cat.cateid
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		INNER JOIN order_detail od ON i.itemid  = od.itemid
 		WHERE i.itemid = #{itemid}
 		AND po.color = od.color
-	</select>
+	</select> -->
 	
 	<select id="selectItemAll" parameterType="Integer" resultType="ItemDTO">
-		SELECT name, price, image1 FROM item
+		SELECT itemid, name, price, image1 FROM item
 		WHERE cateid=#{cateid}
 	</select>
 	
+	<select id="searchItem" resultType="ItemDTO" parameterType="string">
+    	SELECT * FROM item WHERE name LIKE CONCAT('%',#{txt},'%')
+    </select>
+	
 	<select id="viewItemAll" resultType="ItemDTO">
-	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3 FROM item i
+	SELECT i.itemid, i.cateid, cat.name AS cate_name, i.name, i.price, i.image1, i.image2, i.image3, i.rdate FROM item i
 	INNER JOIN cate cat ON i.cateid = cat.cateid
 	ORDER BY i.itemid
 	</select>
+	
+	<select id="newItem1" resultType="ItemDTO">
+		SELECT itemid, name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1;
+	</select>
+	<select id="newItem2" resultType="ItemDTO">
+		SELECT itemid, name, price, image1 FROM item ORDER BY rdate DESC LIMIT 1, 1;
+	</select>
+	<select id="newItem3" resultType="ItemDTO">
+		SELECT itemid, name, price, image1 FROM item ORDER BY rdate DESC LIMIT 2, 1;
+	</select>
+	
+	<select id="randomItem" resultType="ItemDTO">
+		SELECT * FROM item ORDER BY RAND() LIMIT 6;
+	</select>
 
  	<insert id="insert" parameterType="ItemDTO">
-		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3});
+		INSERT INTO item VALUES (NULL, #{cateid}, #{name}, #{price}, #{image1}, #{image2}, #{image3}, NOW());
 	</insert>
 	
 	<update id="update" parameterType="ItemDTO">
-		UPDATE item SET name = #{name}, price = #{price}, image1 = #{image1}, image2 = #{image2}, image3 = #{image3} 
+		UPDATE item SET name = #{name}, price = #{price}, image1 = #{image1}, image2 = #{image2}, image3 = #{image3}, rdate=NOW()
 		WHERE itemid = #{itemid};
 	</update> 
 	
@@ -43,5 +67,4 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN product_option po ON i.itemid = po.itemid
 		WHERE i.itemid = #{itemid}
 	</select> 
-	
 </mapper>

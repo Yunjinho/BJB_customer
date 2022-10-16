@@ -1,5 +1,10 @@
 package com.multi.controller;
 
+
+
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
+import com.multi.dto.ItemDTO;
+import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
 import com.multi.service.CustService;
+import com.multi.service.ItemService;
 
 @Controller
 public class MainController {
@@ -18,13 +26,46 @@ public class MainController {
 	CustService custservice;
 	
 	@Autowired
+	ItemService itemservice;
+	
+	
+	@Autowired
+	ItemMapper item_mapper;
+	
+	@Autowired
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-	public String main() {
 
+	public String main(Model model) {
+		ItemDTO item1 = null;
+		ItemDTO item2 = null;
+		ItemDTO item3 = null;
+		List<ItemDTO> list = null;
+		ItemDTO list1  = null;
+		ItemDTO list2 = null;
+		ItemDTO list3 = null;
+		ItemDTO list4 = null;
+		ItemDTO list5 = null;
+		ItemDTO list6 = null;
+		try {
+			item1 = item_mapper.newItem1();
+			model.addAttribute("obj1", item1);
+			item2 = item_mapper.newItem2();
+			model.addAttribute("obj2", item2);
+			item3 = item_mapper.newItem3();
+			model.addAttribute("obj3", item3);
+			list = item_mapper.randomItem();
+			for(int i=0;i<=5;i++) {
+				model.addAttribute("list"+i, list.get(i));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "index";
 	}
+	
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -126,6 +167,21 @@ public class MainController {
       }
 
       return "index";
+   }
+   
+   @RequestMapping("/search")
+   public String searchItem(Model model, String txt) {
+	   List<ItemDTO> list = null;
+	   System.out.println(txt);
+	   model.addAttribute("obj", list);
+	   try {
+		list = item_mapper.searchItem(txt);
+		model.addAttribute("obj", list);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   model.addAttribute("center", "search");
+	   return "index";
    }
 
    @RequestMapping("/register")
