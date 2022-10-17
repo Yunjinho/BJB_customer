@@ -98,7 +98,7 @@ public class ItemController {
 	public String itemdetail(Model model, int itemid) {
 		ItemDTO item = null;
 		List<CateDTO> list = null;
-		List<Product_OptionDTO> pocolorlist = null;
+		List<Product_OptionDTO> pocolorlist, posizelist= null;
 		try {
 			item = itemservice.get(itemid);
 			list = cate_service.viewCateName(itemid);
@@ -107,6 +107,8 @@ public class ItemController {
 			model.addAttribute("center", dir + "itemdetail");
 			pocolorlist = poservice.viewProduct(itemid);
 			model.addAttribute("pocolorlist", pocolorlist);
+			posizelist = poservice.viewProductSize(itemid);
+			model.addAttribute("posizelist", posizelist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

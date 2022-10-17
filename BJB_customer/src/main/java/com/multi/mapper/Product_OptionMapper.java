@@ -12,5 +12,6 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface Product_OptionMapper extends MyMapper<Integer, Product_OptionDTO> {
 	public List<Product_OptionDTO> viewProduct(Integer itemid) throws Exception;
+	public List<Product_OptionDTO> viewProductSize(Integer itemid) throws Exception;
 
 }
