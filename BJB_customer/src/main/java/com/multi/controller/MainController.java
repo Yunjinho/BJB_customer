@@ -63,7 +63,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/")
-	public String main(Model model) {
+	public String main(Model model,HttpSession session) {
 		maincenter(model);
 		return "index";
 	}

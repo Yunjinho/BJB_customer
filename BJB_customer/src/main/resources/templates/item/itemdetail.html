@@ -11,7 +11,7 @@ $(document).ready(function(){
 		var item_num = $('#quantity_input').val();
 		var item_color = $('#item_color option:selected').val();
 		var item_size = $('#item_size option:selected').val();
-		var cust_id = '[[${session.logincust.custid}]]';
+		var cust_id = '[[${session.logincust.custid}]]'; 
 		$.ajax({
 			url : '/addcart',
 			data : {'cust_id' : cust_id, 'item_id' : item_id, 'cnt' : item_num, 'color':item_color, 'size':item_size},
@@ -129,6 +129,7 @@ $(document).ready(function(){
 				</div>
 				
 				<div class="product_content">
+				
 				<div class="product_name_detail" th:text = "${itemdetail.name}">jacket</div>
 				
 				<div class="product_price_detail" th:text = "${itemdetail.price}">price</div>
@@ -144,7 +145,6 @@ $(document).ready(function(){
 							<span>Color</span>
 							<div class="product_color clearfix">
 								<select class="form-control" id="item_color">
-									<option>Color</option>
 							        <option th:each = "pc : ${pocolorlist}" th:value = "${pc.color}" th:text = "${pc.color}">option</option>
 							      </select>
 							</div>
@@ -156,7 +156,6 @@ $(document).ready(function(){
 							<span>Size</span>
 							<div class="product_color clearfix">
 								<select class="form-control" id="item_size">
-									<option>Size</option>
 							        <option th:each = "ps : ${posizelist}" th:value = "${ps.size}" th:text = "${ps.size}">option</option>
 							      </select>
 							</div>
@@ -180,7 +179,6 @@ $(document).ready(function(){
 					 <div class = "btn">
 							<button class="button cart_button" id = "liked_btn"><a th:href="@{/liked(custid=${session.logincust.custid})}">Like</a></button>
 							<button class="button cart_button" id = "cart_btn"><a th:href="@{/cart(custid=${session.logincust.custid})}">Cart</a></button>
-							<button class="button cart_button"><a href="/cart">Buy</a></button>
 					</div>
 						
 				
@@ -211,9 +209,9 @@ $(document).ready(function(){
 			<div class="sidebar_promo_1 sidebar_promo d-flex flex-column align-items-center justify-content-center">
 				<div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_1.jpg)"></div>
 				<div class="sidebar_promo_content text-center">
-					<div class="sidebar_promo_title">30%<span>off</span></div>
-					<div class="sidebar_promo_subtitle">On all shoes</div>
-					<div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
+					<div class="sidebar_promo_title">Grand<span></span></div>
+					<div class="sidebar_promo_subtitle">Open</div>
+					<div class="sidebar_promo_button"><a href="/">B J B</a></div>
 				</div>
 			</div>
 
@@ -221,9 +219,9 @@ $(document).ready(function(){
 			<div class="sidebar_promo_2 sidebar_promo">
 				<div class="sidebar_promo_image" style="background-image: url(images/sidebar_promo_2.jpg)"></div>
 				<div class="sidebar_promo_content text-center">
-					<div class="sidebar_promo_title">30%<span>off</span></div>
-					<div class="sidebar_promo_subtitle">On all shoes</div>
-					<div class="sidebar_promo_button"><a href="checkout.html">check out</a></div>
+					<div class="sidebar_promo_title">Grand<span></span></div>
+					<div class="sidebar_promo_subtitle">Open</div>
+					<div class="sidebar_promo_button"><a href="/">B J B</a></div>
 				</div>
 			</div>
 		</div>
