@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
+import com.multi.dto.Order_DetailDTO;
 import com.multi.dto.PurchaseDTO;
 import com.multi.service.CartService;
 import com.multi.service.CustService;
+import com.multi.service.Order_DetailService;
 import com.multi.service.PurchaseService;
 
 @Controller
@@ -26,6 +28,9 @@ public class PurchaseController {
 	
 	@Autowired
 	PurchaseService service;
+	
+	@Autowired
+	Order_DetailService odservice;
 	
 	@RequestMapping("/purchase")
 	public String purchase(Model model,String custid) {
@@ -72,18 +77,35 @@ public class PurchaseController {
 	}
 	@RequestMapping("/purchaseimpl")
 	public String registerimpl(Model model, PurchaseDTO purchase) {
+		//주문서 등록
 		try {
 			service.register(purchase);
 			mc.maincenter(model);
-			int r = purchase.getOrderid();
-			
-			
-			
-			
 			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+		}
+		int r = purchase.getOrderid();
+		//주문 디테일 등록
+		List<CartDTO> list = null;
+		try {
+			list = cartservice.viewCart(purchase.getCustid());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(list);
+		for(CartDTO o:list) {
+			
+			Order_DetailDTO od = new Order_DetailDTO(0, r, o.getItemid(), o.getCnt(), o.getPrice(), o.getColor(),o.getSize(), null, null);
+			try {
+				odservice.register(od);
+				cartservice.deleteall();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return "index";

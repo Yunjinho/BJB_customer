@@ -23,6 +23,7 @@ public class CartController {
 		List<CartDTO> list = null;
 		try {
 			list = service.viewCart(custid);
+			System.out.println(list);
 			model.addAttribute("obj", list);
 			model.addAttribute("center", "cart");
 			if (list.size()==0) {
