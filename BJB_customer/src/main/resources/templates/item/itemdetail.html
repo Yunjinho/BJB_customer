@@ -144,7 +144,6 @@ $(document).ready(function(){
 							<span>Color</span>
 							<div class="product_color clearfix">
 								<select class="form-control" id="item_color">
-									<option>Color</option>
 							        <option th:each = "pc : ${pocolorlist}" th:value = "${pc.color}" th:text = "${pc.color}">option</option>
 							      </select>
 							</div>
@@ -156,7 +155,6 @@ $(document).ready(function(){
 							<span>Size</span>
 							<div class="product_color clearfix">
 								<select class="form-control" id="item_size">
-									<option>Size</option>
 							        <option th:each = "ps : ${posizelist}" th:value = "${ps.size}" th:text = "${ps.size}">option</option>
 							      </select>
 							</div>
