@@ -43,4 +43,8 @@ public class PurchaseService implements MyService<Integer, PurchaseDTO>{
 		return mapper.viewPurchase(cust_id);
 	}
 	
+	public List<PurchaseDTO> orderlist(String custid) throws Exception {
+		return mapper.orderlist(custid);
+	}
+	
 }

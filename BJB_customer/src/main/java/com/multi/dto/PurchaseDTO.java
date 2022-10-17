@@ -27,6 +27,7 @@ public class PurchaseDTO {
 	private String delstate;
 	private String item_name;
 	private String cust_phone;
+	private String item_image1;
 	
 	
 }
