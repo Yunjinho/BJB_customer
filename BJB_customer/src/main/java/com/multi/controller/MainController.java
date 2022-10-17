@@ -2,7 +2,6 @@ package com.multi.controller;
 
 
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
-import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
+import com.multi.mapper.ItemMapper;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
 
@@ -36,8 +35,7 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-
-	public String main(Model model) {
+	public String maincenter(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
@@ -58,11 +56,15 @@ public class MainController {
 			list = item_mapper.randomItem();
 			for(int i=0;i<=5;i++) {
 				model.addAttribute("list"+i, list.get(i));
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return "index";
+	}
+	@RequestMapping("/")
+	public String main(Model model) {
+		maincenter(model);
 		return "index";
 	}
 	
