@@ -23,7 +23,6 @@ public class CartController {
 		List<CartDTO> list = null;
 		try {
 			list = service.viewCart(custid);
-			System.out.println(list);
 			model.addAttribute("obj", list);
 			model.addAttribute("center", "cart");
 			if (list.size()==0) {
@@ -41,6 +40,7 @@ public class CartController {
 		for (CartDTO l : list) {
 			sum += l.getProd_totalprice();
 		}
+		System.out.println("ㅎㅎㅎㅎㅎㅎ");
 		CartDTO cart = null;
 		cart = list.get(0);
 		cart.setCustid(custid);
