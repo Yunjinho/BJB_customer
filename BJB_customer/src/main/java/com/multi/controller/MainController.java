@@ -11,12 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.multi.dto.CartDTO;
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
+import com.multi.dto.PurchaseDTO;
 import com.multi.mapper.AJAXMapper;
 import com.multi.mapper.ItemMapper;
+import com.multi.service.CartService;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
+import com.multi.service.PurchaseService;
 
 @Controller
 public class MainController {
@@ -27,6 +31,8 @@ public class MainController {
 	@Autowired
 	ItemService itemservice;
 	
+	@Autowired
+	PurchaseService purchaseservice;
 	
 	@Autowired
 	ItemMapper item_mapper;
@@ -57,7 +63,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/")
-	public String main(Model model) {
+	public String main(Model model,HttpSession session) {
 		maincenter(model);
 		return "index";
 	}
@@ -75,9 +81,13 @@ public class MainController {
 	@RequestMapping("/custdetail")
 	public String custdetail(Model model, String custid) {
 		CustDTO cust = null;
+		List<PurchaseDTO> list = null;
 		try {
 			cust = custservice.get(custid);
 			model.addAttribute("custdetail", cust);
+			list = purchaseservice.orderlist(custid);
+			model.addAttribute("orderlist", list);
+			System.out.println(list);
 			model.addAttribute("center", "custdetail");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +100,8 @@ public class MainController {
 		CustDTO cust = null;
 		try {
 			cust = custservice.get(custid);
-			model.addAttribute("custdetail", cust);
+			System.out.println(cust);
+			model.addAttribute("custdetail2", cust);
 			model.addAttribute("center", "custupdate");
 		} catch (Exception e) {
 			e.printStackTrace();

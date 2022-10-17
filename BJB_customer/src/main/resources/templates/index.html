@@ -25,17 +25,19 @@
 </style>
 <script>
 
-function getlikecnt(){
+function getlikecnt(custid){
 	$.ajax({
 		url:'/likedcnt',
+		data : {'custid' : custid},
 		success:function(data){
 			$('#liked_cnt').text(data);
 		}
 	})
 }; 
-function getcartcnt(){
+function getcartcnt(custid){
 	$.ajax({
 		url:'/cartcnt',
+		data : {'custid' : custid},
 		success:function(data){
 			$('#cart_cnt').text(data);
 		}
@@ -56,10 +58,15 @@ $(document).ready(function(){
 		});
 		$('#search_form2').submit();
 	});
-
-	getlikecnt();
-	getcartcnt();
+	
+	
+	var custid = $("#custid").text();
+	
+	
+	getlikecnt(custid);
+	getcartcnt(custid);
 });
+
 </script>
 </head>
 <body>
@@ -119,7 +126,7 @@ $(document).ready(function(){
 					</a> -->
 					
 					<!-- custdetail -->
-					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}" th:text = "${session.logincust.custid}+님" style="color: black; margin-top: 25px">
+					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}" th:text = "${session.logincust.custid}" style="color: black; margin-top: 25px" id="custid">
 					</a>
 					
 					<!-- logout -->

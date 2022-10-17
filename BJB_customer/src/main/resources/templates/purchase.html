@@ -11,6 +11,11 @@
 <link rel="stylesheet" type="text/css" href="styles/cart.css">
 <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
 
+<style>
+
+
+
+</style>
 
 </head>
 <script>
@@ -76,7 +81,7 @@
 		<div class="col-sm-8">
 			<form id="purchase_form" class="form-horizontal">
 				<div class="form-group">
-			    	<label class="control-label col-sm-2" for="addr">Address:</label>
+			    	<label class="control-label col-sm-2 " for="addr">Address:</label>
 			    <div class="col-sm-10">
 		      		<input type="text" class="form-control" id="addr" th:value="${custdetail.addr}" name="addr">
 			    </div>
@@ -84,7 +89,7 @@
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="receiver">Receiver:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="receiver" th:value="${custdetail.name}" name="reciever">
+			      <input type="text" class="form-control" id="receiver" th:value="${custdetail.name}" name="receiver">
 			    </div>
 			  </div>
 			  <div class="form-group">
@@ -98,19 +103,30 @@
 			    <div class="col-sm-10">
 			      <input list="pay" class="form-control" name="pay" >
 					<datalist id="pay">
-					    <option value="Account Transfer">
+					    <option value="Account">
 					    <option value="Card">
   					</datalist>
 			    </div>
 			  </div>
-
+			 <div class="form-group">
+			    <label class="control-label col-sm-2" for="totalcnt">Total cnt:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="totalcnt" th:value="${obj2.cart_totalcnt}" readonly="readonly" name=totalcnt>
+			    </div>
+			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="totalprice">Total Price:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="totalprice" th:value="${obj2.cart_totalprice}" readonly="readonly">
+			      <input type="text" class="form-control" id="totalprice" th:value="${obj2.cart_totalprice}" readonly="readonly" name="totalprice">
 			    </div>
 			  </div>
-			  <button class="btn btn-default" id="purchase_btn">PURCHASE</button> 
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="custid"></label>
+			    <div class="col-sm-10">
+			      <input type="hidden" class="form-control" id="custid" th:value="${custdetail.custid}" readonly="readonly" name="custid">
+			    </div>
+			  </div>
+			 <a th:href="@{/purchaseimpl(custid=${session.logincust.custid})}" > <button class="btn btn-default" id="purchase_btn">PURCHASE</button></a> 
 			  
 			</form>
 		</div>
@@ -221,9 +237,18 @@ function alldel(id){
 		location.href='/deletecartall?id='+id+'&cust_id='+cust_id;
 	}
 }
-
 $(document).ready(function(){
+$('#purchase_btn').click(function(){
+
+	$('#purchase_form').attr({
+		'action':'/purchaseimpl',
+		
+		'method':'post'
+	});
+	$('#purchase_form').submit();
 });
+});
+
 
 </script>
 

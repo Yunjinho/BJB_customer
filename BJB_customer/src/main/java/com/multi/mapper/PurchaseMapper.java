@@ -12,5 +12,5 @@ import com.multi.frame.MyMapper;
 @Mapper
 public interface PurchaseMapper extends MyMapper<Integer,PurchaseDTO>{
 	public List<PurchaseDTO> viewPurchase(String custid) throws Exception;
-	
+	public List<PurchaseDTO> orderlist(String custid) throws Exception;
 }
