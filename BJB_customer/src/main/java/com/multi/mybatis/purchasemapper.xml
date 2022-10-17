@@ -29,5 +29,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		inner join item i on i.itemid=od.itemid
 		) prod on prod.orderid=pc.orderid
 		where pc.custid=#{custid}
-	</select>	 
+	</select>
+	<select id="orderlist" parameterType="String" resultType="PurchaseDTO">
+		SELECT p.orderid, p.custid, p.totalprice, p.totalcnt, DATE_FORMAT(p.order_date,'%Y-%m-%d %T') AS order_date, d.delstate, i.name AS item_name, i.image1 AS item_image1 FROM purchase p
+		INNER JOIN delivery d ON p.orderid = d.orderid
+		INNER JOIN order_detail od ON p.orderid = od.orderid
+		INNER JOIN item i ON od.itemid = i.itemid
+		WHERE custid=#{custid};
+	</select>
+	
+		 
 </mapper>
