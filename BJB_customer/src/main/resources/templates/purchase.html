@@ -12,9 +12,10 @@
 <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
 
 
-
-
 </head>
+<script>
+
+</script>
 <body>
 
 
@@ -73,7 +74,7 @@
 <div id="mypage_info" class="contact">
 	<div class="container">
 		<div class="col-sm-8">
-			<form class="form-horizontal">
+			<form id="purchase_form" class="form-horizontal">
 				<div class="form-group">
 			    	<label class="control-label col-sm-2" for="addr">Address:</label>
 			    <div class="col-sm-10">
@@ -109,13 +110,15 @@
 			      <input type="text" class="form-control" id="totalprice" th:value="${obj2.cart_totalprice}" readonly="readonly">
 			    </div>
 			  </div>
+			  <button class="btn btn-default" id="purchase_btn">PURCHASE</button> 
+			  
 			</form>
 		</div>
 	</div>
 </div>
 	
 	<!-- Newsletter -->
-
+	<br>
 	<div class="newsletter">
 		<div class="newsletter_content">
 			<div class="newsletter_image parallax-window" data-parallax="scroll" data-image-src="images/cart_nl.jpg" data-speed="0.8"></div>
