@@ -16,8 +16,8 @@ class InsertCart {
 	@Test
 	void contextLoads() {
 		try {
+			service.register(new CartDTO(0, "qkrgPwjd1541", 1000, 1, null, null, 0, 0, null, 0, 0));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

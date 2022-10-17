@@ -45,6 +45,7 @@ public class PurchaseController {
 
 		// 장바구니의 최종 합계 금액 넘기기
 		int sum = 0;
+		System.out.println(list);
 		for (CartDTO l : list) {
 			sum += l.getProd_totalprice();
 		}
@@ -53,7 +54,6 @@ public class PurchaseController {
 		cart.setCustid(custid);
 		cart.setCart_totalprice(sum);
 		model.addAttribute("obj2", cart);
-		
 		
 		CustDTO cust = null;
 		try {

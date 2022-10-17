@@ -90,7 +90,6 @@ $("#test").click(function(){
 						</div>
 					</div>
 
-					<div class="current_page">Woman's Fashion</div>
 				</div>
 				
 			</div>
@@ -107,7 +106,7 @@ $("#test").click(function(){
 						
 						<div th:each="obj:${obj}" class="product">
 							
-							<div class="product_image"><img th:src="'/images/'+${obj.image1} + '.jpg'" alt=""></div>
+							<div class="product_image"><a th:href = "@{/itemdetail(itemid=${obj.itemid})}"><img th:src="'/images/'+${obj.image1} + '.jpg'" alt=""></a></div>
 							<div class="rating rating_4" data-rating="4">
 							</div>
 							<div class="product_content clearfix">
@@ -127,17 +126,6 @@ $("#test").click(function(){
 					
 			</div>
 
-			<div class="row page_num_container">
-				<div class="col text-right">
-					<ul class="page_nums">
-						<li><a href="#">01</a></li>
-						<li class="active"><a href="#">02</a></li>
-						<li><a href="#">03</a></li>
-						<li><a href="#">04</a></li>
-						<li><a href="#">05</a></li>
-					</ul>
-				</div>
-			</div>
 
 		</div>
 		

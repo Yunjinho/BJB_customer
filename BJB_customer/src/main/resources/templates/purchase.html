@@ -1,76 +1,28 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-<title>Contact</title>
+<title>빵에 쨈 바르는중...</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-
-<style>
-	#mypage_title{
-		color: black;
-	}
-	#mypage_title2{
-		color: black;
-	}
-	#mypage_info{
-		background: white;
-		padding-top: 0;
-	}
-	#mypage_label{
-		margin-bottom: 0;
-		font-size: 20px;
-	}
-	#mypage_div{
-		display: inline-block;
-		text-align: center;
-		
-	}
-	#mypage_info > form > button > a{
-		text-decoration: none;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="styles/cart.css">
+<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
 
 
 
-<script>
 
-
-</script>
 </head>
-
 <body>
+
+
 <div class="super_container">
-	
-	<!-- Header -->
 
-	<!-- Menu -->
+	<!-- Cart -->
 
-	<!-- Home -->
-
-	
-		<div class="home_background parallax-window" data-parallax="scroll" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_container">
-						<div class="home_content">
-							<div id="mypage_title" class="home_title">Order / Payment</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	
-	<!-- Contact Form -->
-		<div class="cart_container">
+	<div class="cart_container">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -109,10 +61,6 @@
 										<div class="cart_product_price" th:text="${obj.cnt}"></div>
 										<!-- Products Total Price -->
 										<div class="cart_product_total" th:text="${obj.prod_totalprice}"></div>
-										<!-- Product Cart Trash Button -->
-										<div class="cart_product_button">
-											<button class="cart_product_remove" th:onclick="del([[${obj.cartid}]]);" ><img src="images/trash.png" alt=""></button>
-										</div>
 									</div>
 								</div>
 							</li>
@@ -141,20 +89,24 @@
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="receiver_phone">Phone:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="receiver_phone" th:value="${custdetail.name}" name="receiver_phone">
+			      <input type="text" class="form-control" id="receiver_phone" th:value="${custdetail.phone}" name="receiver_phone">
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="pay">Payment:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="pay" th:value="${custdetail.gender}" name="pay">
+			      <input list="pay" class="form-control" name="pay" >
+					<datalist id="pay">
+					    <option value="Account Transfer">
+					    <option value="Card">
+  					</datalist>
 			    </div>
 			  </div>
 
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="totalprice">Total Price:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="totalprice" th:value="${obj.prod_totalprice}" readonly="readonly">
+			      <input type="text" class="form-control" id="totalprice" th:value="${obj2.cart_totalprice}" readonly="readonly">
 			    </div>
 			  </div>
 			</form>
@@ -162,80 +114,116 @@
 	</div>
 </div>
 	
+	<!-- Newsletter -->
 
-	<!-- Contact Text -->
+	<div class="newsletter">
+		<div class="newsletter_content">
+			<div class="newsletter_image parallax-window" data-parallax="scroll" data-image-src="images/cart_nl.jpg" data-speed="0.8"></div>
+			<div class="container">
+				<div class="row options">
 
-	<div class="contact_text">
-		<div class="container">
-			<div class="row">
+					<!-- Options Item -->
+					<div class="col-lg-3">
+						<div class="options_item d-flex flex-row align-items-center justify-content-start">
+							<div class="option_image"><img src="images/option_1.png" alt=""></div>
+							<div class="option_content">
+								<div class="option_title">30 Days Returns</div>
+								<div class="option_subtitle">No questions asked</div>
+							</div>
+						</div>
+					</div>
 
-				<!-- Contact Info -->
-				<div class="col-lg-5">
+					<!-- Options Item -->
+					<div class="col-lg-3">
+						<div class="options_item d-flex flex-row align-items-center justify-content-start">
+							<div class="option_image"><img src="images/option_2.png" alt=""></div>
+							<div class="option_content">
+								<div class="option_title">Free Delivery</div>
+								<div class="option_subtitle">On all orders</div>
+							</div>
+						</div>
+					</div>
 
-					<div class="contact_info">
-						<div class="contact_title">contact info</div>
-						<div class="contact_info_content">
-							<ul>
-								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
-									<div class="contact_info_text">428, Seolleung-ro, Gangnam-gu, Seoul, Korea</div>
-								</li>
-								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
-									<div class="contact_info_text">bjb@multicampus.com</div>
-								</li>
-								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
-									<div class="contact_info_text">+82 2612 0000</div>
-								</li>
-							</ul>
+					<!-- Options Item -->
+					<div class="col-lg-3">
+						<div class="options_item d-flex flex-row align-items-center justify-content-start">
+							<div class="option_image"><img src="images/option_3.png" alt=""></div>
+							<div class="option_content">
+								<div class="option_title">Secure Payments</div>
+								<div class="option_subtitle">No need to worry</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Options Item -->
+					<div class="col-lg-3">
+						<div class="options_item d-flex flex-row align-items-center justify-content-start">
+							<div class="option_image"><img src="images/option_4.png" alt=""></div>
+							<div class="option_content">
+								<div class="option_title">24/7 Support</div>
+								<div class="option_subtitle">Just call us</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="row newsletter_row">
+					<div class="col">
+						<div class="section_title_container text-center">
+							<div class="section_subtitle">only the best</div>
+							<div class="section_title">subscribe for a 20% discount</div>
 						</div>
 					</div>
 				</div>
-
-				<!-- FAQ -->
-				<div class="col-lg-7">
-					<div class="faq">
-						<div class="contact_title">faq</div>
-						<div class="faq_content">
-
-							<!-- Accordions -->
-							<div class="accordions">
-
-								<div class="accordion_container">
-									<div class="accordion d-flex flex-row align-items-center"><div>Lorem ipsum dolor sit amet, consectetur?</div></div>
-									<div class="accordion_panel">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
-									</div>
-								</div>
-
-								<div class="accordion_container">
-									<div class="accordion d-flex flex-row align-items-center"><div>Ipsum dolor sit amet, consectetur?</div></div>
-									<div class="accordion_panel">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
-									</div>
-								</div>
-
-								<div class="accordion_container">
-									<div class="accordion d-flex flex-row align-items-center active"><div>Proin eu dui porta, pretium metus vitae?</div></div>
-									<div class="accordion_panel">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo.</p>
-									</div>
-								</div>
-
-							</div>
-
+				<div class="row newsletter_container">
+					<div class="col-lg-10 offset-lg-1">
+						<div class="newsletter_form_container">
+							<form action="#">
+								<input type="email" class="newsletter_input" required="required" placeholder="E-mail here">
+								<button type="submit" class="newsletter_button">subscribe</button>
+							</form>
 						</div>
+						<div class="newsletter_text">Integer ut imperdiet erat. Quisque ultricies lectus tellus, eu tristique magna pharetra nec. Fusce vel lorem libero. Integer ex mi, facilisis sed nisi ut, vestib ulum ultrices nulla. Aliquam egestas tempor leo.</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+</div>
+
+
+<!--  script start -->
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/styles/bootstrap4/popper.js"></script>
 <script src="/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="/plugins/easing/easing.js"></script>
 <script src="/plugins/parallax-js-master/parallax.min.js"></script>
 <script src="/js/cart_custom.js"></script>
+
+<script>
+
+function del(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deletecart?id='+id+'&cust_id='+cust_id;
+	}
+}
+
+function alldel(id){
+	var c =confirm('삭제하시겠습니까?');
+	var cust_id = '[[${session.logincust.custid}]]';
+	if(c==true){
+		location.href='/deletecartall?id='+id+'&cust_id='+cust_id;
+	}
+}
+
+$(document).ready(function(){
+});
+
+</script>
+
+<!--  script end -->
 </body>
+</html>
