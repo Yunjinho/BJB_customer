@@ -23,8 +23,52 @@
 </style>
 
 <script>
+
+function modal(){
+	$('#testModal').modal();
+};
+
+
 $(document).ready(function(){
+	
+var status = "[[${registatus}]]";
+	
+	if(status=="0"){
+		modal();
+	}
 	$('#register2').click(function(){
+		/* 
+ 		if($('#id').val() == ''){
+			modal();
+			alert($('#id').val());		
+		}
+		if($('#pwd').val() == ''){
+			modal();
+		}
+		if($('#name').val() == ''){
+			modal();
+		}
+		if($('#email').val() == ''){
+			modal();
+		}
+		if($('#phone').val() == ''){
+			modal();
+		}
+		if($('#sample6_postcode').val() == ''){
+			modal();
+		}
+		if($('#sample6_address').val() == ''){
+			modal();
+		}
+		if($('#sample6_detailAddress').val() == ''){
+			modal();
+		}
+		if($('#birth').val() == ''){
+			modal();
+		}
+		if($('#gender').val() == ''){
+			modal();
+		}  */
 		$('#register_form').attr({
 			'action':'/registerimpl',
 			'method':'post'
@@ -118,6 +162,25 @@ function sample6_execDaumPostcode() {
                   </div>
                </div>
       </div>
+      
+    <!-- 모달 -->
+     
+	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+
+					</button>
+
+				</div>
+				<div class="modal-body">입력사항을 모두 입력해주세요.</div>
+				<div class="modal-footer">
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
    
    <!-- Contact Form -->
 	<div class="container" style="margin:auto;">
@@ -160,8 +223,8 @@ function sample6_execDaumPostcode() {
     </div> 
 	<div class="form-group">
       <label for="gender">GENDER:</label>
-      <label class="radio-inline"><input type="radio" name="gender">MALE</label>
-	  <label class="radio-inline"><input type="radio" name="gender">FEMALE</label>
+      <label class="radio-inline"><input type="radio" id="gender" name="gender">MALE</label>
+	  <label class="radio-inline"><input type="radio" id="gender" name="gender">FEMALE</label>
     </div>
     <button class="review_form_button" id="register2">REGISTER</button> <!--submit은 자바스크랩트에서 제어가 안됨 -->
   </form>

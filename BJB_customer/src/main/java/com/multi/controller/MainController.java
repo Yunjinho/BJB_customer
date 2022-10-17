@@ -35,7 +35,7 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-	public String maincenter(Model model) {
+	public void maincenter(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
@@ -60,14 +60,12 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "index";
 	}
 	@RequestMapping("/")
 	public String main(Model model) {
 		maincenter(model);
 		return "index";
 	}
-	
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -132,15 +130,18 @@ public class MainController {
 	
    @RequestMapping("/login")
    public String login(Model model) { 
+  	 model.addAttribute("status", "1");
+
 	   model.addAttribute("center","login");
       return "index";
    }
  
    @RequestMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(Model model,HttpSession session) {
 		
 		if(session != null) {
 			session.invalidate();
+			maincenter(model);
 		}
 		
 		return "index";
@@ -152,14 +153,16 @@ public class MainController {
       try {
          cust = custservice.get(id);
          if(cust == null) {
-            model.addAttribute("center", "loginfail");
+        	 model.addAttribute("status", "0");
+        	 model.addAttribute("center", "login");
          } else {
             if(pwd.equals(cust.getPwd())) {
+            	model.addAttribute("status", "1");
                session.setAttribute("logincust", cust);
-       
+               maincenter(model);
             } else {
-               model.addAttribute("center", "loginfail");
-            }
+            	 model.addAttribute("status", "0");
+            	 }
          }
       } catch (Exception e) {      
          e.printStackTrace();
@@ -186,20 +189,22 @@ public class MainController {
    @RequestMapping("/register")
    public String register(Model model) { 
       model.addAttribute("center", "register");
+      model.addAttribute("registatus", "1");
       return "index";
    }
    
 	@RequestMapping("/registerimpl")
-	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+	public String registerimpl(Model model, CustDTO cust) {
 		
 		try {
 			custservice.register(cust); 
-			model.addAttribute("center","registerok");
-			model.addAttribute("rid",cust); 
+			model.addAttribute("center","login");
+			model.addAttribute("registatus", "1");
+			
 		} catch (Exception e) {
+			model.addAttribute("center", "register");
+			model.addAttribute("registatus", "0");
 			e.printStackTrace();
-			model.addAttribute("center","registerfail");
-			model.addAttribute("fid",cust.getCustid()); 
 		}
 		
 		return "index";
