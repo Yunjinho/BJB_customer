@@ -28,14 +28,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where pc.custid=#{custid}
 	</select>
 	<select id="orderlist" parameterType="String" resultType="PurchaseDTO">
-		SELECT p.orderid, p.custid, p.totalprice, p.totalcnt, DATE_FORMAT(p.order_date,'%Y-%m-%d') AS order_date, d.delstate, i.name AS item_name, i.image1 AS item_image1 FROM purchase p
-		INNER JOIN delivery d ON p.orderid = d.orderid
+		SELECT p.orderid, p.custid, p.totalprice, p.totalcnt, p.delstate, DATE_FORMAT(p.order_date,'%Y-%m-%d') AS order_date, i.name AS item_name, i.image1 AS item_image1 FROM purchase p
 		INNER JOIN order_detail od ON p.orderid = od.orderid
 		INNER JOIN item i ON od.itemid = i.itemid
 		WHERE custid=#{custid};
 	</select>
 	<insert id="insert" parameterType="PurchaseDTO">
-	     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},SYSDATE())
+	     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},default,SYSDATE())
 	     <selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
 	                SELECT LAST_INSERT_ID()
 	      </selectKey> 
