@@ -2,7 +2,6 @@ package com.multi.controller;
 
 
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
-import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
+import com.multi.mapper.ItemMapper;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
 
@@ -34,17 +33,13 @@ public class MainController {
 	
 	@Autowired
 	AJAXMapper mapper;
-	public void newitem(Model model) {
+
+
+	public void maincenter(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
 		List<ItemDTO> list = null;
-		ItemDTO list1  = null;
-		ItemDTO list2 = null;
-		ItemDTO list3 = null;
-		ItemDTO list4 = null;
-		ItemDTO list5 = null;
-		ItemDTO list6 = null;
 		try {
 			item1 = item_mapper.newItem1();
 			model.addAttribute("obj1", item1);
@@ -55,20 +50,17 @@ public class MainController {
 			list = item_mapper.randomItem();
 			for(int i=0;i<=5;i++) {
 				model.addAttribute("list"+i, list.get(i));
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	@RequestMapping("/")
-
-	   public String main(Model model) {
-			newitem(model);
-	      return "index";
-	   }
-	   
 	
+	@RequestMapping("/")
+	public String main(Model model) {
+		maincenter(model);
+		return "index";
+	}
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -144,7 +136,7 @@ public class MainController {
 		
 		if(session != null) {
 			session.invalidate();
-			newitem(model);
+			maincenter(model);
 		}
 		
 		return "index";
@@ -162,7 +154,7 @@ public class MainController {
             if(pwd.equals(cust.getPwd())) {
             	model.addAttribute("status", "1");
                session.setAttribute("logincust", cust);
-               newitem(model);
+               maincenter(model);
             } else {
             	 model.addAttribute("status", "0");
             	 }
