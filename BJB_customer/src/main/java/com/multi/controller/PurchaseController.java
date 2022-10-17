@@ -78,6 +78,7 @@ public class PurchaseController {
 	@RequestMapping("/purchaseimpl")
 	public String registerimpl(Model model, PurchaseDTO purchase) {
 		//주문서 등록
+		System.out.println(purchase);
 		try {
 			service.register(purchase);
 			mc.maincenter(model);
