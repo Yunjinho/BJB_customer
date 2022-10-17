@@ -3,7 +3,6 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.PurchaseMapper">
-	
 	<select id="select" parameterType="Integer" resultType="PurchaseDTO">
 		SELECT * FROM purchase
 		where orderid=#{orderid};
@@ -11,9 +10,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectAll" parameterType="PurchaseDTO" resultType="PurchaseDTO">
 		SELECT * FROM purchase
 	</select>
- 	<insert id="insert" parameterType="PurchaseDTO">
-		INSERT INTO purchase VALUES (NULL,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},NOW())
-	</insert>
+ 	
 	<update id="update" parameterType="PurchaseDTO">
 		UPDATE purchase SET addr=#{addr},pay=#{pay},totalprice=#{totalprice},receiver=#{receiver},receiver_phone=#{receiver_phone},totalcnt=#{totalcnt},order_date=NOW() WHERE orderid=#{orderid}
 	</update>
@@ -37,6 +34,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN item i ON od.itemid = i.itemid
 		WHERE custid=#{custid};
 	</select>
-	
-		 
+	<insert id="insert" parameterType="PurchaseDTO">
+	     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},SYSDATE())
+	     <selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
+	                SELECT LAST_INSERT_ID()
+	      </selectKey> 
+	</insert>
 </mapper>

@@ -4,7 +4,32 @@
 		font-weight:bolder;
 	}
 </style>
-
+<script>
+$(document).ready(function(){
+	$('#cart_btn').click(function(){
+		var item_id = '[[${itemdetail.itemid}]]';
+		var item_num = $('#quantity_input').val();
+		var item_color = $('#item_color option:selected').val();
+		alert(item_color);
+		var cust_id = '[[${session.logincust.custid}]]';
+		$.ajax({
+			url : '/addcart',
+			data : {'cust_id' : cust_id, 'item_id' : item_id, 'cnt' : item_num, 'color':item_color},
+			success : alert("장바구니에 담았습니다.")
+		});
+	});
+	
+	$('#liked_btn').click(function(){
+		var cust_id = '[[${session.logincust.custid}]]';
+		var item_id = '[[${itemdetail.itemid}]]';
+		$.ajax({
+			url : '/addliked',
+			data : {'cust_id' : cust_id, 'item_id' : item_id},
+			success : alert("좋아요~")
+		});
+	});
+});
+</script>
 
 <head>
 <meta charset="utf-8">
@@ -88,7 +113,6 @@
 						</div>
 					</div>
 
-					<div class="current_page">Woman's Fashion</div>
 				</div>
 				
 			</div>
@@ -119,7 +143,7 @@
 				<div class="product_color_container">
 							<span>Color</span>
 							<div class="product_color clearfix">
-								<select class="form-control" id="sel1">
+								<select class="form-control" id="item_color">
 									<option>Color</option>
 							        <option th:each = "pc : ${pocolorlist}" th:value = "${pc.color}" th:text = "${pc.color}">option</option>
 							      </select>
@@ -133,16 +157,16 @@
 							<div class="product_size">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li>
-										<input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2" checked>
-										<label for="radio_2">S</label>
+										<input type="radio" id="radio_2" value = "s" name="product_radio" class="regular_radio radio_2" checked>
+										<label for="radio_2" id = "item_size_s">S</label>
 									</li>
 									<li>
-										<input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
-										<label for="radio_3">M</label>
+										<input type="radio" id="radio_3" value = "m" name="product_radio" class="regular_radio radio_3">
+										<label for="radio_3" id = "item_size_m">M</label>
 									</li>
 									<li>
-										<input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
-										<label for="radio_4">L</label>
+										<input type="radio" id="radio_4" value = "l" name="product_radio" class="regular_radio radio_4">
+										<label for="radio_4" id = "item_size_l">L</label>
 									</li>
 								</ul>
 							</div> 
@@ -162,11 +186,12 @@
 						</div> 
 						
 							
+				<!-- Product Buttons -->			
 					 <div class = "btn">
-							<button class="button cart_button"><a href="/cart">Like</a></button>
-							<button class="button cart_button"><a href="/cart">Cart</a></button>
+							<button class="button cart_button" id = "liked_btn"><a th:href="@{/liked(custid=${session.logincust.custid})}">Like</a></button>
+							<button class="button cart_button" id = "cart_btn"><a th:href="@{/cart(custid=${session.logincust.custid})}">Cart</a></button>
 							<button class="button cart_button"><a href="/cart">Buy</a></button>
-							</div>
+					</div>
 						
 				
 				</div> 
@@ -225,3 +250,4 @@
 <script src="/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
 <script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="/js/categories_custom.js"></script>
+<script src="/js/product_custom.js"></script>

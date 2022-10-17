@@ -17,7 +17,6 @@ class InsertCart {
 	void contextLoads() {
 		try {
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
