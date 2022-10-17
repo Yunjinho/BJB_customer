@@ -48,4 +48,8 @@ public class Product_OptionService implements MyService<Integer, Product_OptionD
 		return mapper.viewProduct(itemid);
 	}
 	
+	public List<Product_OptionDTO> viewProductSize(Integer itemid) throws Exception {
+		return mapper.viewProductSize(itemid);
+	}
+	
 }
