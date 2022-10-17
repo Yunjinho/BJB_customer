@@ -34,7 +34,7 @@ public class MainController {
 	@Autowired
 	AJAXMapper mapper;
 
-	@RequestMapping("/")
+
 	public void maincenter(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
@@ -61,6 +61,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	
 	@RequestMapping("/")
 	public String main(Model model) {
 		maincenter(model);
