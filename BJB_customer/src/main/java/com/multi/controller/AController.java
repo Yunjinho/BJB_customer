@@ -42,7 +42,7 @@ public class AController {
 	public Object addcart(String cust_id,String item_id, String cnt) {
 		int itemid=Integer.parseInt(item_id);
 		int itemcnt=Integer.parseInt(cnt);
-		CartDTO cart=new CartDTO(0, cust_id,itemid, itemcnt, null, item_id, 0, 0, cnt, 0, 0);
+		CartDTO cart=new CartDTO(0, cust_id,itemid, itemcnt, null, item_id, 0, 0, cnt, 0, 0,0);
 		try {
 			cart_service.register(cart);
 		} catch (Exception e) {
