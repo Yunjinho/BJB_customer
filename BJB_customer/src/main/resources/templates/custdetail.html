@@ -77,8 +77,8 @@
 	<!-- Contact Form -->
 
 	<div id="mypage_info" class="contact">
-		<div class="container">
-			<div class="col-sm-8">
+		<div class="container" style="padding-left: 0">
+			<div class="col-sm-8" style="padding-left: 0">
 				<form class="form-horizontal">
 				  <!-- ID -->
 				  <div class="form-group">
@@ -105,13 +105,13 @@
 				  </div>
 				</form>
 			<!-- custupdate page 이동 버튼 -->
-			<a th:href="@{/custupdate(custid=${session.logincust.custid})}"> <button id="detail_btn" class="review_form_button">회원정보 수정</button></a>
+			<a th:href="@{/custupdate(custid=${session.logincust.custid})}"> <button id="detail_btn" class="review_form_button" style="margin-left: 15px">회원정보 수정</button></a>
 			</div>
 		</div>
 	</div>
 	<!-- 구매목록 -->
 	<div id="mypage_info" class="contact">
-		<div class="cart_container">
+		<div class="cart_container" style="padding-top: 20px">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -124,16 +124,15 @@
 								<div class="cart_bar_title_name">Product</div>
 								<div class="cart_bar_title_content ml-auto">
 									<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_bar_title_quantity">Name</div>
+									
+									<div class="cart_bar_title_quantity" style="text-align: left">Quantity</div>
 									<div class="cart_bar_title_button"></div>
-									<div class="cart_bar_title_quantity">Quantity</div>
+									<div class="cart_bar_title_total" style="text-align: right">Total Price</div>
 									<div class="cart_bar_title_button"></div>
-									<div class="cart_bar_title_total">Total Price</div>
-									<div class="cart_bar_title_button"></div>
-									<div class="cart_bar_title_total">Date</div>
+									<div class="cart_bar_title_total" style="text-align: right">Date</div>
 									<div class="cart_bar_title_button"></div>
 									<div class="cart_bar_title_total">Delivery State</div>
-									<div class="cart_bar_title_button"></div>
+								
 								</div>
 							</div>
 						</div>
@@ -153,32 +152,24 @@
 										<!-- Product Price -->
 										<!-- <div class="cart_product_price" th:text="${obj.price}"></div> -->
 										<!-- Product Quantity -->
-										<div class="cart_product_price" th:text="${orderlist.item_name}" style="font-size: 12px"></div>
+										
 										<div class="cart_bar_title_button"></div>
 										<!-- Product Quantity -->
-										<div class="cart_product_price" th:text="${orderlist.totalcnt}" ></div>
+										<div class="cart_product_price" th:text="${orderlist.totalcnt}" style="font-size: 13px"></div>
 										<div class="cart_bar_title_button"></div>
 										<!-- Products Total Price -->
-										<div class="cart_product_total" th:text="${orderlist.totalprice}"></div>
+										<div class="cart_product_total" th:text="${orderlist.totalprice}" style="font-size: 13px; width:100px"></div>
 										<div class="cart_bar_title_button"></div>
 										<!-- Products Total Price -->
-										<div class="cart_product_total" th:text="${orderlist.order_date}"></div>
+										<div class="cart_product_total" th:text="${orderlist.order_date}" style="font-size: 13px; width:100px"></div>
 										<div class="cart_bar_title_button"></div>
 										<!-- Products Delivery State -->
-										<div class="cart_product_total" th:text="${orderlist.delstate}"></div>
-										<div class="cart_bar_title_button"></div>
+										<div class="cart_product_total" th:text="${orderlist.delstate}" style="font-size: 13px"></div>
+										
 									</div>
 								</div>
 							</li>
 						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-						<button class="button_clear cart_button" id="clear_cart_button">clear cart</button>
-						<a href="#"><button class="button_update cart_button_2 ml-md-auto" id="continue_shopping_button">continue shopping</button></a>
 					</div>
 				</div>
 			</div>
