@@ -42,12 +42,6 @@ public class MainController {
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
 		List<ItemDTO> list = null;
-		ItemDTO list1  = null;
-		ItemDTO list2 = null;
-		ItemDTO list3 = null;
-		ItemDTO list4 = null;
-		ItemDTO list5 = null;
-		ItemDTO list6 = null;
 		try {
 			item1 = item_mapper.newItem1();
 			model.addAttribute("obj1", item1);
