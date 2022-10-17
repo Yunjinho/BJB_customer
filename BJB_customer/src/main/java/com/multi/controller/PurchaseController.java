@@ -99,7 +99,7 @@ public class PurchaseController {
 		System.out.println(list);
 		for(CartDTO o:list) {
 			
-			Order_DetailDTO od = new Order_DetailDTO(0, r, o.getItemid(), o.getCnt(), o.getPrice(), "검정","s", null, null);
+			Order_DetailDTO od = new Order_DetailDTO(0, r, o.getItemid(), o.getCnt(), o.getPrice(), o.getColor(),o.getSize(), null, null);
 			try {
 				odservice.register(od);
 				cartservice.deleteall();
