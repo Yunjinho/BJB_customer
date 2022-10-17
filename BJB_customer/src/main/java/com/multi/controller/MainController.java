@@ -87,7 +87,6 @@ public class MainController {
 			model.addAttribute("custdetail", cust);
 			list = purchaseservice.orderlist(custid);
 			model.addAttribute("orderlist", list);
-			System.out.println(list);
 			model.addAttribute("center", "custdetail");
 		} catch (Exception e) {
 			e.printStackTrace();
