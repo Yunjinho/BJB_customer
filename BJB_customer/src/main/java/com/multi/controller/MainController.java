@@ -157,6 +157,7 @@ public class MainController {
                maincenter(model);
             } else {
             	 model.addAttribute("status", "0");
+            	 model.addAttribute("center", "login");
             	 }
          }
       } catch (Exception e) {      
