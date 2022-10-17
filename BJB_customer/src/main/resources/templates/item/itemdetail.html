@@ -10,11 +10,11 @@ $(document).ready(function(){
 		var item_id = '[[${itemdetail.itemid}]]';
 		var item_num = $('#quantity_input').val();
 		var item_color = $('#item_color option:selected').val();
-		alert(item_color);
+		var item_size = $('#item_size option:selected').val();
 		var cust_id = '[[${session.logincust.custid}]]';
 		$.ajax({
 			url : '/addcart',
-			data : {'cust_id' : cust_id, 'item_id' : item_id, 'cnt' : item_num, 'color':item_color},
+			data : {'cust_id' : cust_id, 'item_id' : item_id, 'cnt' : item_num, 'color':item_color, 'size':item_size},
 			success : alert("장바구니에 담았습니다.")
 		});
 	});
@@ -144,6 +144,7 @@ $(document).ready(function(){
 							<span>Color</span>
 							<div class="product_color clearfix">
 								<select class="form-control" id="item_color">
+									<option>Color</option>
 							        <option th:each = "pc : ${pocolorlist}" th:value = "${pc.color}" th:text = "${pc.color}">option</option>
 							      </select>
 							</div>
@@ -151,25 +152,15 @@ $(document).ready(function(){
 				
 				
 				<!-- Product Size -->
-						 <div class="product_size_container">
+						<div class="product_color_container">
 							<span>Size</span>
-							<div class="product_size">
-								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li>
-										<input type="radio" id="radio_2" value = "s" name="product_radio" class="regular_radio radio_2" checked>
-										<label for="radio_2" id = "item_size_s">S</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_3" value = "m" name="product_radio" class="regular_radio radio_3">
-										<label for="radio_3" id = "item_size_m">M</label>
-									</li>
-									<li>
-										<input type="radio" id="radio_4" value = "l" name="product_radio" class="regular_radio radio_4">
-										<label for="radio_4" id = "item_size_l">L</label>
-									</li>
-								</ul>
-							</div> 
-							</div> 
+							<div class="product_color clearfix">
+								<select class="form-control" id="item_size">
+									<option>Size</option>
+							        <option th:each = "ps : ${posizelist}" th:value = "${ps.size}" th:text = "${ps.size}">option</option>
+							      </select>
+							</div>
+						</div>
 							
 							
 				<!-- Product Quantity -->
