@@ -31,10 +31,14 @@ function modal(){
 
 $(document).ready(function(){
 	
+var status = "[[${registatus}]]";
 	
+	if(status=="0"){
+		modal();
+	}
 	$('#register2').click(function(){
-		
-/* 		if($('#id').val() == ''){
+		/* 
+ 		if($('#id').val() == ''){
 			modal();
 			alert($('#id').val());		
 		}
@@ -64,7 +68,7 @@ $(document).ready(function(){
 		}
 		if($('#gender').val() == ''){
 			modal();
-		} */
+		}  */
 		$('#register_form').attr({
 			'action':'/registerimpl',
 			'method':'post'
@@ -158,6 +162,25 @@ function sample6_execDaumPostcode() {
                   </div>
                </div>
       </div>
+      
+    <!-- 모달 -->
+     
+	<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+
+					</button>
+
+				</div>
+				<div class="modal-body">입력사항을 모두 입력해주세요.</div>
+				<div class="modal-footer">
+					<button class="btn" type="button" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
    
    <!-- Contact Form -->
 	<div class="container" style="margin:auto;">

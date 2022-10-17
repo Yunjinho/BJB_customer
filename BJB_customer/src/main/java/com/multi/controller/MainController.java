@@ -34,10 +34,7 @@ public class MainController {
 	
 	@Autowired
 	AJAXMapper mapper;
-
-	@RequestMapping("/")
-
-	public String main(Model model) {
+	public void newitem(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
@@ -63,8 +60,14 @@ public class MainController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "index";
 	}
+	@RequestMapping("/")
+
+	   public String main(Model model) {
+			newitem(model);
+	      return "index";
+	   }
+	   
 	
 	@RequestMapping("/categories")
 	public String clo() {
@@ -137,10 +140,11 @@ public class MainController {
    }
  
    @RequestMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(Model model,HttpSession session) {
 		
 		if(session != null) {
 			session.invalidate();
+			newitem(model);
 		}
 		
 		return "index";
@@ -158,6 +162,7 @@ public class MainController {
             if(pwd.equals(cust.getPwd())) {
             	model.addAttribute("status", "1");
                session.setAttribute("logincust", cust);
+               newitem(model);
             } else {
             	 model.addAttribute("status", "0");
             	 }
@@ -187,20 +192,22 @@ public class MainController {
    @RequestMapping("/register")
    public String register(Model model) { 
       model.addAttribute("center", "register");
+      model.addAttribute("registatus", "1");
       return "index";
    }
    
 	@RequestMapping("/registerimpl")
-	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+	public String registerimpl(Model model, CustDTO cust) {
 		
 		try {
 			custservice.register(cust); 
 			model.addAttribute("center","login");
-			model.addAttribute("rid",cust); 
+			model.addAttribute("registatus", "1");
+			
 		} catch (Exception e) {
+			model.addAttribute("center", "register");
+			model.addAttribute("registatus", "0");
 			e.printStackTrace();
-			model.addAttribute("center","registerfail");
-			model.addAttribute("fid",cust.getCustid()); 
 		}
 		
 		return "index";
