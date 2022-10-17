@@ -3,11 +3,41 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.PurchaseMapper">
-	
-<insert id="insert" parameterType="PurchaseDTO">
-     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},SYSDATE())
-     <selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
-                SELECT LAST_INSERT_ID()
-      </selectKey> 
-</insert>
+	<select id="select" parameterType="Integer" resultType="PurchaseDTO">
+		SELECT * FROM purchase
+		where orderid=#{orderid};
+	</select>
+	<select id="selectAll" parameterType="PurchaseDTO" resultType="PurchaseDTO">
+		SELECT * FROM purchase
+	</select>
+ 	
+	<update id="update" parameterType="PurchaseDTO">
+		UPDATE purchase SET addr=#{addr},pay=#{pay},totalprice=#{totalprice},receiver=#{receiver},receiver_phone=#{receiver_phone},totalcnt=#{totalcnt},order_date=NOW() WHERE orderid=#{orderid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM purchase WHERE orderid=#{orderid}
+	</delete>
+	<select id="viewPurchase" parameterType="String" resultType="PurchaseDTO">
+		select  distinct(pc.orderid) , pc.custid , pc.addr , pc.pay , pc.totalprice , pc.receiver , pc.receiver_phone , pc.totalcnt , pc.order_date , d.delstate , c.phone as cust_phone, prod.name as item_name from purchase pc
+		inner join delivery d on d.orderid=pc.orderid
+		inner join cust c on c.custid=pc.custid
+		inner join (
+		select i.name , od.orderid from order_detail od
+		inner join item i on i.itemid=od.itemid
+		) prod on prod.orderid=pc.orderid
+		where pc.custid=#{custid}
+	</select>
+	<select id="orderlist" parameterType="String" resultType="PurchaseDTO">
+		SELECT p.orderid, p.custid, p.totalprice, p.totalcnt, DATE_FORMAT(p.order_date,'%Y-%m-%d') AS order_date, d.delstate, i.name AS item_name, i.image1 AS item_image1 FROM purchase p
+		INNER JOIN delivery d ON p.orderid = d.orderid
+		INNER JOIN order_detail od ON p.orderid = od.orderid
+		INNER JOIN item i ON od.itemid = i.itemid
+		WHERE custid=#{custid};
+	</select>
+	<insert id="insert" parameterType="PurchaseDTO">
+	     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},SYSDATE())
+	     <selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
+	                SELECT LAST_INSERT_ID()
+	      </selectKey> 
+	</insert>
 </mapper>

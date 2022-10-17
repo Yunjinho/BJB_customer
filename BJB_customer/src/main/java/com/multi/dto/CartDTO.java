@@ -30,7 +30,7 @@ public class CartDTO {
 	private int prod_totalprice;
 	private String name;
 	private int cart_totalprice;
-	
+	private int cart_totalcnt;
 	private int cartcnt;
 	
 }
