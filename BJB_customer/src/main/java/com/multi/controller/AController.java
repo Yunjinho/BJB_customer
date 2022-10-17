@@ -42,6 +42,8 @@ public class AController {
 
 		return result;
 		}
+	
+	@RequestMapping("/addcart")
 	public Object addcart(String cust_id,String item_id, String cnt, String color, String size) {
 		int itemid=Integer.parseInt(item_id);
 		int itemcnt=Integer.parseInt(cnt);
