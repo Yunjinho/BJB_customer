@@ -35,6 +35,8 @@
 						<div class="cart_bar_title_name">Product</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
+								<div class="cart_bar_title_color">color</div>
+								<div class="cart_bar_title_size">size</div>
 								<div class="cart_bar_title_price">Price</div>
 								<div class="cart_bar_title_quantity">Quantity</div>
 								<div class="cart_bar_title_total">Total</div>
@@ -55,6 +57,10 @@
 								<div class="cart_product_name" th:text="${obj.name}" ><a href="product.html"></a></div>
 								<div class="cart_product_info ml-auto">
 									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+									
+									<div class="cart_product_color" th:text="${obj.color}"></div>
+									<div class="cart_product_size" th:text="${obj.size}"></div>
+									
 										<!-- Product Price -->
 										<div class="cart_product_price" th:text="${obj.price}"></div>
 										<!-- Product Quantity -->

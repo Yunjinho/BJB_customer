@@ -19,6 +19,8 @@ public class CartDTO {
 	private String custid;
 	private int itemid;
 	private int cnt;
+	private String color;
+	private String size;
 	private Date date;
 	
 	
