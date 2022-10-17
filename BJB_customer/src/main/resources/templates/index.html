@@ -121,11 +121,6 @@ $(document).ready(function(){
 					<!-- custdetail -->
 					<a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}" th:text = "${session.logincust.custid}+님" style="color: black; margin-top: 25px">
 					</a>
-					<!-- <a th:if = "${session.logincust != null}" th:href="@{/custdetail(custid=${session.logincust.custid})}">
-						<div class="avatar">
-							<img src="/images/man_icon22.png" alt="">
-						</div>
-					</a> -->
 					
 					<!-- logout -->
 					<a href="/logout" th:if = "${session.logincust != null}" style="color: black; margin-top: 25px">

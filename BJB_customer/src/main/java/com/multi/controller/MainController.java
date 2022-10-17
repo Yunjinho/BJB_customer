@@ -2,7 +2,6 @@ package com.multi.controller;
 
 
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.dto.CustDTO;
 import com.multi.dto.ItemDTO;
-import com.multi.mapper.ItemMapper;
 import com.multi.mapper.AJAXMapper;
+import com.multi.mapper.ItemMapper;
 import com.multi.service.CustService;
 import com.multi.service.ItemService;
 
@@ -36,8 +35,7 @@ public class MainController {
 	AJAXMapper mapper;
 
 	@RequestMapping("/")
-
-	public String main(Model model) {
+	public void maincenter(Model model) {
 		ItemDTO item1 = null;
 		ItemDTO item2 = null;
 		ItemDTO item3 = null;
@@ -52,14 +50,16 @@ public class MainController {
 			list = item_mapper.randomItem();
 			for(int i=0;i<=5;i++) {
 				model.addAttribute("list"+i, list.get(i));
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	@RequestMapping("/")
+	public String main(Model model) {
+		maincenter(model);
 		return "index";
 	}
-	
 	@RequestMapping("/categories")
 	public String clo() {
 		return "categories";
@@ -131,10 +131,11 @@ public class MainController {
    }
  
    @RequestMapping("/logout")
-	public String logout(HttpSession session) {
+	public String logout(Model model,HttpSession session) {
 		
 		if(session != null) {
 			session.invalidate();
+			maincenter(model);
 		}
 		
 		return "index";
@@ -152,6 +153,7 @@ public class MainController {
             if(pwd.equals(cust.getPwd())) {
             	model.addAttribute("status", "1");
                session.setAttribute("logincust", cust);
+               maincenter(model);
             } else {
             	 model.addAttribute("status", "0");
             	 }
@@ -181,20 +183,22 @@ public class MainController {
    @RequestMapping("/register")
    public String register(Model model) { 
       model.addAttribute("center", "register");
+      model.addAttribute("registatus", "1");
       return "index";
    }
    
 	@RequestMapping("/registerimpl")
-	public String registerimpl(Model model, CustDTO cust, HttpSession session) {
+	public String registerimpl(Model model, CustDTO cust) {
 		
 		try {
 			custservice.register(cust); 
 			model.addAttribute("center","login");
-			model.addAttribute("rid",cust); 
+			model.addAttribute("registatus", "1");
+			
 		} catch (Exception e) {
+			model.addAttribute("center", "register");
+			model.addAttribute("registatus", "0");
 			e.printStackTrace();
-			model.addAttribute("center","registerfail");
-			model.addAttribute("fid",cust.getCustid()); 
 		}
 		
 		return "index";

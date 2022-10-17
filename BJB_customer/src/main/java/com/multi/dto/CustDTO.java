@@ -22,7 +22,7 @@ public class CustDTO {
 	private String name;
 	
 	private String gender;
-	private int postno;
+	private String postno;
 	private String addr;
 	private String phone;
 	private String email;
