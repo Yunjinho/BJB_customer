@@ -24,7 +24,7 @@ public class CartController {
 		try {
 			list = service.viewCart(custid);
 			model.addAttribute("obj", list);
-			model.addAttribute("center", "cart");
+			
 			if (list.size()==0) {
 				CartDTO temp=new CartDTO(0, custid, 0, 0, null, null, null, custid, 0, 0, custid, 0, 0,0);
 				model.addAttribute("obj2", temp);
@@ -40,13 +40,12 @@ public class CartController {
 		for (CartDTO l : list) {
 			sum += l.getProd_totalprice();
 		}
-		System.out.println("ㅎㅎㅎㅎㅎㅎ");
 		CartDTO cart = null;
 		cart = list.get(0);
 		cart.setCustid(custid);
 		cart.setCart_totalprice(sum);
 		model.addAttribute("obj2", cart);
-
+		model.addAttribute("center", "cart");
 		return "index";
 	}
 
