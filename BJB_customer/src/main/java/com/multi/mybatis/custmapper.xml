@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CustMapper">
 	
 	<select id="select" parameterType="String" resultType="custDTO">
-		SELECT cu.custid, cu.tierid, cu.pwd, cu.name, cu.gender, cu.addr, cu.phone, cu.email, cu.rdate, cu.acc_amount, cu.birth, ti.tier AS tier_tier
+		SELECT cu.custid, cu.tierid,cu.acc_amount, cu.pwd, cu.name, cu.gender, cu.addr, cu.phone, cu.email, cu.rdate, cu.acc_amount, cu.birth, ti.tier AS tier_tier
 		FROM cust cu
 		INNER JOIN tier ti ON cu.tierid = ti.tierid
 		WHERE custid=#{custid}
@@ -15,18 +15,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectAll" resultType="custDTO">
 		SELECT * FROM cust
 	</select>
-	
-	 
-	
 	 
 	<insert id="insert" parameterType="custDTO">
 		INSERT INTO cust 
 		VALUES (#{custid},1,#{pwd}, #{name} , #{gender} ,#{postno}, #{addr}, #{phone},#{email}, NOW(),0,#{birth} )
 	</insert>  
-	
-	
-	
-	
 	
 	<update id="update" parameterType="custDTO">
 		UPDATE cust SET custid=#{custid}, tierid=#{tierid}, pwd=#{pwd},name=#{name},gender=#{gender},addr=#{addr},
@@ -34,11 +27,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE custid=#{custid}
 	</update>  
 	
-	
-	
-	
 	<delete id="delete" parameterType="String">
 		DELETE FROM cust WHERE custid=#{custid}
 	</delete>  
+		
+	<update id="updateamount" parameterType="CustDTO" >
+		UPDATE cust SET acc_amount=#{acc_amount},tierid=#{tierid}
+		WHERE custid=#{custid}
+	</update>
 	
 </mapper>

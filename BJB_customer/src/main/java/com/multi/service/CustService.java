@@ -42,5 +42,8 @@ public class CustService implements MyService<String, CustDTO>{
 		return mapper.selectAll();
 	}
 	
+	public List<CustDTO> updateamount(CustDTO custid) throws Exception {
+		return mapper.updateamount(custid);
+	}
 
 }
