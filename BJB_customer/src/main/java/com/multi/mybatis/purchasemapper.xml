@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE custid=#{custid};
 	</select>
 	<insert id="insert" parameterType="PurchaseDTO">
-	     INSERT INTO PURCHASE VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},default,SYSDATE())
+	     INSERT INTO purchase VALUES (null,#{custid},#{addr},#{pay},#{totalprice},#{receiver},#{receiver_phone},#{totalcnt},default,SYSDATE())
 	     <selectKey keyProperty="orderid" resultType="Integer" order="AFTER"> 
 	                SELECT LAST_INSERT_ID()
 	      </selectKey> 

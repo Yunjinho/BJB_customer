@@ -28,6 +28,7 @@ public class CustDTO {
 	private String email;
 	private Date rdate;
 	private int acc_amount;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 	
