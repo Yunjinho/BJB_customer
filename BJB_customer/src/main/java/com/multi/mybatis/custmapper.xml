@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>  
 	
 	<update id="update" parameterType="custDTO">
-		UPDATE cust SET custid=#{custid}, tierid=#{tierid}, pwd=#{pwd},name=#{name},gender=#{gender},addr=#{addr},
+		UPDATE cust SET custid=#{custid}, tierid=#{tierid}, pwd=#{pwd},name=#{name},gender=#{gender},postno=#{postno},addr=#{addr},
 		phone=#{phone},email=#{email}, rdate=NOW(), acc_amount=#{acc_amount}, birth=#{birth}
 		WHERE custid=#{custid}
 	</update>  

@@ -14,6 +14,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PurchaseDTO {
+	
 	private int orderid;
 	private String custid;
 	private String addr;
@@ -22,9 +23,9 @@ public class PurchaseDTO {
 	private String receiver;
 	private String receiver_phone;
 	private int totalcnt;
+	private String delstate;
 	private Date order_date;
 	
-	private String delstate;
 	private String item_name;
 	private String cust_phone;
 	private String item_image1;
