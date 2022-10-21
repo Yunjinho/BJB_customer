@@ -75,6 +75,7 @@ public class PurchaseController {
 		
 		return "index";
 	}
+	
 	@RequestMapping("/purchaseimpl")
 	public String registerimpl(Model model, PurchaseDTO purchase) {
 		//주문서 등록
@@ -89,17 +90,21 @@ public class PurchaseController {
 		}
 		int r = purchase.getOrderid();
 		//주문 디테일 등록
+		
+		String cust_id=purchase.getCustid();
+		CustDTO cust= null;
+		int acc_amount=0; 
 		List<CartDTO> list = null;
+		
 		try {
-			list = cartservice.viewCart(purchase.getCustid());
-			
+			cust=custservice.get(cust_id);
+			list = cartservice.viewCart(cust_id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(list);
+		
 		for(CartDTO o:list) {
-			
 			Order_DetailDTO od = new Order_DetailDTO(0, r, o.getItemid(), o.getCnt(), o.getPrice(), o.getColor(),o.getSize(), null, null);
 			try {
 				odservice.register(od);
@@ -107,6 +112,30 @@ public class PurchaseController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		int sum = 0;
+		for (CartDTO l : list) {
+			sum += l.getProd_totalprice();
+		}
+		
+		acc_amount=sum+cust.getAcc_amount();
+		
+		cust.setAcc_amount(acc_amount);
+		
+		if(acc_amount<3000000) {
+			cust.setTierid(1);
+		}else if(acc_amount<6000000) {
+			cust.setTierid(2);
+		}else {
+			cust.setTierid(3);
+		}
+		
+		try {
+			custservice.updateamount(cust);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		return "index";
