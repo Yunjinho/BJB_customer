@@ -144,7 +144,7 @@
 						<ul th:each="orderlist:${orderlist}">
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
 								<!-- Product Image -->
-								<div class="cart_product_image"><img th:src="@{/img/}+${orderlist.item_image1}+'.jpg'" style="width:150px;"></div>
+								<div class="cart_product_image"><img th:src="@{'/images/'}+${orderlist.item_image1}+'.jpg'" style="width:150px;"></div>
 								<!-- Product Name -->
 								<div class="cart_product_name" th:text="${orderlist.item_name}" ><a th:href="@{product.html}"></a></div>
 								<div class="cart_product_info ml-auto">

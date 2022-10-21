@@ -52,7 +52,7 @@
 						<ul th:each="obj:${obj}">
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
 								<!-- Product Image -->
-								<div class="cart_product_image"><img th:src="'/images/'+${obj.image1}+'.jpg'" style="width:150px;"></div>
+								<div class="cart_product_image"><img th:src="@{'/images/'}+${obj.image1}+'.jpg'" style="width:150px;"></div>
 								<!-- Product Name -->
 								<div class="cart_product_name" th:text="${obj.name}" ><a href="product.html"></a></div>
 								<div class="cart_product_info ml-auto">
