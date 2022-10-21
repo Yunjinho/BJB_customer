@@ -155,7 +155,7 @@ function del(id){
 	var c =confirm('삭제하시겠습니까?');
 	var cust_id = '[[${session.logincust.custid}]]';
 	if(c==true){
-		location.href='@{/deleteliked?id=}'+id+'&cust_id='+cust_id;
+		location.href='[[@{/deleteliked?id=}]]'+id+'[[@{&cust_id=}]]'+cust_id;
 	}
 }
 
@@ -163,7 +163,7 @@ function delall(id){
 	var c =confirm('삭제하시겠습니까?');
 	var cust_id = '[[${session.logincust.custid}]]';
 	if(c==true){
-		location.href='@{/deletelikedall?id=}'+id+'&cust_id='+cust_id;
+		location.href='[[@{/deletelikedall?id=}]]'+id+'[[@{&cust_id=}]]'+cust_id;
 	}
 }
 $(document).ready(function(){
