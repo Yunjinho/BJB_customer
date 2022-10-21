@@ -73,7 +73,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<a th:href = "@{/itemdetail(itemid=${obj1.itemid})}"><img th:src="'/images/'+${obj1.image1} + '.jpg'" alt=""></a>
+							<a th:href = "@{/itemdetail(itemid=${obj1.itemid})}"><img th:src="@{'/images/'}+${obj1.image1} + '.jpg'" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
@@ -88,7 +88,7 @@
 								<div class="product_price" th:text="${obj1.price}"></div>
 							</div>
 							<div class="product_options">
-								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
+								<div class="product_buy product_option"><img th:src="@{/images/shopping-bag-white.svg}" alt=""></div>
 								<div class="product_fav product_option">+</div>
 							</div>
 						</div>
@@ -99,7 +99,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<a th:href="@{/itemdetail(itemid=${obj2.itemid})}"><img th:src="'/images/'+${obj2.image1} + '.jpg'" alt=""></a>
+							<a th:href="@{/itemdetail(itemid=${obj2.itemid})}"><img th:src="@{'/images/'}+${obj2.image1} + '.jpg'" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
@@ -114,7 +114,7 @@
 								<div class="product_price" th:text="${obj2.price}"></div>
 							</div>
 							<div class="product_options">
-								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
+								<div class="product_buy product_option"><img th:src="@{/images/shopping-bag-white.svg}" alt=""></div>
 								<div class="product_fav product_option">+</div>
 							</div>
 						</div>
@@ -124,7 +124,7 @@
 				<div class="col-lg-4 product_col">
 					<div class="product">
 						<div class="product_image">
-							<a th:href="@{/itemdetail(itemid=${obj3.itemid})}"><img th:src="'/images/'+${obj3.image1} + '.jpg'" alt=""></a>
+							<a th:href="@{/itemdetail(itemid=${obj3.itemid})}"><img th:src="@{'/images/'}+${obj3.image1} + '.jpg'" alt=""></a>
 						</div>
 						<div class="rating rating_4">
 							<i class="fa fa-star"></i>
@@ -139,7 +139,7 @@
 								<div class="product_price" th:text="${obj3.price}"></div>
 							</div>
 							<div class="product_options">
-								<div class="product_buy product_option"><img src="/images/shopping-bag-white.svg" alt=""></div>
+								<div class="product_buy product_option"><img th:src="@{/images/shopping-bag-white.svg}" alt=""></div>
 								<div class="product_fav product_option">+</div>
 							</div>
 						</div>
@@ -177,42 +177,42 @@
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list0.itemid})}">
-						<img th:src="'/images/'+${list0.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list0.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list1.itemid})}">
-						<img th:src="'/images/'+${list1.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list1.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list2.itemid})}">
-						<img th:src="'/images/'+${list2.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list2.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list3.itemid})}">
-						<img th:src="'/images/'+${list3.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list3.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list4.itemid})}">
-						<img th:src="'/images/'+${list4.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list4.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 
 				<!-- Gallery Item -->
 				<div class="owl-item gallery_item">
 					<a th:href="@{/itemdetail(itemid=${list5.itemid})}">
-						<img th:src="'/images/'+${list5.image1}+'.jpg'" alt="">
+						<img th:src="@{'/images/'}+${list5.image1}+'.jpg'" alt="">
 					</a>
 				</div>
 

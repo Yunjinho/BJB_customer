@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{styles/bootstrap4/bootstrap.min.css}">
+<link th:href="@{plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact_responsive.css}">
+<script th:src="@{//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
 <style>
    #register_title{
       color: black;
@@ -70,7 +70,7 @@ var status = "[[${registatus}]]";
 			modal();
 		}  */
 		$('#register_form').attr({
-			'action':'/registerimpl',
+			'action':'[[@{/registerimpl}]]',
 			'method':'post'
 		});
 		$('#register_form').submit();
@@ -88,7 +88,7 @@ var status = "[[${registatus}]]";
 	$('#id').keyup(function(){
 		var custid = $(this).val();
 		$.ajax({
-			url:'/checkid', //아작스로 아이디를 사용가능한지 보는 기능
+			url:'[[@{/checkid}]]', //아작스로 아이디를 사용가능한지 보는 기능
 			data:{'cid':custid}, //cid이름으로id데이터전달한다
 			success:function(result){
 				
