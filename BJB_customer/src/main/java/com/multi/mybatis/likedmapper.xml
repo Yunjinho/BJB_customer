@@ -30,10 +30,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM liked
 	</delete> 
 	<select id="viewLikedCustid" parameterType="String" resultType="LikedDTO">
-		SELECT ANY_VALUE(l.likedid), i.image1, ANY_VALUE(l.custid), ANY_VALUE(i.name) AS name, ANY_VALUE(i.price) AS price FROM liked l
+		SELECT l.likedid, i.image1, l.custid, i.name AS name, i.price AS price FROM liked l
 		INNER JOIN item i ON l.itemid = i.itemid
 		WHERE l.custid = #{custid}
-		GROUP BY i.itemid
 	</select>
 	
 	<select id="viewLikedItemid" parameterType="Integer" resultType="LikedDTO">

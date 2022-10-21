@@ -40,7 +40,6 @@ public class CartController {
 		for (CartDTO l : list) {
 			sum += l.getProd_totalprice();
 		}
-		System.out.println("ㅎㅎㅎㅎㅎㅎ");
 		CartDTO cart = null;
 		cart = list.get(0);
 		cart.setCustid(custid);
