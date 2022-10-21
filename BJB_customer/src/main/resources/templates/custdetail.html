@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-<link rel="stylesheet" type="text/css" href="styles/cart.css">
-<link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/bootstrap4/bootstrap.min.css}">
+<link th:href="@{plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact_responsive.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/cart.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/cart_responsive.css}">
 
 <style>
 	#mypage_title{
@@ -144,9 +144,9 @@
 						<ul th:each="orderlist:${orderlist}">
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
 								<!-- Product Image -->
-								<div class="cart_product_image"><img th:src="'/images/'+${orderlist.item_image1}+'.jpg'" style="width:150px;"></div>
+								<div class="cart_product_image"><img th:src="@{'/images/'}+${orderlist.item_image1}+'.jpg'" style="width:150px;"></div>
 								<!-- Product Name -->
-								<div class="cart_product_name" th:text="${orderlist.item_name}" ><a href="product.html"></a></div>
+								<div class="cart_product_name" th:text="${orderlist.item_name}" ><a th:href="@{product.html}"></a></div>
 								<div class="cart_product_info ml-auto">
 									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
 										<!-- Product Price -->
@@ -191,15 +191,15 @@
 						<div class="contact_info_content">
 							<ul>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_1.png}" alt=""></div>
 									<div class="contact_info_text">428, Seolleung-ro, Gangnam-gu, Seoul, Korea</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_2.png}" alt=""></div>
 									<div class="contact_info_text">bjb@multicampus.com</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_3.png}" alt=""></div>
 									<div class="contact_info_text">+82 2612 0000</div>
 								</li>
 							</ul>

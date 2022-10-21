@@ -6,11 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-<script src="/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{styles/bootstrap4/bootstrap.min.css}">
+<link th:href="@{plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact_responsive.css}">
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
 
  <!-- kakao map -->
  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f4363fcc8b7b65aa79629e4cb5604c80"></script>
@@ -107,15 +107,15 @@ $(document).ready(function(){
 						<div class="contact_info_content">
 							<ul>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_1.png}" alt=""></div>
 									<div class="contact_info_text">212, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_2.png}" alt=""></div>
 									<div class="contact_info_text">627km</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_3.png}" alt=""></div>
 									<div class="contact_info_text">+82 3953 8163</div>
 								</li>
 							</ul>
@@ -165,11 +165,11 @@ $(document).ready(function(){
 
 </div>
 
-<script src="/styles/bootstrap4/popper.js"></script>
-<script src="/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="/plugins/easing/easing.js"></script>
-<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script th:src="@{/styles/bootstrap4/popper.js}"></script>
+<script th:src="@{/styles/bootstrap4/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/easing/easing.js}"></script>
+<script th:src="@{/plugins/parallax-js-master/parallax.min.js}"></script>
 <script src="/https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="/js/contact_custom.js"></script>
+<script th:src="@{/js/contact_custom.js}"></script>
 </body>
 </html>
