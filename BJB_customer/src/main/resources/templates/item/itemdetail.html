@@ -13,7 +13,7 @@ $(document).ready(function(){
 		var item_size = $('#item_size option:selected').val();
 		var cust_id = '[[${session.logincust.custid}]]'; 
 		$.ajax({
-			url : '/addcart',
+			url : '[[@{/addcart}]]',
 			data : {'cust_id' : cust_id, 'item_id' : item_id, 'cnt' : item_num, 'color':item_color, 'size':item_size},
 			success : alert("장바구니에 담았습니다.")
 		});
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		var cust_id = '[[${session.logincust.custid}]]';
 		var item_id = '[[${itemdetail.itemid}]]';
 		$.ajax({
-			url : '/addliked',
+			url : '[[@{/addliked}]]',
 			data : {'cust_id' : cust_id, 'item_id' : item_id},
 			success : alert("좋아요~")
 		});
@@ -36,12 +36,12 @@ $(document).ready(function(){
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
-<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/styles/categories.css">
-<link rel="stylesheet" type="text/css" href="/styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap4/bootstrap.min.css}">
+<link th:href="@{/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" th:href="@{/plugins/jquery-ui-1.12.1.custom/jquery-ui.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/styles/categories.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/styles/categories_responsive.css}">
 
 </head>
 <body>
@@ -229,13 +229,13 @@ $(document).ready(function(){
 
 	</div>
 
-<script src="/js/jquery-3.2.1.min.js"></script>
-<script src="/styles/bootstrap4/popper.js"></script>
-<script src="/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="/plugins/easing/easing.js"></script>
-<script src="/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
-<script src="/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="/js/categories_custom.js"></script>
-<script src="/js/product_custom.js"></script>
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/styles/bootstrap4/popper.js}"></script>
+<script th:src="@{/styles/bootstrap4/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/easing/easing.js}"></script>
+<script th:src="@{/plugins/parallax-js-master/parallax.min.js}"></script>
+<script th:src="@{/plugins/Isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js}"></script>
+<script th:src="@{/plugins/jquery-ui-1.12.1.custom/jquery-ui.js}"></script>
+<script th:src="@{/js/categories_custom.js}"></script>
+<script th:src="@{/js/product_custom.js}"></script>

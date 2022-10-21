@@ -28,10 +28,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete> 
 	
 	<select id = "viewProduct" parameterType="Integer" resultType = "Product_OptionDTO">
-	SELECT po.optionid, po.itemid, it.name AS item_name, po.color, po.size, po.stock FROM product_option po
-	INNER JOIN item it ON po.itemid = it.itemid
-	WHERE po.itemid=#{itemid}
-	GROUP BY po.color
+		SELECT ANY_VALUE(po.optionid), ANY_VALUE(po.itemid), ANY_VALUE(it.name) AS item_name, po.color, ANY_VALUE(po.size), ANY_VALUE(po.stock) FROM product_option po
+  	 	INNER JOIN item it ON po.itemid = it.itemid
+   		WHERE po.itemid=#{itemid}
+  		GROUP BY po.color;
    </select>
    
    <select id = "viewProductSize" resultType = "Product_OptionDTO">
