@@ -1,4 +1,25 @@
 # BJB 쇼핑몰
+[1]프로젝트 과정
+
+1.프로젝트 주제 및 내용
+
+![image](https://user-images.githubusercontent.com/111735494/197123432-d0db6277-f9f0-46aa-b54b-7547369b0b0d.png)
+
+2.팀원간 역할 분담
+
+![image](https://user-images.githubusercontent.com/111735494/197123606-86071876-311c-4d3c-99bd-df90d7a30516.png)
+
+3.사용기술
+
+![image](https://user-images.githubusercontent.com/111735494/197123709-185dfd73-98d4-4c2a-83de-c8bd4915f3a6.png)
+
+4.ERD
+
+![KakaoTalk_20221017_204241132](https://user-images.githubusercontent.com/111735494/197123881-4261763c-7203-4c60-84bb-a0f9472c01c1.png)
+
+
+[2]실제 쇼핑몰 시연
+
 1.쇼핑몰 대문사진
 
 ![image](https://user-images.githubusercontent.com/111735494/197116639-e5fc2808-dd7f-49f8-aa17-68842b16620a.png)
