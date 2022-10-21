@@ -6,10 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/bootstrap4/bootstrap.min.css}">
+<link th:href="@{plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact.css}">
+<link rel="stylesheet" type="text/css" th:href="@{styles/contact_responsive.css}">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 	#mypage_title{
@@ -43,7 +43,7 @@ $(document).ready(function(){
 		if(c == true){
 			$('#custupdate_form').attr({
 				'method':'post',
-				'action':'/custupdateimpl'
+				'action':'[[@{/custupdateimpl}]]'
 			});
 			$('#custupdate_form').submit();
 		}
@@ -248,15 +248,15 @@ function sample6_execDaumPostcode() {
 						<div class="contact_info_content">
 							<ul>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_1.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_1.png}" alt=""></div>
 									<div class="contact_info_text">428, Seolleung-ro, Gangnam-gu, Seoul, Korea</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_2.png}" alt=""></div>
 									<div class="contact_info_text">bjb@multicampus.com</div>
 								</li>
 								<li>
-									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
+									<div class="contact_info_icon"><img th:src="@{images/contact_info_3.png}" alt=""></div>
 									<div class="contact_info_text">+82 2612 0000</div>
 								</li>
 							</ul>
